@@ -23,3 +23,8 @@ cveID2017 <- dataNVD2017$cve.id
 cveID2017
 cveID2017DataFrame <- ldply(cveID2017, data.frame)
 colnames(cveID2017DataFrame) <- "CVE_ID"
+
+summary2017 <- dataNVD2017$summary
+summary2017
+summary2017DataFrame <- ldply(summary2017, data.frame)
+colnames(summary2017DataFrame) <- "Vulnerability_Summary"

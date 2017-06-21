@@ -18,3 +18,7 @@ summary(nvd2017)
 nvd2017List <- xmlToList(nvd2017)
 nvd2017List
 dataNVD2017 <- ldply(.data = nvd2017List, data.frame)
+
+cveID2017 <- dataNVD2017$cve.id
+cveID2017
+cveID2017DataFrame <- ldply(cveID2017, data.frame)

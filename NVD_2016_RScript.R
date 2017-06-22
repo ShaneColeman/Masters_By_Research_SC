@@ -22,7 +22,7 @@ dataNVD2016 <- ldply(.data = nvd2016List, data.frame)
 cveID2016 <- dataNVD2016$cve.id
 cveID2016
 cveID2016DataFrame <- ldply(cveID2016, data.frame)
-colnames(cveID2017DataFrame) <- "CVE_ID"
+colnames(cveID2016DataFrame) <- "CVE_ID"
 
 summary2016 <- dataNVD2016$summary
 summary2016

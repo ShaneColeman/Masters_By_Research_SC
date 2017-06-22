@@ -45,3 +45,9 @@ cvss2016 <- dataNVD2016$cvss.base_metrics.score
 cvss2016
 cvss2016DataFrame <- ldply(cvss2016, data.frame)
 colnames(cvss2016DataFrame) <- "CVSS_Score"
+
+cvssAccessVector2016 <- dataNVD2016$cvss.base_metrics.access.vector
+cvssAccessVector2016
+cvssAccessVector2016DataFrame <- ldply(cvssAccessVector2016, data.frame)
+colnames(cvssAccessVector2016DataFrame) <- "CVSS_Access_Vector"
+

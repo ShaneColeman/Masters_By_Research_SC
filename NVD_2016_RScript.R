@@ -51,3 +51,7 @@ cvssAccessVector2016
 cvssAccessVector2016DataFrame <- ldply(cvssAccessVector2016, data.frame)
 colnames(cvssAccessVector2016DataFrame) <- "CVSS_Access_Vector"
 
+cvssAccessComplexity2016 <- dataNVD2016$cvss.base_metrics.access.complexity
+cvssAccessComplexity2016
+cvssAccessComplexity2016DataFrame <- ldply(cvssAccessComplexity2016, data.frame)
+colnames(cvssAccessComplexity2016DataFrame) <- "CVSS_Access_Complexity"

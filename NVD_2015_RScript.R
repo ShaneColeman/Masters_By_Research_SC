@@ -60,3 +60,8 @@ cvssAuthentication2015 <- dataNVD2015$cvss.base_metrics.authentication
 cvssAuthentication2015
 cvssAuthentication2015DataFrame <- ldply(cvssAuthentication2015, data.frame)
 colnames(cvssAuthentication2015DataFrame) <- "CVSS_Authentication"
+
+cvssConfidentialityImpact2015 <- dataNVD2015$cvss.base_metrics.confidentiality.impact
+cvssConfidentialityImpact2015
+cvssConfidentialityImpact2015DataFrame <- ldply(cvssConfidentialityImpact2015, data.frame)
+colnames(cvssConfidentialityImpact2015DataFrame) <- "CVSS_Confidentiality_Impact"

@@ -51,12 +51,18 @@ cvssAccessVector2017
 cvssAccessVector2017DataFrame <- ldply(cvssAccessVector2017, data.frame)
 colnames(cvssAccessVector2017DataFrame) <- "CVSS_Access_Vector"
 
-cvssAccessComplexity <- dataNVD2017$cvss.base_metrics.access.complexity
-cvssAccessComplexity
-cvssAccessComplexityDataFrame <- ldply(cvssAccessComplexity, data.frame)
-colnames(cvssAccessComplexityDataFrame) <- "CVSS_Access_Complexity"
+cvssAccessComplexity2017 <- dataNVD2017$cvss.base_metrics.access.complexity
+cvssAccessComplexity2017
+cvssAccessComplexity2017DataFrame <- ldply(cvssAccessComplexity2017, data.frame)
+colnames(cvssAccessComplexity2017DataFrame) <- "CVSS_Access_Complexity"
 
-cvssAuthentication <- dataNVD2017$cvss.base_metrics.authentication
-cvssAuthentication
-cvssAuthenticationDataFrame <- ldply(cvssAuthentication, data.frame)
-colnames(cvssAuthenticationDataFrame) <- "CVSS_Authentication"
+cvssAuthentication2017 <- dataNVD2017$cvss.base_metrics.authentication
+cvssAuthentication2017
+cvssAuthentication2017DataFrame <- ldply(cvssAuthentication2017, data.frame)
+colnames(cvssAuthentication2017DataFrame) <- "CVSS_Authentication"
+
+cvssConfidentialityImpact2017 <- dataNVD2017$cvss.base_metrics.confidentiality.impact
+cvssConfidentialityImpact2017
+cvssConfidentialityImpact2017DataFrame <- ldply(cvssConfidentialityImpact2017, data.frame)
+colnames(cvssConfidentialityImpact2017DataFrame) <- "CVSS_Confidentiality_Impact"
+

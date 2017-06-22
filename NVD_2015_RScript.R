@@ -40,3 +40,8 @@ lastModifiedDateTime2015
 lastModifiedDate2015 <- anydate(lastModifiedDateTime2015)
 lastModifiedDate2015DataFrame <- ldply(lastModifiedDate2015, data.frame)
 colnames(lastModifiedDate2015DataFrame) <- "Vulnerability_Last_Modified_Date"
+
+cvss2015 <- dataNVD2015$cvss.base_metrics.score
+cvss2015
+cvss2015DataFrame <- ldply(cvss2015, data.frame)
+colnames(cvss2015DataFrame) <- "CVSS_Score"

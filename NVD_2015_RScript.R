@@ -70,3 +70,8 @@ cvssIntegrityImpact2015 <- dataNVD2015$cvss.base_metrics.integrity.impact
 cvssIntegrityImpact2015
 cvssIntegrityImpact2015DataFrame <- ldply(cvssIntegrityImpact2015, data.frame)
 colnames(cvssIntegrityImpact2015DataFrame) <- "CVSS_Integrity_Impact"
+
+cvssAvailabilityImpact2015 <- dataNVD2015$cvss.base_metrics.availability.impact
+cvssAvailabilityImpact2015
+cvssAvailabilityImpact2015DataFrame <- ldply(cvssAvailabilityImpact2015, data.frame)
+colnames(cvssAvailabilityImpact2015DataFrame) <- "CVSS_Availability_Impact"

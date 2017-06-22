@@ -81,3 +81,8 @@ cvssGeneratedOnDateTime2017
 cvssGeneratedOnDate2017 <- anydate(cvssGeneratedOnDateTime2017)
 cvssGeneratedOnDate2017DataFrame <- ldply(cvssGeneratedOnDate2017, data.frame)
 colnames(cvssGeneratedOnDate2017DataFrame) <- "CVSS_Generated_On_Date"
+
+cwe2017 <- dataNVD2017$cwe
+cwe2017
+cwe2017DataFrame <- ldply(cwe2017, data.frame)
+colnames(cwe2017DataFrame) <- "CWE"

@@ -13,7 +13,7 @@ library(dplyr)
 library(anytime)
 
 nvd2015 <- xmlParse(file = "nvdcve-2.0-2015.xml")
-summary(nvd2016)
+summary(nvd2015)
 
 nvd2015List <- xmlToList(nvd2015)
 nvd2015List

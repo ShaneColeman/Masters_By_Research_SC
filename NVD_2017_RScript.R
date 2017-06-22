@@ -55,3 +55,8 @@ cvssAccessComplexity <- dataNVD2017$cvss.base_metrics.access.complexity
 cvssAccessComplexity
 cvssAccessComplexityDataFrame <- ldply(cvssAccessComplexity, data.frame)
 colnames(cvssAccessComplexityDataFrame) <- "CVSS_Access_Complexity"
+
+cvssAuthentication <- dataNVD2017$cvss.base_metrics.authentication
+cvssAuthentication
+cvssAuthenticationDataFrame <- ldply(cvssAuthentication, data.frame)
+colnames(cvssAuthenticationDataFrame) <- "CVSS_Authentication"

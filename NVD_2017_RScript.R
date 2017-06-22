@@ -86,3 +86,11 @@ cwe2017 <- dataNVD2017$cwe
 cwe2017
 cwe2017DataFrame <- ldply(cwe2017, data.frame)
 colnames(cwe2017DataFrame) <- "CWE"
+
+nvd2017Total <- cbind(cveID2017DataFrame, summary2017DataFrame, 
+											publishedDate2017DataFrame, lastModifiedDate2017DataFrame, 
+											cvss2017DataFrame, cvssAccessVector2017DataFrame, cvssAccessComplexity2017DataFrame, 
+											cvssAuthentication2017DataFrame, cvssConfidentialityImpact2017DataFrame, 
+											cvssIntegrityImpact2017DataFrame, cvssAvailabilityImpact2017DataFrame, 
+											cvssGeneratedOnDate2017DataFrame, cwe2017DataFrame)
+nvd2017TotalDistinct <-distinct(nvd2017Total)

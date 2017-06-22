@@ -94,3 +94,5 @@ nvd2016Total <- cbind(cveID2016DataFrame, summary2016DataFrame,
 											cvssIntegrityImpact2016DataFrame, cvssAvailabilityImpact2016DataFrame, 
 											cvssGeneratedOnDate2016DataFrame, cwe2016DataFrame)
 nvd2016TotalDistinct <-distinct(nvd2016Total)
+
+write.csv(nvd2016TotalDistinct, "CVE_2016.csv")

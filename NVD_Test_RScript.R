@@ -12,6 +12,8 @@
 #http://www.sthda.com/english/wiki/identifying-and-removing-duplicate-data-in-r
 #https://stackoverflow.com/questions/13456241/convert-unix-epoch-to-date-object-in-r
 #http://rprogramming.net/write-csv-in-r/
+#https://stackoverflow.com/questions/26147558/arguments-imply-differing-number-of-rows-8-20
+
 
 install.packages("XML")
 library(XML)

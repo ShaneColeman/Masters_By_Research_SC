@@ -14,3 +14,7 @@ library(anytime)
 
 nvd2014 <- xmlParse(file = "nvdcve-2.0-2014.xml")
 summary(nvd2014)
+
+nvd2014List <- xmlToList(nvd2014)
+nvd2014List
+dataNVD2014 <- ldply(.data = nvd2014List, data.frame)

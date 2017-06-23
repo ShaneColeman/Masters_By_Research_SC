@@ -75,3 +75,9 @@ cvssAvailabilityImpact2014 <- dataNVD2014$cvss.base_metrics.availability.impact
 cvssAvailabilityImpact2014
 cvssAvailabilityImpact2014DataFrame <- ldply(cvssAvailabilityImpact2014, data.frame)
 colnames(cvssAvailabilityImpact2014DataFrame) <- "CVSS_Availability_Impact"
+
+cvssGeneratedOnDateTime2014 <- dataNVD2014$cvss.base_metrics.generated.on.datetime
+cvssGeneratedOnDateTime2014
+cvssGeneratedOnDate2014 <- anydate(cvssGeneratedOnDateTime2014)
+cvssGeneratedOnDate2014DataFrame <- ldply(cvssGeneratedOnDate2014, data.frame)
+colnames(cvssGeneratedOnDate2014DataFrame) <- "CVSS_Generated_On_Date"

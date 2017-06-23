@@ -34,3 +34,9 @@ publishedDateTime2014
 publishedDate2014 <- anydate(publishedDateTime2014)
 publishedDate2014DataFrame <- ldply(publishedDate2014, data.frame)
 colnames(publishedDate2014DataFrame) <- "Vulnerability_Published_Date"
+
+lastModifiedDateTime2014 <- dataNVD2014$last.modified.datetime
+lastModifiedDateTime2014
+lastModifiedDate2014 <- anydate(lastModifiedDateTime2014)
+lastModifiedDate2014DataFrame <- ldply(lastModifiedDate2014, data.frame)
+colnames(lastModifiedDate2014DataFrame) <- "Vulnerability_Last_Modified_Date"

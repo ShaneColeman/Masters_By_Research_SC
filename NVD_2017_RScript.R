@@ -1,16 +1,20 @@
 #NVD_2017_RScript.R
 
-install.packages("XML")
-install.packages("methods")
-install.packages("plyr")
-install.packages("dplyr")
-install.packages("anytime")
+#install.packages("XML")
+#install.packages("methods")
+#install.packages("plyr")
+#install.packages("dplyr")
+#install.packages("anytime")
+#install.packages("stringr") - NOT REQUIRED
+#install.packages("qdap") - NOT REQUIRED
 
 library(XML)
 library(methods)
 library(plyr)
 library(dplyr)
 library(anytime)
+#library(stringr) - NOT REQUIRED
+#library(qdap) - NOT REQUIRED
 
 nvd2017 <- xmlParse(file = "nvdcve-2.0-2017.xml")
 summary(nvd2017)
@@ -31,9 +35,24 @@ colnames(summary2017DataFrame) <- "Vulnerability_Summary"
 
 publishedDateTime2017 <- dataNVD2017$published.datetime
 publishedDateTime2017
-publishedDate2017 <- anydate(publishedDateTime2017)
+#----------Vulnerability_Published_Date----------#
+publishedDate2017 <- anydate(publishedDateTime2017) #Published Date 2017
+publishedDate2017
 publishedDate2017DataFrame <- ldply(publishedDate2017, data.frame)
 colnames(publishedDate2017DataFrame) <- "Vulnerability_Published_Date"
+#----------Vulnerability_Published_Time----------#
+#http://dirk.eddelbuettel.com/code/anytime.html
+#https://cran.r-project.org/web/packages/anytime/anytime.pdf
+publishedTime2017 <- iso8601(anytime(publishedDateTime2017, tz = "UTC"))
+publishedTime2017
+#http://rfunction.com/archives/1499
+publishedTimeSplit2017 <- strsplit(publishedTime2017, " ") 
+publishedTimeSplit2017
+#https://stackoverflow.com/questions/14347970/splitting-strings-in-r-and-extracting-information-from-lists
+publishedTimeSplitSecondElement2017 <- sapply(publishedTimeSplit2017, "[", 2)
+publishedTimeSplitSecondElement2017
+publishedTime2017DataFrame <- ldply(publishedTimeSplitSecondElement2017, data.frame)
+colnames(publishedTime2017DataFrame) <- "Vulnerability_Published_Time"
 
 lastModifiedDateTime2017 <- dataNVD2017$last.modified.datetime
 lastModifiedDateTime2017
@@ -88,11 +107,14 @@ cwe2017DataFrame <- ldply(cwe2017, data.frame)
 colnames(cwe2017DataFrame) <- "CWE"
 
 nvd2017Total <- cbind(cveID2017DataFrame, summary2017DataFrame, 
-											publishedDate2017DataFrame, lastModifiedDate2017DataFrame, 
+											publishedDate2017DataFrame, publishedTime2017DataFrame, lastModifiedDate2017DataFrame, 
 											cvss2017DataFrame, cvssAccessVector2017DataFrame, cvssAccessComplexity2017DataFrame, 
 											cvssAuthentication2017DataFrame, cvssConfidentialityImpact2017DataFrame, 
 											cvssIntegrityImpact2017DataFrame, cvssAvailabilityImpact2017DataFrame, 
 											cvssGeneratedOnDate2017DataFrame, cwe2017DataFrame)
 nvd2017TotalDistinct <-distinct(nvd2017Total)
+
+#http://www.duanqu.tech/questions/4900348/how-to-remove-rows-in-a-dataframe-that-contain-certain-words-in-r
+nvd2017TotalDistinctRejectRemoved <- nvd2017TotalDistinct[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2017TotalDistinct$Vulnerability_Summary), ]
 
 write.csv(nvd2017TotalDistinct, "CVE_2017.csv")

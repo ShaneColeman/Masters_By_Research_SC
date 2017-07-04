@@ -8101,4 +8101,3 @@
 "CVE-2014-9999","** REJECT **  DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: None.  Reason: This ID is frequently used as an example of the 2014 CVE-ID syntax change, which allows more than 4 digits in the sequence number. Notes: See references.",2015-01-13,"07:59:38",2016-04-27,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "CVE-2014-99999","** REJECT **  DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: None.  Reason: This ID is frequently used as an example of the 2014 CVE-ID syntax change, which allows more than 4 digits in the sequence number. Notes: See references.",2015-01-13,"07:59:38",2016-04-27,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "CVE-2014-999999","** REJECT **  DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: None.  Reason: This ID is frequently used as an example of the 2014 CVE-ID syntax change, which allows more than 4 digits in the sequence number. Notes: See references.",2015-01-13,"07:59:38",2016-04-27,NA,NA,NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

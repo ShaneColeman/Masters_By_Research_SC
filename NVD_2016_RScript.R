@@ -102,11 +102,14 @@ cwe2016DataFrame <- ldply(cwe2016, data.frame)
 colnames(cwe2016DataFrame) <- "CWE"
 
 nvd2016Total <- cbind(cveID2016DataFrame, summary2016DataFrame, 
-											publishedDate2016DataFrame, lastModifiedDate2016DataFrame, 
+											publishedDate2016DataFrame, publishedTime2016DataFrame, lastModifiedDate2016DataFrame, 
 											cvss2016DataFrame, cvssAccessVector2016DataFrame, cvssAccessComplexity2016DataFrame, 
 											cvssAuthentication2016DataFrame, cvssConfidentialityImpact2016DataFrame, 
 											cvssIntegrityImpact2016DataFrame, cvssAvailabilityImpact2016DataFrame, 
 											cvssGeneratedOnDate2016DataFrame, cwe2016DataFrame)
 nvd2016TotalDistinct <-distinct(nvd2016Total)
+
+#http://www.duanqu.tech/questions/4900348/how-to-remove-rows-in-a-dataframe-that-contain-certain-words-in-r
+nvd2016TotalDistinctRejectRemoved <- nvd2016TotalDistinct[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2016TotalDistinct$Vulnerability_Summary), ]
 
 write.csv(nvd2016TotalDistinct, "CVE_2016.csv")

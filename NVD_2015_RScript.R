@@ -31,9 +31,23 @@ colnames(summary2015DataFrame) <- "Vulnerability_Summary"
 
 publishedDateTime2015 <- dataNVD2015$published.datetime
 publishedDateTime2015
+#----------Vulnerability_Published_Date----------#
 publishedDate2015 <- anydate(publishedDateTime2015)
 publishedDate2015DataFrame <- ldply(publishedDate2015, data.frame)
 colnames(publishedDate2015DataFrame) <- "Vulnerability_Published_Date"
+#----------Vulnerability_Published_Time----------#
+#http://dirk.eddelbuettel.com/code/anytime.html
+#https://cran.r-project.org/web/packages/anytime/anytime.pdf
+publishedTime2015 <- iso8601(anytime(publishedDateTime2015, tz = "UTC"))
+publishedTime2015
+#http://rfunction.com/archives/1499
+publishedTimeSplit2015 <- strsplit(publishedTime2015, " ") 
+publishedTimeSplit2015
+#https://stackoverflow.com/questions/14347970/splitting-strings-in-r-and-extracting-information-from-lists
+publishedTimeSplitSecondElement2015 <- sapply(publishedTimeSplit2015, "[", 2)
+publishedTimeSplitSecondElement2015
+publishedTime2015DataFrame <- ldply(publishedTimeSplitSecondElement2015, data.frame)
+colnames(publishedTime2015DataFrame) <- "Vulnerability_Published_Time"
 
 lastModifiedDateTime2015 <- dataNVD2015$last.modified.datetime
 lastModifiedDateTime2015

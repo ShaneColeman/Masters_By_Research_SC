@@ -108,8 +108,13 @@ nvd2016Total <- cbind(cveID2016DataFrame, summary2016DataFrame,
 											cvssIntegrityImpact2016DataFrame, cvssAvailabilityImpact2016DataFrame, 
 											cvssGeneratedOnDate2016DataFrame, cwe2016DataFrame)
 nvd2016TotalDistinct <-distinct(nvd2016Total)
+write.csv(nvd2016TotalDistinct, "CVE_2016.csv", row.names = FALSE)
+
+#https://stat.ethz.ch/pipermail/r-help/2012-December/343413.html
+nvd2016TotalDistinctLastRowRemoved <- nvd2016TotalDistinct[-nrow(nvd2016TotalDistinct),]
+write.csv(nvd2016TotalDistinctLastRowRemoved, "CVE_2016_Last_Row_Removed.csv", row.names = FALSE)
 
 #http://www.duanqu.tech/questions/4900348/how-to-remove-rows-in-a-dataframe-that-contain-certain-words-in-r
 nvd2016TotalDistinctRejectRemoved <- nvd2016TotalDistinct[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2016TotalDistinct$Vulnerability_Summary), ]
+write.csv(nvd2016TotalDistinctRejectRemoved, "CVE_2016_Rejected_Removed.csv", row.names = FALSE)
 
-write.csv(nvd2016TotalDistinct, "CVE_2016.csv")

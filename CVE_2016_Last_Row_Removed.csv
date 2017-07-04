@@ -8933,4 +8933,3 @@
 "CVE-2016-9996","** REJECT **  DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: The CNA or individual who requested this candidate did not associate it with any vulnerability during 2016. Notes: none.",2017-05-11,"10:30:21",2017-05-11,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "CVE-2016-9997","SPIP 3.1.x suffers from a Reflected Cross Site Scripting Vulnerability in /ecrire/exec/puce_statut.php involving the `$id` parameter, as demonstrated by a /ecrire/?exec=puce_statut URL.",2016-12-16,"23:59:00",2016-12-23,"4.3","NETWORK","MEDIUM","NONE","NONE","PARTIAL","NONE",2016-12-23,"CWE-79"
 "CVE-2016-9998","SPIP 3.1.x suffer from a Reflected Cross Site Scripting Vulnerability in /ecrire/exec/info_plugin.php involving the `$plugin` parameter, as demonstrated by a /ecrire/?exec=info_plugin URL.",2016-12-16,"23:59:00",2016-12-23,"4.3","NETWORK","MEDIUM","NONE","NONE","PARTIAL","NONE",2016-12-23,"CWE-79"
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

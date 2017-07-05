@@ -96,17 +96,28 @@ cvssGeneratedOnDate2016 <- anydate(cvssGeneratedOnDateTime2016)
 cvssGeneratedOnDate2016DataFrame <- ldply(cvssGeneratedOnDate2016, data.frame)
 colnames(cvssGeneratedOnDate2016DataFrame) <- "CVSS_Generated_On_Date"
 
-cwe2016 <- dataNVD2016$cwe
-cwe2016
-cwe2016DataFrame <- ldply(cwe2016, data.frame)
-colnames(cwe2016DataFrame) <- "CWE_ID"
+#cwe2016 <- dataNVD2016$cwe
+#cwe2016
+#cwe2016DataFrame <- ldply(cwe2016, data.frame)
+#colnames(cwe2016DataFrame) <- "CWE_ID"
+
+cwe_1_2016 <- dataNVD2016$cwe
+cwe_1_2016
+cwe_1_2016DataFrame <- ldply(cwe_1_2016, data.frame)
+colnames(cwe_1_2016DataFrame) <- "CWE_ID_1"
+
+cwe_2_2016 <- dataNVD2016$cwe.1
+cwe_2_2016
+cwe_2_2016DataFrame <- ldply(cwe_2_2016, data.frame)
+colnames(cwe_2_2016DataFrame) <- "CWE_ID_2"
 
 nvd2016Total <- cbind(cveID2016DataFrame, summary2016DataFrame, 
 											publishedDate2016DataFrame, publishedTime2016DataFrame, lastModifiedDate2016DataFrame, 
 											cvss2016DataFrame, cvssAccessVector2016DataFrame, cvssAccessComplexity2016DataFrame, 
 											cvssAuthentication2016DataFrame, cvssConfidentialityImpact2016DataFrame, 
 											cvssIntegrityImpact2016DataFrame, cvssAvailabilityImpact2016DataFrame, 
-											cvssGeneratedOnDate2016DataFrame, cwe2016DataFrame)
+											cvssGeneratedOnDate2016DataFrame, cwe_1_2016DataFrame,
+											cwe_2_2016DataFrame)
 nvd2016TotalDistinct <-distinct(nvd2016Total)
 write.csv(nvd2016TotalDistinct, "CVE_2016.csv", row.names = FALSE)
 

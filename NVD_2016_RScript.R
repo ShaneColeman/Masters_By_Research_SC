@@ -99,7 +99,7 @@ colnames(cvssGeneratedOnDate2016DataFrame) <- "CVSS_Generated_On_Date"
 cwe2016 <- dataNVD2016$cwe
 cwe2016
 cwe2016DataFrame <- ldply(cwe2016, data.frame)
-colnames(cwe2016DataFrame) <- "CWE"
+colnames(cwe2016DataFrame) <- "CWE_ID"
 
 nvd2016Total <- cbind(cveID2016DataFrame, summary2016DataFrame, 
 											publishedDate2016DataFrame, publishedTime2016DataFrame, lastModifiedDate2016DataFrame, 

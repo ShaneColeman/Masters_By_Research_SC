@@ -111,6 +111,87 @@ cwe_1_2017
 cwe_1_2017DataFrame <- ldply(cwe_1_2017, data.frame)
 colnames(cwe_1_2017DataFrame) <- "CWE_ID_1"
 
+cwe_1_Description2017 <- dataNVD2017$cwe
+cwe_1_Description2017
+cwe_1_Description2017DataFrame <- ldply(cwe_1_Description2017, data.frame)
+colnames(cwe_1_Description2017DataFrame) <- "CWE_ID_1_Description"
+
+#https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
+#https://nvd.nist.gov/vuln/categories
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-264"] <- "Permissions, Privileges, and Access Control"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-119"] <- "Buffer Errors"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-20"] <- "Input Validation"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-200"] <- "Information Leak / Disclosure"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-284"] <- "Improper Access Control"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-476"] <- "NULL Pointer Dereference"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-79"] <- "Cross-Site Scripting (XSS)"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-704"] <- "Incorrect Type Conversion or Cast"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-352"] <- "Cross-Site Request Forgery (CSRF)"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-254"] <- "Security Features"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-19"] <- "Data Handling"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-287"] <- "Authentication Issues"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-190"] <- "Integer Overflow or Wraparound"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-295"] <- "Improper Certificate Validation"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-74"] <- "Injection"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-118"] <- "Improper Access of Indexable Resource ('Range Error')"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-275"] <- "Permission Issues"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-129"] <- "Improper Validation of Array Index"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-682"] <- "Incorrect Calculation"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-362"] <- "Race Conditions"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-399"] <- "Resource Management Errors"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-400"] <- "Uncontrolled Resource Consumption ('Resource Exhaustion')"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-384"] <- "Session Fixation"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-285"] <- "Improper Authorization"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-611"] <- "Improper Restriction of XML External Entity Reference ('XXE')"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-77"] <- "Command Injection"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-601"] <- "URL Redirection to Untrusted Site ('Open Redirect')"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-326"] <- "Inadequate Encryption Strength"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-320"] <- "Key Management Errors"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-22"] <- "Path Traversal"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-78"] <- "OS Command Injections"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-426"] <- "Untrusted Search Path"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-93"] <- "Improper Neutralization of CRLF Sequences ('CRLF Injection')"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-89"] <- "SQL Injection"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-255"] <- "Credentials Management"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-416"] <- "Use After Free"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-310"] <- "Cryptographic Issues"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-134"] <- "Format String Vulnerability"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-125"] <- "Out-of-bounds Read"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-415"] <- "Double Free"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-189"] <- "Numeric Errors"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-640"] <- "Weak Password Recovery Mechanism for Forgotten Password"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-94"] <- "Code Injection"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-428"] <- "Unquoted Search Path or Element"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-191"] <- "Integer Underflow (Wrap or Wraparound)"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-787"] <- "Out-of-bounds Write"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-502"] <- "Deserialization of Untrusted Data"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-485"] <- "Insufficient Encapsulation"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-532"] <- "Information Exposure Through Log Files"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-99"] <- "Improper Control of Resource Identifiers ('Resource Injection')"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-427"] <- "Uncontrolled Search Path Element"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-306"] <- "Missing Authentication for Critical Function"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-798"] <- "Use of Hard-coded Credentials"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-943"] <- "Improper Neutralization of Special Elements in Data Query Logic"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-327"] <- "Use of a Broken or Risky Cryptographic Algorithm"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-388"] <- "Error Handling"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-918"] <- "Server-Side Request Forgery (SSRF)"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-346"] <- "Origin Validation Error"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-91"] <- "XML Injection (aka Blind XPath Injection)"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-361"] <- "Time and State"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-434"] <- "Unrestricted Upload of File with Dangerous Type"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-417"] <- "Channel and Path Errors"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-613"] <- "Insufficient Session Expiration"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-369"] <- "Divide By Zero"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-358"] <- "Improperly Implemented Security Check for Standard"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-59"] <- "Link Following"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-113"] <- "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-404"] <- "Improper Resource Shutdown or Release"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-116"] <- "Improper Encoding or Escaping of Output"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-90"] <- "Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-17"] <- "Code"
+levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-338"] <- "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)"
+View(cwe_1_Description2017DataFrame)
+
 cwe_2_2017 <- dataNVD2017$cwe.1
 cwe_2_2017
 cwe_2_2017DataFrame <- ldply(cwe_2_2017, data.frame)
@@ -121,7 +202,8 @@ nvd2017Total <- cbind(cveID2017DataFrame, summary2017DataFrame,
 											cvss2017DataFrame, cvssAccessVector2017DataFrame, cvssAccessComplexity2017DataFrame, 
 											cvssAuthentication2017DataFrame, cvssConfidentialityImpact2017DataFrame, 
 											cvssIntegrityImpact2017DataFrame, cvssAvailabilityImpact2017DataFrame, 
-											cvssGeneratedOnDate2017DataFrame, cwe_1_2017DataFrame,
+											cvssGeneratedOnDate2017DataFrame, 
+											cwe_1_2017DataFrame, cwe_1_Description2017DataFrame,
 											cwe_2_2017DataFrame)
 nvd2017TotalDistinct <- distinct(nvd2017Total)
 write.csv(nvd2017TotalDistinct, "CVE_2017.csv", row.names = FALSE)

@@ -101,18 +101,29 @@ cvssGeneratedOnDate2017 <- anydate(cvssGeneratedOnDateTime2017)
 cvssGeneratedOnDate2017DataFrame <- ldply(cvssGeneratedOnDate2017, data.frame)
 colnames(cvssGeneratedOnDate2017DataFrame) <- "CVSS_Generated_On_Date"
 
-cwe2017 <- dataNVD2017$cwe
-cwe2017
-cwe2017DataFrame <- ldply(cwe2017, data.frame)
-colnames(cwe2017DataFrame) <- "CWE_ID"
+#cwe2017 <- dataNVD2017$cwe
+#cwe2017
+#cwe2017DataFrame <- ldply(cwe2017, data.frame)
+#colnames(cwe2017DataFrame) <- "CWE_ID"
+
+cwe_1_2017 <- dataNVD2017$cwe
+cwe_1_2017
+cwe_1_2017DataFrame <- ldply(cwe_1_2017, data.frame)
+colnames(cwe_1_2017DataFrame) <- "CWE_ID_1"
+
+cwe_2_2017 <- dataNVD2017$cwe.1
+cwe_2_2017
+cwe_2_2017DataFrame <- ldply(cwe_2_2017, data.frame)
+colnames(cwe_2_2017DataFrame) <- "CWE_ID_2"
 
 nvd2017Total <- cbind(cveID2017DataFrame, summary2017DataFrame, 
 											publishedDate2017DataFrame, publishedTime2017DataFrame, lastModifiedDate2017DataFrame, 
 											cvss2017DataFrame, cvssAccessVector2017DataFrame, cvssAccessComplexity2017DataFrame, 
 											cvssAuthentication2017DataFrame, cvssConfidentialityImpact2017DataFrame, 
 											cvssIntegrityImpact2017DataFrame, cvssAvailabilityImpact2017DataFrame, 
-											cvssGeneratedOnDate2017DataFrame, cwe2017DataFrame)
-nvd2017TotalDistinct <-distinct(nvd2017Total)
+											cvssGeneratedOnDate2017DataFrame, cwe_1_2017DataFrame,
+											cwe_2_2017DataFrame)
+nvd2017TotalDistinct <- distinct(nvd2017Total)
 write.csv(nvd2017TotalDistinct, "CVE_2017.csv", row.names = FALSE)
 
 #https://stat.ethz.ch/pipermail/r-help/2012-December/343413.html

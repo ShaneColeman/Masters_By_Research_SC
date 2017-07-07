@@ -51,9 +51,24 @@ colnames(publishedTime2016DataFrame) <- "Vulnerability_Published_Time"
 
 lastModifiedDateTime2016 <- dataNVD2016$last.modified.datetime
 lastModifiedDateTime2016
+#----------Vulnerability_Last_Modified_Date----------#
 lastModifiedDate2016 <- anydate(lastModifiedDateTime2016)
+lastModifiedDate2016
 lastModifiedDate2016DataFrame <- ldply(lastModifiedDate2016, data.frame)
 colnames(lastModifiedDate2016DataFrame) <- "Vulnerability_Last_Modified_Date"
+#----------Vulnerability_Last_Modified_Time----------#
+#http://dirk.eddelbuettel.com/code/anytime.html
+#https://cran.r-project.org/web/packages/anytime/anytime.pdf
+lastModifiedTime2016 <- iso8601(anytime(lastModifiedDateTime2016, tz = "UTC"))
+lastModifiedTime2016
+#http://rfunction.com/archives/1499
+lastModifiedTimeSplit2016 <- strsplit(lastModifiedTime2016, " ") 
+lastModifiedTimeSplit2016
+#https://stackoverflow.com/questions/14347970/splitting-strings-in-r-and-extracting-information-from-lists
+lastModifiedTimeSplitSecondElement2016 <- sapply(lastModifiedTimeSplit2016, "[", 2)
+lastModifiedTimeSplitSecondElement2016
+lastModifiedTime2016DataFrame <- ldply(lastModifiedTimeSplitSecondElement2016, data.frame)
+colnames(lastModifiedTime2016DataFrame) <- "Vulnerability_Last_Modified_Time"
 
 cvss2016 <- dataNVD2016$cvss.base_metrics.score
 cvss2016
@@ -312,7 +327,8 @@ levels(cwe_2_Description2016DataFrame$CWE_ID_2_Description)[levels(cwe_2_Descrip
 View(cwe_2_Description2016DataFrame)
 
 nvd2016Total <- cbind(cveID2016DataFrame, summary2016DataFrame, 
-											publishedDate2016DataFrame, publishedTime2016DataFrame, lastModifiedDate2016DataFrame, 
+											publishedDate2016DataFrame, publishedTime2016DataFrame, 
+											lastModifiedDate2016DataFrame, lastModifiedTime2016DataFrame,
 											cvss2016DataFrame, cvssAccessVector2016DataFrame, cvssAccessComplexity2016DataFrame, 
 											cvssAuthentication2016DataFrame, cvssConfidentialityImpact2016DataFrame, 
 											cvssIntegrityImpact2016DataFrame, cvssAvailabilityImpact2016DataFrame, 

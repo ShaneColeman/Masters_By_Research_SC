@@ -48,10 +48,25 @@ publishedTimeSplitSecondElement2014 <- sapply(publishedTimeSplit2014, "[", 2)
 publishedTimeSplitSecondElement2014
 publishedTime2014DataFrame <- ldply(publishedTimeSplitSecondElement2014, data.frame)
 colnames(publishedTime2014DataFrame) <- "Vulnerability_Published_Time"
+#----------Vulnerability_Last_Modified_Time----------#
+#http://dirk.eddelbuettel.com/code/anytime.html
+#https://cran.r-project.org/web/packages/anytime/anytime.pdf
+lastModifiedTime2014 <- iso8601(anytime(lastModifiedDateTime2014, tz = "UTC"))
+lastModifiedTime2014
+#http://rfunction.com/archives/1499
+lastModifiedTimeSplit2014 <- strsplit(lastModifiedTime2014, " ") 
+lastModifiedTimeSplit2014
+#https://stackoverflow.com/questions/14347970/splitting-strings-in-r-and-extracting-information-from-lists
+lastModifiedTimeSplitSecondElement2014 <- sapply(lastModifiedTimeSplit2014, "[", 2)
+lastModifiedTimeSplitSecondElement2014
+lastModifiedTime2014DataFrame <- ldply(lastModifiedTimeSplitSecondElement2014, data.frame)
+colnames(lastModifiedTime2014DataFrame) <- "Vulnerability_Last_Modified_Time"
 
 lastModifiedDateTime2014 <- dataNVD2014$last.modified.datetime
 lastModifiedDateTime2014
+#----------Vulnerability_Last_Modified_Date----------#
 lastModifiedDate2014 <- anydate(lastModifiedDateTime2014)
+lastModifiedDate2014
 lastModifiedDate2014DataFrame <- ldply(lastModifiedDate2014, data.frame)
 colnames(lastModifiedDate2014DataFrame) <- "Vulnerability_Last_Modified_Date"
 
@@ -330,7 +345,8 @@ levels(cwe_2_Description2014DataFrame$CWE_ID_2_Description)[levels(cwe_2_Descrip
 View(cwe_2_Description2014DataFrame)
 
 nvd2014Total <- cbind(cveID2014DataFrame, summary2014DataFrame, 
-											publishedDate2014DataFrame, publishedTime2014DataFrame, lastModifiedDate2014DataFrame, 
+											publishedDate2014DataFrame, publishedTime2014DataFrame, 
+											lastModifiedDate2014DataFrame, lastModifiedTime2014DataFrame,
 											cvss2014DataFrame, cvssAccessVector2014DataFrame, cvssAccessComplexity2014DataFrame, 
 											cvssAuthentication2014DataFrame, cvssConfidentialityImpact2014DataFrame, 
 											cvssIntegrityImpact2014DataFrame, cvssAvailabilityImpact2014DataFrame, 

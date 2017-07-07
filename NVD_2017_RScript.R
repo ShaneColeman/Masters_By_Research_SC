@@ -5,6 +5,7 @@
 #install.packages("plyr")
 #install.packages("dplyr")
 #install.packages("anytime")
+#----------#
 #install.packages("stringr") - NOT REQUIRED
 #install.packages("qdap") - NOT REQUIRED
 
@@ -13,6 +14,7 @@ library(methods)
 library(plyr)
 library(dplyr)
 library(anytime)
+#----------#
 #library(stringr) - NOT REQUIRED
 #library(qdap) - NOT REQUIRED
 
@@ -56,9 +58,24 @@ colnames(publishedTime2017DataFrame) <- "Vulnerability_Published_Time"
 
 lastModifiedDateTime2017 <- dataNVD2017$last.modified.datetime
 lastModifiedDateTime2017
+#----------Vulnerability_Last_Modified_Date----------#
 lastModifiedDate2017 <- anydate(lastModifiedDateTime2017)
+lastModifiedDate2017
 lastModifiedDate2017DataFrame <- ldply(lastModifiedDate2017, data.frame)
 colnames(lastModifiedDate2017DataFrame) <- "Vulnerability_Last_Modified_Date"
+#----------Vulnerability_Last_Modified_Time----------#
+#http://dirk.eddelbuettel.com/code/anytime.html
+#https://cran.r-project.org/web/packages/anytime/anytime.pdf
+lastModifiedTime2017 <- iso8601(anytime(lastModifiedDateTime2017, tz = "UTC"))
+lastModifiedTime2017
+#http://rfunction.com/archives/1499
+lastModifiedTimeSplit2017 <- strsplit(lastModifiedTime2017, " ") 
+lastModifiedTimeSplit2017
+#https://stackoverflow.com/questions/14347970/splitting-strings-in-r-and-extracting-information-from-lists
+lastModifiedTimeSplitSecondElement2017 <- sapply(lastModifiedTimeSplit2017, "[", 2)
+lastModifiedTimeSplitSecondElement2017
+lastModifiedTime2017DataFrame <- ldply(lastModifiedTimeSplitSecondElement2017, data.frame)
+colnames(lastModifiedTime2017DataFrame) <- "Vulnerability_Last_Modified_Time"
 
 cvss2017 <- dataNVD2017$cvss.base_metrics.score
 cvss2017
@@ -279,7 +296,8 @@ levels(cwe_2_Description2017DataFrame$CWE_ID_2_Description)[levels(cwe_2_Descrip
 View(cwe_2_Description2017DataFrame)
 
 nvd2017Total <- cbind(cveID2017DataFrame, summary2017DataFrame, 
-											publishedDate2017DataFrame, publishedTime2017DataFrame, lastModifiedDate2017DataFrame, 
+											publishedDate2017DataFrame, publishedTime2017DataFrame, 
+											lastModifiedDate2017DataFrame, lastModifiedTime2017DataFrame,
 											cvss2017DataFrame, cvssAccessVector2017DataFrame, cvssAccessComplexity2017DataFrame, 
 											cvssAuthentication2017DataFrame, cvssConfidentialityImpact2017DataFrame, 
 											cvssIntegrityImpact2017DataFrame, cvssAvailabilityImpact2017DataFrame, 

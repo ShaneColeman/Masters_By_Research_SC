@@ -88,6 +88,7 @@ cvssSeverity2017
 cvssSeverity2017DataFrame <- ldply(cvssSeverity2017, data.frame)
 colnames(cvssSeverity2017DataFrame) <- "CVSS_Severity"
 str(cvssSeverity2017DataFrame)
+View(cvssSeverity2017DataFrame)
 #https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
 levels(cvssSeverity2017DataFrame$CVSS_Severity)[levels(cvssSeverity2017DataFrame$CVSS_Severity) == "10.0"] <- "HIGH"
 levels(cvssSeverity2017DataFrame$CVSS_Severity)[levels(cvssSeverity2017DataFrame$CVSS_Severity) >= 7.0 & 

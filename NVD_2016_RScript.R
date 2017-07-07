@@ -75,6 +75,23 @@ cvss2016
 cvss2016DataFrame <- ldply(cvss2016, data.frame)
 colnames(cvss2016DataFrame) <- "CVSS_Score"
 
+#https://nvd.nist.gov/vuln-metrics/cvss
+cvssSeverity2016 <- dataNVD2016$cvss.base_metrics.score
+cvssSeverity2016
+cvssSeverity2016DataFrame <- ldply(cvssSeverity2016, data.frame)
+colnames(cvssSeverity2016DataFrame) <- "CVSS_Severity"
+str(cvssSeverity2016DataFrame)
+View(cvssSeverity2016DataFrame)
+#https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
+levels(cvssSeverity2016DataFrame$CVSS_Severity)[levels(cvssSeverity2016DataFrame$CVSS_Severity) == "10.0"] <- "HIGH"
+levels(cvssSeverity2016DataFrame$CVSS_Severity)[levels(cvssSeverity2016DataFrame$CVSS_Severity) >= 7.0 & 
+																									levels(cvssSeverity2016DataFrame$CVSS_Severity) < 9.9] <- "HIGH"
+levels(cvssSeverity2016DataFrame$CVSS_Severity)[levels(cvssSeverity2016DataFrame$CVSS_Severity) >= 4.0 & 
+																									levels(cvssSeverity2016DataFrame$CVSS_Severity) <= 6.9] <- "MEDIUM"
+levels(cvssSeverity2016DataFrame$CVSS_Severity)[levels(cvssSeverity2016DataFrame$CVSS_Severity) >= 0.0 & 
+																									levels(cvssSeverity2016DataFrame$CVSS_Severity) <= 3.9] <- "LOW"
+View(cvssSeverity2016DataFrame)
+
 cvssAccessVector2016 <- dataNVD2016$cvss.base_metrics.access.vector
 cvssAccessVector2016
 cvssAccessVector2016DataFrame <- ldply(cvssAccessVector2016, data.frame)
@@ -329,7 +346,8 @@ View(cwe_2_Description2016DataFrame)
 nvd2016Total <- cbind(cveID2016DataFrame, summary2016DataFrame, 
 											publishedDate2016DataFrame, publishedTime2016DataFrame, 
 											lastModifiedDate2016DataFrame, lastModifiedTime2016DataFrame,
-											cvss2016DataFrame, cvssAccessVector2016DataFrame, cvssAccessComplexity2016DataFrame, 
+											cvss2016DataFrame, cvssSeverity2016DataFrame,
+											cvssAccessVector2016DataFrame, cvssAccessComplexity2016DataFrame, 
 											cvssAuthentication2016DataFrame, cvssConfidentialityImpact2016DataFrame, 
 											cvssIntegrityImpact2016DataFrame, cvssAvailabilityImpact2016DataFrame, 
 											cvssGeneratedOnDate2016DataFrame, 

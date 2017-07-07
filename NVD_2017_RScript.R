@@ -82,6 +82,22 @@ cvss2017
 cvss2017DataFrame <- ldply(cvss2017, data.frame)
 colnames(cvss2017DataFrame) <- "CVSS_Score"
 
+#https://nvd.nist.gov/vuln-metrics/cvss
+cvssSeverity2017 <- dataNVD2017$cvss.base_metrics.score
+cvssSeverity2017
+cvssSeverity2017DataFrame <- ldply(cvssSeverity2017, data.frame)
+colnames(cvssSeverity2017DataFrame) <- "CVSS_Severity"
+str(cvssSeverity2017DataFrame)
+#https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
+levels(cvssSeverity2017DataFrame$CVSS_Severity)[levels(cvssSeverity2017DataFrame$CVSS_Severity) == "10.0"] <- "HIGH"
+levels(cvssSeverity2017DataFrame$CVSS_Severity)[levels(cvssSeverity2017DataFrame$CVSS_Severity) >= 7.0 & 
+																									levels(cvssSeverity2017DataFrame$CVSS_Severity) < 9.9] <- "HIGH"
+levels(cvssSeverity2017DataFrame$CVSS_Severity)[levels(cvssSeverity2017DataFrame$CVSS_Severity) >= 4.0 & 
+																									levels(cvssSeverity2017DataFrame$CVSS_Severity) <= 6.9] <- "MEDIUM"
+levels(cvssSeverity2017DataFrame$CVSS_Severity)[levels(cvssSeverity2017DataFrame$CVSS_Severity) >= 0.0 & 
+																									levels(cvssSeverity2017DataFrame$CVSS_Severity) <= 3.9] <- "LOW"
+View(cvssSeverity2017DataFrame)
+
 cvssAccessVector2017 <- dataNVD2017$cvss.base_metrics.access.vector
 cvssAccessVector2017
 cvssAccessVector2017DataFrame <- ldply(cvssAccessVector2017, data.frame)
@@ -298,7 +314,8 @@ View(cwe_2_Description2017DataFrame)
 nvd2017Total <- cbind(cveID2017DataFrame, summary2017DataFrame, 
 											publishedDate2017DataFrame, publishedTime2017DataFrame, 
 											lastModifiedDate2017DataFrame, lastModifiedTime2017DataFrame,
-											cvss2017DataFrame, cvssAccessVector2017DataFrame, cvssAccessComplexity2017DataFrame, 
+											cvss2017DataFrame, cvssSeverity2017DataFrame,
+											cvssAccessVector2017DataFrame, cvssAccessComplexity2017DataFrame, 
 											cvssAuthentication2017DataFrame, cvssConfidentialityImpact2017DataFrame, 
 											cvssIntegrityImpact2017DataFrame, cvssAvailabilityImpact2017DataFrame, 
 											cvssGeneratedOnDate2017DataFrame, 

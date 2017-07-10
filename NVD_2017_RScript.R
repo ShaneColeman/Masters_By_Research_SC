@@ -362,4 +362,3 @@ write.csv(nvd2017TotalDistinctLastRowRemoved, "CVE_2017_Last_Row_Removed.csv", r
 #http://www.duanqu.tech/questions/4900348/how-to-remove-rows-in-a-dataframe-that-contain-certain-words-in-r
 nvd2017TotalDistinctRejectRemoved <- nvd2017TotalDistinctLastRowRemoved[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2017TotalDistinctLastRowRemoved$Vulnerability_Summary), ]
 write.csv(nvd2017TotalDistinctRejectRemoved, "CVE_2017_Rejected_Removed.csv", row.names = FALSE)
-

@@ -1,5 +1,7 @@
+#[1]
 #NVD_2014_RScript.R
 
+#[2]
 install.packages("XML")
 install.packages("methods")
 install.packages("plyr")
@@ -12,29 +14,36 @@ library(plyr)
 library(dplyr)
 library(anytime)
 
+#[3]
 nvd2014 <- xmlParse(file = "nvdcve-2.0-2014.xml")
 summary(nvd2014)
 
+#[4]
 nvd2014List <- xmlToList(nvd2014)
 nvd2014List
 dataNVD2014 <- ldply(.data = nvd2014List, data.frame)
 
+#[5]
 cveID2014 <- dataNVD2014$cve.id
 cveID2014
 cveID2014DataFrame <- ldply(cveID2014, data.frame)
 colnames(cveID2014DataFrame) <- "CVE_ID"
 
+#[6]
 summary2014 <- dataNVD2014$summary
 summary2014
 summary2014DataFrame <- ldply(summary2014, data.frame)
 colnames(summary2014DataFrame) <- "Vulnerability_Summary"
 
+#[7]
 publishedDateTime2014 <- dataNVD2014$published.datetime
 publishedDateTime2014
 #----------Vulnerability_Published_Date----------#
 publishedDate2014 <- anydate(publishedDateTime2014)
 publishedDate2014DataFrame <- ldply(publishedDate2014, data.frame)
 colnames(publishedDate2014DataFrame) <- "Vulnerability_Published_Date"
+
+#[8]
 #----------Vulnerability_Published_Time----------#
 #http://dirk.eddelbuettel.com/code/anytime.html
 #https://cran.r-project.org/web/packages/anytime/anytime.pdf
@@ -48,6 +57,17 @@ publishedTimeSplitSecondElement2014 <- sapply(publishedTimeSplit2014, "[", 2)
 publishedTimeSplitSecondElement2014
 publishedTime2014DataFrame <- ldply(publishedTimeSplitSecondElement2014, data.frame)
 colnames(publishedTime2014DataFrame) <- "Vulnerability_Published_Time"
+
+#[9]
+lastModifiedDateTime2014 <- dataNVD2014$last.modified.datetime
+lastModifiedDateTime2014
+#----------Vulnerability_Last_Modified_Date----------#
+lastModifiedDate2014 <- anydate(lastModifiedDateTime2014)
+lastModifiedDate2014
+lastModifiedDate2014DataFrame <- ldply(lastModifiedDate2014, data.frame)
+colnames(lastModifiedDate2014DataFrame) <- "Vulnerability_Last_Modified_Date"
+
+#[10]
 #----------Vulnerability_Last_Modified_Time----------#
 #http://dirk.eddelbuettel.com/code/anytime.html
 #https://cran.r-project.org/web/packages/anytime/anytime.pdf
@@ -62,19 +82,13 @@ lastModifiedTimeSplitSecondElement2014
 lastModifiedTime2014DataFrame <- ldply(lastModifiedTimeSplitSecondElement2014, data.frame)
 colnames(lastModifiedTime2014DataFrame) <- "Vulnerability_Last_Modified_Time"
 
-lastModifiedDateTime2014 <- dataNVD2014$last.modified.datetime
-lastModifiedDateTime2014
-#----------Vulnerability_Last_Modified_Date----------#
-lastModifiedDate2014 <- anydate(lastModifiedDateTime2014)
-lastModifiedDate2014
-lastModifiedDate2014DataFrame <- ldply(lastModifiedDate2014, data.frame)
-colnames(lastModifiedDate2014DataFrame) <- "Vulnerability_Last_Modified_Date"
-
+#[11]
 cvss2014 <- dataNVD2014$cvss.base_metrics.score
 cvss2014
 cvss2014DataFrame <- ldply(cvss2014, data.frame)
 colnames(cvss2014DataFrame) <- "CVSS_Score"
 
+#[12]
 #https://nvd.nist.gov/vuln-metrics/cvss
 cvssSeverity2014 <- dataNVD2014$cvss.base_metrics.score
 cvssSeverity2014
@@ -92,36 +106,43 @@ levels(cvssSeverity2014DataFrame$CVSS_Severity)[levels(cvssSeverity2014DataFrame
 																									levels(cvssSeverity2014DataFrame$CVSS_Severity) <= 3.9] <- "LOW"
 View(cvssSeverity2014DataFrame)
 
+#[13]
 cvssAccessVector2014 <- dataNVD2014$cvss.base_metrics.access.vector
 cvssAccessVector2014
 cvssAccessVector2014DataFrame <- ldply(cvssAccessVector2014, data.frame)
 colnames(cvssAccessVector2014DataFrame) <- "CVSS_Access_Vector"
 
+#[14]
 cvssAccessComplexity2014 <- dataNVD2014$cvss.base_metrics.access.complexity
 cvssAccessComplexity2014
 cvssAccessComplexity2014DataFrame <- ldply(cvssAccessComplexity2014, data.frame)
 colnames(cvssAccessComplexity2014DataFrame) <- "CVSS_Access_Complexity"
 
+#[15]
 cvssAuthentication2014 <- dataNVD2014$cvss.base_metrics.authentication
 cvssAuthentication2014
 cvssAuthentication2014DataFrame <- ldply(cvssAuthentication2014, data.frame)
 colnames(cvssAuthentication2014DataFrame) <- "CVSS_Authentication"
 
+#[16]
 cvssConfidentialityImpact2014 <- dataNVD2014$cvss.base_metrics.confidentiality.impact
 cvssConfidentialityImpact2014
 cvssConfidentialityImpact2014DataFrame <- ldply(cvssConfidentialityImpact2014, data.frame)
 colnames(cvssConfidentialityImpact2014DataFrame) <- "CVSS_Confidentiality_Impact"
 
+#[17]
 cvssIntegrityImpact2014 <- dataNVD2014$cvss.base_metrics.integrity.impact
 cvssIntegrityImpact2014
 cvssIntegrityImpact2014DataFrame <- ldply(cvssIntegrityImpact2014, data.frame)
 colnames(cvssIntegrityImpact2014DataFrame) <- "CVSS_Integrity_Impact"
 
+#[18]
 cvssAvailabilityImpact2014 <- dataNVD2014$cvss.base_metrics.availability.impact
 cvssAvailabilityImpact2014
 cvssAvailabilityImpact2014DataFrame <- ldply(cvssAvailabilityImpact2014, data.frame)
 colnames(cvssAvailabilityImpact2014DataFrame) <- "CVSS_Availability_Impact"
 
+#[19]
 cvssGeneratedOnDateTime2014 <- dataNVD2014$cvss.base_metrics.generated.on.datetime
 cvssGeneratedOnDateTime2014
 cvssGeneratedOnDate2014 <- anydate(cvssGeneratedOnDateTime2014)
@@ -133,16 +154,19 @@ colnames(cvssGeneratedOnDate2014DataFrame) <- "CVSS_Generated_On_Date"
 #cwe2014DataFrame <- ldply(cwe2014, data.frame)
 #colnames(cwe2014DataFrame) <- "CWE_ID"
 
+#[20]
 cwe_1_2014 <- dataNVD2014$cwe
 cwe_1_2014
 cwe_1_2014DataFrame <- ldply(cwe_1_2014, data.frame)
 colnames(cwe_1_2014DataFrame) <- "CWE_ID_1"
 
+#[21]
 cwe_1_Description2014 <- dataNVD2014$cwe
 cwe_1_Description2014
 cwe_1_Description2014DataFrame <- ldply(cwe_1_Description2014, data.frame)
 colnames(cwe_1_Description2014DataFrame) <- "CWE_ID_1_Description"
 
+#[22]
 #https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
 #https://nvd.nist.gov/vuln/categories
 #----------#
@@ -247,16 +271,19 @@ levels(cwe_1_Description2014DataFrame$CWE_ID_1_Description)[levels(cwe_1_Descrip
 levels(cwe_1_Description2014DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2014DataFrame$CWE_ID_1_Description) == "CWE-665"] <- "Improper Initialization"
 View(cwe_1_Description2014DataFrame)
 
+#[23]
 cwe_2_2014 <- dataNVD2014$cwe.1
 cwe_2_2014
 cwe_2_2014DataFrame <- ldply(cwe_2_2014, data.frame)
 colnames(cwe_2_2014DataFrame) <- "CWE_ID_2"
 
+#[24]
 cwe_2_Description2014 <- dataNVD2014$cwe.1
 cwe_2_Description2014
 cwe_2_Description2014DataFrame <- ldply(cwe_2_Description2014, data.frame)
 colnames(cwe_2_Description2014DataFrame) <- "CWE_ID_2_Description"
 
+#[25]
 #https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
 #https://nvd.nist.gov/vuln/categories
 #----------#
@@ -361,6 +388,7 @@ levels(cwe_2_Description2014DataFrame$CWE_ID_2_Description)[levels(cwe_2_Descrip
 levels(cwe_2_Description2014DataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2014DataFrame$CWE_ID_2_Description) == "CWE-665"] <- "Improper Initialization"
 View(cwe_2_Description2014DataFrame)
 
+#[26]
 nvd2014Total <- cbind(cveID2014DataFrame, summary2014DataFrame, 
 											publishedDate2014DataFrame, publishedTime2014DataFrame, 
 											lastModifiedDate2014DataFrame, lastModifiedTime2014DataFrame,
@@ -374,10 +402,12 @@ nvd2014Total <- cbind(cveID2014DataFrame, summary2014DataFrame,
 nvd2014TotalDistinct <-distinct(nvd2014Total)
 write.csv(nvd2014TotalDistinct, "CVE_2014.csv", row.names = FALSE)
 
+#[27]
 #https://stat.ethz.ch/pipermail/r-help/2012-December/343413.html
 nvd2014TotalDistinctLastRowRemoved <- nvd2014TotalDistinct[-nrow(nvd2014TotalDistinct),]
 write.csv(nvd2014TotalDistinctLastRowRemoved, "CVE_2014_Last_Row_Removed.csv", row.names = FALSE)
 
+#[28]
 #http://www.duanqu.tech/questions/4900348/how-to-remove-rows-in-a-dataframe-that-contain-certain-words-in-r
-nvd2014TotalDistinctRejectRemoved <- nvd2014TotalDistinct[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2014TotalDistinct$Vulnerability_Summary), ]
+nvd2014TotalDistinctRejectRemoved <- nvd2014TotalDistinctLastRowRemoved[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2014TotalDistinct$Vulnerability_Summary), ]
 write.csv(nvd2014TotalDistinctRejectRemoved, "CVE_2014_Rejected_Removed.csv", row.names = FALSE)

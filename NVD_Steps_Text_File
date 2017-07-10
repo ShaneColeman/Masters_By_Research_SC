@@ -1,0 +1,151 @@
+National Vulnerability Database - XML Data Feed(s) Pre-Processing Steps
+
+NVD Years: 
+2017 
+2016 
+2015
+2014
+
+#---------------------------------------- Steps ----------------------------------------#
+
+R Script Files: 
+NVD_2017_RScript.R
+NVD_2016_RScript.R 
+NVD_2015_RScript.R 
+NVD_2014_RScript.R
+
+[1]
+NVD_XXXX_RScript.R R Script created and added. 
+NOTE: XXXX represents the year (e.g. 2017)
+
+[2]
+Packages installed through the install.packages() function and imported via the library() function.
+"XML"
+"methods"
+"plyr"
+"dplyr"
+"anytime"
+
+[3]
+nvdcve-2.0-XXXX.xml copied / added into RStudio project workspace.
+XML file saved as variable nvdXXXX.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[4]
+XML converted into a list and stored in variable nvdXXXXList, then list was converted into a data frame and stored in dataNVDXXXX.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[5]
+CVE ID attribute extracted from dataNVDXXXX data frame, and stored in variable cveIDXXXX. Data frame created to store CVE IDs, called cveIDXXXXDataFrame. Column name "CVE_ID" added to data frame cveIDXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[6]
+Summary attribute extracted from dataNVDXXXX data frame, and stored in variable summaryXXXX. Data frame created to store Summaries, called summaryXXXXDataFrame. Column name "Vulnerability_Summary" added to data frame summaryXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[7]
+Published date / time attribute extracted from dataNVDXXXX data frame, and stored in variable publishedDateTimeXXXX. Published date extracted by use of the anydate() function, and stored in variable publishedDateXXXX. Data frame created to store published dates, called publishedDateXXXXDataFrame. Column name "Vulnerability_Published_Date" added to data frame publishedDateXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[8]
+Published time extracted by use of the anytime() function, via the iso8601() function and stored in variable publishedTimeXXXX. publishedTimeXXXX variable split through the strsplit() function (split by a blank space) and stored in variable publishedTimeSplitXXXX. Second element of publishedTimeSplitXXXX data frame extracted thorugh the sapply() function. Data frame created to store published times, called publishedTimeXXXXDataFrame. Column name "Vulnerability_Published_Time" added to data frame publishedTimeXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[9]
+Last modified date / time attribute extracted from dataNVDXXXX data frame, and stored in variable lastModifiedDateTimeXXXX. Last modified date extracted by use of the anydate() function, and stored in variable lastModifiedDateXXXX. Data frame created to store last modified dates, called lastModifiedDateXXXXDataFrame. Column name "Vulnerability_Last_Modified_Date" added to data frame lastModifiedDateXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[10]
+Last modified time extracted by use of the anytime() function, via the iso8601() function and stored in variable lastModifiedTimeXXXX. lastModifiedTimeXXXX variable split through the strsplit() function (split by a blank space) and stored in variable lastModifiedTimeSplitXXXX. Second element of lastModifiedTimeSplitXXXX data frame extracted thorugh the sapply() function. Data frame created to store last modified times, called lastModifiedTimeXXXXDataFrame. Column name "Vulnerability_Last_Modified_Time" added to data frame lastModifiedTimeXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[11]
+CVSS attribute extracted from dataNVDXXXX data frame, and stored in variable cvssXXXX. Data frame created to store CVSSs, called cvssXXXXDataFrame. Column name "CVSS_Score" added to data frame cvssXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[12]
+CVSS score attribute extracted from dataNVDXXXX data frame, and stored in variable cvssSeverityXXXX. 
+Data frame created to store CVSSs, called cvssSeverityXXXXDataFrame. 
+Column name "CVSS_Severity" added to data frame cvssSeverityXXXXDataFrame.
+CVSS Score converted into their text representation: HIGH, MEDIUM and LOW on data frame cvssSeverityXXXXDataFrame, through use of the levels() function. 
+Severity levels:
+HIGH = 7.0 - 10.0
+MEDIUM = 4.0 - 6.9
+LOW = 0.0 - 3.9
+NOTE: XXXX represents the year (e.g. 2017)
+
+[13]
+CVSS Access Vector attribute extracted from dataNVDXXXX data frame, and stored in variable cvssAccessVectorXXXX. Data frame created to store CVSS Access Vectors, called cvssAccessVectorXXXXDataFrame. Column name "CVSS_Access_Vector" added to data frame cvssAccessVectorXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[14]
+CVSS Access Complexity attribute extracted from dataNVDXXXX data frame, and stored in variable cvssAccessComplexityXXXX. Data frame created to store CVSS Access Complexities, called cvssAccessComplexityXXXXDataFrame. Column name "CVSS_Access_Complexity" added to data frame cvssAccessComplexityXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[15]
+CVSS Authentication attribute extracted from dataNVDXXXX data frame, and stored in variable cvssAuthenticationXXXX. Data frame created to store CVSS Authentications, called cvssAuthenticationXXXXDataFrame. Column name "CVSS_Authentication" added to data frame cvssAuthenticationXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[16]
+CVSS Confidentiality Impact attribute extracted from dataNVDXXXX data frame, and stored in variable cvssConfidentialityImpactXXXX. Data frame created to store CVSS Confidentiality Impacts, called cvssConfidentialityImpactXXXXDataFrame. Column name "CVSS_Confidentiality_Impact" added to data frame cvssConfidentialityImpactXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[17]
+CVSS Integrity Impact attribute extracted from dataNVDXXXX data frame, and stored in variable cvssIntegrityImpactXXXX. Data frame created to store CVSS Integrity Impacts, called cvssIntegrityImpactXXXXDataFrame. Column name "CVSS_Integrity_Impact" added to data frame cvssIntegrityImpactXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[18]
+CVSS Availability Impact attribute extracted from dataNVDXXXX data frame, and stored in variable cvssAvailabilityImpactXXXX. Data frame created to store CVSS Availability Impacts, called cvssAvailabilityImpactXXXXDataFrame. Column name "CVSS_Availability_Impact" added to data frame cvssAvailabilityImpactXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[19]
+CVSS generated on date / time attribute extracted from dataNVDXXXX data frame, and stored in variable cvssGeneratedOnDateTimeXXXX. CVSS generated on date extracted by use of the anydate() function, and stored in variable cvssGeneratedOnDateXXXX. Data frame created to store published dates, called cvssGeneratedOnDateXXXXDataFrame. Column name "CVSS_Generated_On_Date" added to data frame cvssGeneratedOnDateXXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[20]
+CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_1_XXXX. Data frame created to store CWEs, called cweXXXXDataFrame. Column name "CWE_ID_1" added to data frame cwe_1_XXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[21]
+CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_1_DescriptionXXXX. Data frame created to store CWEs, called cwe_1_DescriptionXXXXDataFrame. Column name "CWE_ID_1_Description" added to data frame cwe_1_Description2014DataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[22]
+CWE descriptions located within cwe_1_DescriptionXXXXDataFrame converted from their CWE ID into their text representation, through use of the levels() function. 
+(e.g. "CWE-264" = "Permissions, Privileges, and Access Control") etc. 
+View() function utilised to display cwe_1_DescriptionXXXXDataFrame, as a whole. 
+NOTE: XXXX represents the year (e.g. 2017)
+
+[23]
+CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_2_XXXX. Data frame created to store CWEs, called cweXXXXDataFrame. Column name "CWE_ID_2" added to data frame cwe_2_XXXXDataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[24]
+CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_2_DescriptionXXXX. Data frame created to store CWEs, called cwe_2_DescriptionXXXXDataFrame. Column name "CWE_ID_2_Description" added to data frame cwe_2_Description2014DataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[25]
+CWE descriptions located within cwe_2_DescriptionXXXXDataFrame converted from their CWE ID into their text representation, through use of the levels() function. 
+(e.g. "CWE-264" = "Permissions, Privileges, and Access Control") etc. 
+View() function utilised to display cwe_2_DescriptionXXXXDataFrame, as a whole. 
+NOTE: XXXX represents the year (e.g. 2017)
+
+[26]
+Multiple created data frames combined and stored into one data frame called nvdXXXXTotal, through the use of the cbind() function. 
+New data frame nvdXXXXTotalDistinct created to stored the nvdXXXXTotal data frame, the distinct() function is used to remove duplicate rows.
+write.csv() function used on nvdXXXXTotalDistinct data frame to create CSV file called "CVE_XXXX.csv".
+CVE_XXXX.csv file saved in RStudio project workspace.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[27]
+nvdXXXXTotalDistinctLastRowRemoved data frame created. nvdXXXXTotalDistinct data frame is accessed and the last row within this data frame is removed. All rows and columns in the nvdXXXXTotalDistinct data frame are stored within the nvdXXXXTotalDistinctLastRowRemoved data frame, minus the last blank row.
+write.csv() function used on nvdXXXXTotalDistinctLastRowRemoved data frame to create CSV file called "CVE_XXXX_Last_Row_Removed.csv".
+CVE_XXXX_Last_Row_Removed.csv file saved in RStudio project workspace.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[28]
+nvdXXXXTotalDistinctRejectRemoved data frame created. nvdXXXXTotalDistinctLastRowRemoved data frame is accessed and the last row within this data frame is removed. All rows and columns in the nvdXXXXTotalDistinctLastRowRemoved data frame are stored within the nvdXXXXTotalDistinctRejectRemoved data frame, minus the last blank row.
+write.csv() function used on nvdXXXXTotalDistinctRejectRemoved data frame to create CSV file called "CVE_XXXX_Rejected_Removed.csv".
+CVE_XXXX_Rejected_Removed.csv file saved in RStudio project workspace.
+NOTE: XXXX represents the year (e.g. 2017)
+#---------------------------------------------------------------------------------------#

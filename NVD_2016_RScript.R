@@ -1,5 +1,7 @@
+#[1]
 #NVD_2016_RScript.R
 
+#[2]
 install.packages("XML")
 install.packages("methods")
 install.packages("plyr")
@@ -12,29 +14,36 @@ library(plyr)
 library(dplyr)
 library(anytime)
 
+#[3]
 nvd2016 <- xmlParse(file = "nvdcve-2.0-2016.xml")
 summary(nvd2016)
 
+#[4]
 nvd2016List <- xmlToList(nvd2016)
 nvd2016List
 dataNVD2016 <- ldply(.data = nvd2016List, data.frame)
 
+#[5]
 cveID2016 <- dataNVD2016$cve.id
 cveID2016
 cveID2016DataFrame <- ldply(cveID2016, data.frame)
 colnames(cveID2016DataFrame) <- "CVE_ID"
 
+#[6]
 summary2016 <- dataNVD2016$summary
 summary2016
 summary2016DataFrame <- ldply(summary2016, data.frame)
 colnames(summary2016DataFrame) <- "Vulnerability_Summary"
 
+#[7]
 publishedDateTime2016 <- dataNVD2016$published.datetime
 publishedDateTime2016
 #----------Vulnerability_Published_Date----------#
 publishedDate2016 <- anydate(publishedDateTime2016)
 publishedDate2016DataFrame <- ldply(publishedDate2016, data.frame)
 colnames(publishedDate2016DataFrame) <- "Vulnerability_Published_Date"
+
+#[8]
 #----------Vulnerability_Published_Time----------#
 #http://dirk.eddelbuettel.com/code/anytime.html
 #https://cran.r-project.org/web/packages/anytime/anytime.pdf
@@ -49,6 +58,7 @@ publishedTimeSplitSecondElement2016
 publishedTime2016DataFrame <- ldply(publishedTimeSplitSecondElement2016, data.frame)
 colnames(publishedTime2016DataFrame) <- "Vulnerability_Published_Time"
 
+#[9]
 lastModifiedDateTime2016 <- dataNVD2016$last.modified.datetime
 lastModifiedDateTime2016
 #----------Vulnerability_Last_Modified_Date----------#
@@ -56,6 +66,8 @@ lastModifiedDate2016 <- anydate(lastModifiedDateTime2016)
 lastModifiedDate2016
 lastModifiedDate2016DataFrame <- ldply(lastModifiedDate2016, data.frame)
 colnames(lastModifiedDate2016DataFrame) <- "Vulnerability_Last_Modified_Date"
+
+#[10]
 #----------Vulnerability_Last_Modified_Time----------#
 #http://dirk.eddelbuettel.com/code/anytime.html
 #https://cran.r-project.org/web/packages/anytime/anytime.pdf
@@ -70,11 +82,13 @@ lastModifiedTimeSplitSecondElement2016
 lastModifiedTime2016DataFrame <- ldply(lastModifiedTimeSplitSecondElement2016, data.frame)
 colnames(lastModifiedTime2016DataFrame) <- "Vulnerability_Last_Modified_Time"
 
+#[11]
 cvss2016 <- dataNVD2016$cvss.base_metrics.score
 cvss2016
 cvss2016DataFrame <- ldply(cvss2016, data.frame)
 colnames(cvss2016DataFrame) <- "CVSS_Score"
 
+#[12]
 #https://nvd.nist.gov/vuln-metrics/cvss
 cvssSeverity2016 <- dataNVD2016$cvss.base_metrics.score
 cvssSeverity2016
@@ -92,36 +106,43 @@ levels(cvssSeverity2016DataFrame$CVSS_Severity)[levels(cvssSeverity2016DataFrame
 																									levels(cvssSeverity2016DataFrame$CVSS_Severity) <= 3.9] <- "LOW"
 View(cvssSeverity2016DataFrame)
 
+#[13]
 cvssAccessVector2016 <- dataNVD2016$cvss.base_metrics.access.vector
 cvssAccessVector2016
 cvssAccessVector2016DataFrame <- ldply(cvssAccessVector2016, data.frame)
 colnames(cvssAccessVector2016DataFrame) <- "CVSS_Access_Vector"
 
+#[14]
 cvssAccessComplexity2016 <- dataNVD2016$cvss.base_metrics.access.complexity
 cvssAccessComplexity2016
 cvssAccessComplexity2016DataFrame <- ldply(cvssAccessComplexity2016, data.frame)
 colnames(cvssAccessComplexity2016DataFrame) <- "CVSS_Access_Complexity"
 
+#[15]
 cvssAuthentication2016 <- dataNVD2016$cvss.base_metrics.authentication
 cvssAuthentication2016
 cvssAuthentication2016DataFrame <- ldply(cvssAuthentication2016, data.frame)
 colnames(cvssAuthentication2016DataFrame) <- "CVSS_Authentication"
 
+#[16]
 cvssConfidentialityImpact2016 <- dataNVD2016$cvss.base_metrics.confidentiality.impact
 cvssConfidentialityImpact2016
 cvssConfidentialityImpact2016DataFrame <- ldply(cvssConfidentialityImpact2016, data.frame)
 colnames(cvssConfidentialityImpact2016DataFrame) <- "CVSS_Confidentiality_Impact"
 
+#[17]
 cvssIntegrityImpact2016 <- dataNVD2016$cvss.base_metrics.integrity.impact
 cvssIntegrityImpact2016
 cvssIntegrityImpact2016DataFrame <- ldply(cvssIntegrityImpact2016, data.frame)
 colnames(cvssIntegrityImpact2016DataFrame) <- "CVSS_Integrity_Impact"
 
+#[18]
 cvssAvailabilityImpact2016 <- dataNVD2016$cvss.base_metrics.availability.impact
 cvssAvailabilityImpact2016
 cvssAvailabilityImpact2016DataFrame <- ldply(cvssAvailabilityImpact2016, data.frame)
 colnames(cvssAvailabilityImpact2016DataFrame) <- "CVSS_Availability_Impact"
 
+#[19]
 cvssGeneratedOnDateTime2016 <- dataNVD2016$cvss.base_metrics.generated.on.datetime
 cvssGeneratedOnDateTime2016
 cvssGeneratedOnDate2016 <- anydate(cvssGeneratedOnDateTime2016)
@@ -133,16 +154,19 @@ colnames(cvssGeneratedOnDate2016DataFrame) <- "CVSS_Generated_On_Date"
 #cwe2016DataFrame <- ldply(cwe2016, data.frame)
 #colnames(cwe2016DataFrame) <- "CWE_ID"
 
+#[20]
 cwe_1_2016 <- dataNVD2016$cwe
 cwe_1_2016
 cwe_1_2016DataFrame <- ldply(cwe_1_2016, data.frame)
 colnames(cwe_1_2016DataFrame) <- "CWE_ID_1"
 
+#[21]
 cwe_1_Description2016 <- dataNVD2016$cwe
 cwe_1_Description2016
 cwe_1_Description2016DataFrame <- ldply(cwe_1_Description2016, data.frame)
 colnames(cwe_1_Description2016DataFrame) <- "CWE_ID_1_Description"
 
+#[22]
 #https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
 #https://nvd.nist.gov/vuln/categories
 #----------#
@@ -238,16 +262,19 @@ levels(cwe_1_Description2016DataFrame$CWE_ID_1_Description)[levels(cwe_1_Descrip
 levels(cwe_1_Description2016DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2016DataFrame$CWE_ID_1_Description) == "CWE-332"] <- "Insufficient Entropy in PRNG"
 View(cwe_1_Description2016DataFrame)
 
+#[23]
 cwe_2_2016 <- dataNVD2016$cwe.1
 cwe_2_2016
 cwe_2_2016DataFrame <- ldply(cwe_2_2016, data.frame)
 colnames(cwe_2_2016DataFrame) <- "CWE_ID_2"
 
+#[24]
 cwe_2_Description2016 <- dataNVD2016$cwe.1
 cwe_2_Description2016
 cwe_2_Description2016DataFrame <- ldply(cwe_2_Description2016, data.frame)
 colnames(cwe_2_Description2016DataFrame) <- "CWE_ID_2_Description"
 
+#[25]
 #https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
 #https://nvd.nist.gov/vuln/categories
 #----------#
@@ -343,6 +370,7 @@ levels(cwe_2_Description2016DataFrame$CWE_ID_2_Description)[levels(cwe_2_Descrip
 levels(cwe_2_Description2016DataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2016DataFrame$CWE_ID_2_Description) == "CWE-332"] <- "Insufficient Entropy in PRNG"
 View(cwe_2_Description2016DataFrame)
 
+#[26]
 nvd2016Total <- cbind(cveID2016DataFrame, summary2016DataFrame, 
 											publishedDate2016DataFrame, publishedTime2016DataFrame, 
 											lastModifiedDate2016DataFrame, lastModifiedTime2016DataFrame,
@@ -356,10 +384,12 @@ nvd2016Total <- cbind(cveID2016DataFrame, summary2016DataFrame,
 nvd2016TotalDistinct <-distinct(nvd2016Total)
 write.csv(nvd2016TotalDistinct, "CVE_2016.csv", row.names = FALSE)
 
+#[27]
 #https://stat.ethz.ch/pipermail/r-help/2012-December/343413.html
 nvd2016TotalDistinctLastRowRemoved <- nvd2016TotalDistinct[-nrow(nvd2016TotalDistinct),]
 write.csv(nvd2016TotalDistinctLastRowRemoved, "CVE_2016_Last_Row_Removed.csv", row.names = FALSE)
 
+#[28]
 #http://www.duanqu.tech/questions/4900348/how-to-remove-rows-in-a-dataframe-that-contain-certain-words-in-r
 nvd2016TotalDistinctRejectRemoved <- nvd2016TotalDistinct[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2016TotalDistinct$Vulnerability_Summary), ]
 write.csv(nvd2016TotalDistinctRejectRemoved, "CVE_2016_Rejected_Removed.csv", row.names = FALSE)

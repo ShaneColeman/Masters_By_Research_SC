@@ -150,7 +150,7 @@ cvssGeneratedOnDate2015 <- anydate(cvssGeneratedOnDateTime2015)
 cvssGeneratedOnDate2015DataFrame <- ldply(cvssGeneratedOnDate2015, data.frame)
 colnames(cvssGeneratedOnDate2015DataFrame) <- "CVSS_Generated_On_Date"
 
-#[20]***
+#[20]
 #----------CVSS_Generated_On_Time----------#
 #http://dirk.eddelbuettel.com/code/anytime.html
 #https://cran.r-project.org/web/packages/anytime/anytime.pdf
@@ -170,19 +170,19 @@ colnames(cvssGeneratedOnTime2015DataFrame) <- "CVSS_Generated_On_Time"
 #cwe2015DataFrame <- ldply(cwe2015, data.frame)
 #colnames(cwe2015DataFrame) <- "CWE_ID"
 
-#[20]
+#[21]
 cwe_1_2015 <- dataNVD2015$cwe
 cwe_1_2015
 cwe_1_2015DataFrame <- ldply(cwe_1_2015, data.frame)
 colnames(cwe_1_2015DataFrame) <- "CWE_ID_1"
 
-#[21]
+#[22]
 cwe_1_Description2015 <- dataNVD2015$cwe
 cwe_1_Description2015
 cwe_1_Description2015DataFrame <- ldply(cwe_1_Description2015, data.frame)
 colnames(cwe_1_Description2015DataFrame) <- "CWE_ID_1_Description"
 
-#[22]
+#[23]
 #https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
 #https://nvd.nist.gov/vuln/categories
 #----------#
@@ -282,19 +282,19 @@ levels(cwe_1_Description2015DataFrame$CWE_ID_1_Description)[levels(cwe_1_Descrip
 levels(cwe_1_Description2015DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2015DataFrame$CWE_ID_1_Description) == "CWE-185"] <- "Incorrect Regular Expression"
 View(cwe_1_Description2015DataFrame)
 
-#[23]
+#[24]
 cwe_2_2015 <- dataNVD2015$cwe.1
 cwe_2_2015
 cwe_2_2015DataFrame <- ldply(cwe_2_2015, data.frame)
 colnames(cwe_2_2015DataFrame) <- "CWE_ID_2"
 
-#[24]
+#[25]
 cwe_2_Description2015 <- dataNVD2015$cwe.1
 cwe_2_Description2015
 cwe_2_Description2015DataFrame <- ldply(cwe_2_Description2015, data.frame)
 colnames(cwe_2_Description2015DataFrame) <- "CWE_ID_2_Description"
 
-#[25]
+#[26]
 #https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
 #https://nvd.nist.gov/vuln/categories
 #----------#
@@ -394,7 +394,7 @@ levels(cwe_2_Description2015DataFrame$CWE_ID_2_Description)[levels(cwe_2_Descrip
 levels(cwe_2_Description2015DataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2015DataFrame$CWE_ID_2_Description) == "CWE-185"] <- "Incorrect Regular Expression"
 View(cwe_2_Description2015DataFrame)
 
-#[26]
+#[27]
 nvd2015Total <- cbind(cveID2015DataFrame, summary2015DataFrame, 
 											publishedDate2015DataFrame, publishedTime2015DataFrame, 
 											lastModifiedDate2015DataFrame, lastModifiedTime2015DataFrame,
@@ -408,17 +408,17 @@ nvd2015Total <- cbind(cveID2015DataFrame, summary2015DataFrame,
 nvd2015TotalDistinct <-distinct(nvd2015Total)
 write.csv(nvd2015TotalDistinct, "CVE_2015.csv", row.names = FALSE)
 
-#[27]
+#[28]
 #https://stat.ethz.ch/pipermail/r-help/2012-December/343413.html
 nvd2015TotalDistinctLastRowRemoved <- nvd2015TotalDistinct[-nrow(nvd2015TotalDistinct),]
 write.csv(nvd2015TotalDistinctLastRowRemoved, "CVE_2015_Last_Row_Removed.csv", row.names = FALSE)
 
-#[28]
+#[29]
 #http://www.duanqu.tech/questions/4900348/how-to-remove-rows-in-a-dataframe-that-contain-certain-words-in-r
 nvd2015TotalDistinctRejectRemoved <- nvd2015TotalDistinctLastRowRemoved[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2015TotalDistinctLastRowRemoved$Vulnerability_Summary), ]
 write.csv(nvd2015TotalDistinctRejectRemoved, "CVE_2015_Rejected_Removed.csv", row.names = FALSE)
 
-#[29]
+#[30]
 #https://stackoverflow.com/questions/20977972/how-to-remove-na-data-in-only-one-columns
 nvd2015TotalDistinctNARemoved <- nvd2015TotalDistinctRejectRemoved[!is.na(nvd2015TotalDistinctRejectRemoved$CVSS_Score),]
 write.csv(nvd2015TotalDistinctNARemoved, "CVE_2015_NA_Removed.csv", row.names = FALSE)

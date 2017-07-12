@@ -150,7 +150,7 @@ cvssGeneratedOnDate2014 <- anydate(cvssGeneratedOnDateTime2014)
 cvssGeneratedOnDate2014DataFrame <- ldply(cvssGeneratedOnDate2014, data.frame)
 colnames(cvssGeneratedOnDate2014DataFrame) <- "CVSS_Generated_On_Date"
 
-#[20]***
+#[20]
 #----------CVSS_Generated_On_Time----------#
 #http://dirk.eddelbuettel.com/code/anytime.html
 #https://cran.r-project.org/web/packages/anytime/anytime.pdf
@@ -170,19 +170,19 @@ colnames(cvssGeneratedOnTime2014DataFrame) <- "CVSS_Generated_On_Time"
 #cwe2014DataFrame <- ldply(cwe2014, data.frame)
 #colnames(cwe2014DataFrame) <- "CWE_ID"
 
-#[20]
+#[21]
 cwe_1_2014 <- dataNVD2014$cwe
 cwe_1_2014
 cwe_1_2014DataFrame <- ldply(cwe_1_2014, data.frame)
 colnames(cwe_1_2014DataFrame) <- "CWE_ID_1"
 
-#[21]
+#[22]
 cwe_1_Description2014 <- dataNVD2014$cwe
 cwe_1_Description2014
 cwe_1_Description2014DataFrame <- ldply(cwe_1_Description2014, data.frame)
 colnames(cwe_1_Description2014DataFrame) <- "CWE_ID_1_Description"
 
-#[22]
+#[23]
 #https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
 #https://nvd.nist.gov/vuln/categories
 #----------#
@@ -287,19 +287,19 @@ levels(cwe_1_Description2014DataFrame$CWE_ID_1_Description)[levels(cwe_1_Descrip
 levels(cwe_1_Description2014DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2014DataFrame$CWE_ID_1_Description) == "CWE-665"] <- "Improper Initialization"
 View(cwe_1_Description2014DataFrame)
 
-#[23]
+#[24]
 cwe_2_2014 <- dataNVD2014$cwe.1
 cwe_2_2014
 cwe_2_2014DataFrame <- ldply(cwe_2_2014, data.frame)
 colnames(cwe_2_2014DataFrame) <- "CWE_ID_2"
 
-#[24]
+#[25]
 cwe_2_Description2014 <- dataNVD2014$cwe.1
 cwe_2_Description2014
 cwe_2_Description2014DataFrame <- ldply(cwe_2_Description2014, data.frame)
 colnames(cwe_2_Description2014DataFrame) <- "CWE_ID_2_Description"
 
-#[25]
+#[26]
 #https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
 #https://nvd.nist.gov/vuln/categories
 #----------#
@@ -404,7 +404,7 @@ levels(cwe_2_Description2014DataFrame$CWE_ID_2_Description)[levels(cwe_2_Descrip
 levels(cwe_2_Description2014DataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2014DataFrame$CWE_ID_2_Description) == "CWE-665"] <- "Improper Initialization"
 View(cwe_2_Description2014DataFrame)
 
-#[26]
+#[27]
 nvd2014Total <- cbind(cveID2014DataFrame, summary2014DataFrame, 
 											publishedDate2014DataFrame, publishedTime2014DataFrame, 
 											lastModifiedDate2014DataFrame, lastModifiedTime2014DataFrame,
@@ -418,17 +418,17 @@ nvd2014Total <- cbind(cveID2014DataFrame, summary2014DataFrame,
 nvd2014TotalDistinct <-distinct(nvd2014Total)
 write.csv(nvd2014TotalDistinct, "CVE_2014.csv", row.names = FALSE)
 
-#[27]
+#[28]
 #https://stat.ethz.ch/pipermail/r-help/2012-December/343413.html
 nvd2014TotalDistinctLastRowRemoved <- nvd2014TotalDistinct[-nrow(nvd2014TotalDistinct),]
 write.csv(nvd2014TotalDistinctLastRowRemoved, "CVE_2014_Last_Row_Removed.csv", row.names = FALSE)
 
-#[28]
+#[29]
 #http://www.duanqu.tech/questions/4900348/how-to-remove-rows-in-a-dataframe-that-contain-certain-words-in-r
 nvd2014TotalDistinctRejectRemoved <- nvd2014TotalDistinctLastRowRemoved[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2014TotalDistinctLastRowRemoved$Vulnerability_Summary), ]
 write.csv(nvd2014TotalDistinctRejectRemoved, "CVE_2014_Rejected_Removed.csv", row.names = FALSE)
 
-#[29]
+#[30]
 #https://stackoverflow.com/questions/20977972/how-to-remove-na-data-in-only-one-columns
 nvd2014TotalDistinctNARemoved <- nvd2014TotalDistinctRejectRemoved[!is.na(nvd2014TotalDistinctRejectRemoved$CVSS_Score),]
 write.csv(nvd2014TotalDistinctNARemoved, "CVE_2014_NA_Removed.csv", row.names = FALSE)

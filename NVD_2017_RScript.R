@@ -157,7 +157,7 @@ cvssGeneratedOnDate2017 <- anydate(cvssGeneratedOnDateTime2017)
 cvssGeneratedOnDate2017DataFrame <- ldply(cvssGeneratedOnDate2017, data.frame)
 colnames(cvssGeneratedOnDate2017DataFrame) <- "CVSS_Generated_On_Date"
 
-#[20]***
+#[20]
 #----------CVSS_Generated_On_Time----------#
 #http://dirk.eddelbuettel.com/code/anytime.html
 #https://cran.r-project.org/web/packages/anytime/anytime.pdf
@@ -177,19 +177,19 @@ colnames(cvssGeneratedOnTime2017DataFrame) <- "CVSS_Generated_On_Time"
 #cwe2017DataFrame <- ldply(cwe2017, data.frame)
 #colnames(cwe2017DataFrame) <- "CWE_ID"
 
-#[20]
+#[21]
 cwe_1_2017 <- dataNVD2017$cwe
 cwe_1_2017
 cwe_1_2017DataFrame <- ldply(cwe_1_2017, data.frame)
 colnames(cwe_1_2017DataFrame) <- "CWE_ID_1"
 
-#[21]
+#[22]
 cwe_1_Description2017 <- dataNVD2017$cwe
 cwe_1_Description2017
 cwe_1_Description2017DataFrame <- ldply(cwe_1_Description2017, data.frame)
 colnames(cwe_1_Description2017DataFrame) <- "CWE_ID_1_Description"
 
-#[22]
+#[23]
 #https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
 #https://nvd.nist.gov/vuln/categories
 levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-264"] <- "Permissions, Privileges, and Access Control"
@@ -266,19 +266,19 @@ levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Descrip
 levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017DataFrame$CWE_ID_1_Description) == "CWE-338"] <- "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)"
 View(cwe_1_Description2017DataFrame)
 
-#[23]
+#[24]
 cwe_2_2017 <- dataNVD2017$cwe.1
 cwe_2_2017
 cwe_2_2017DataFrame <- ldply(cwe_2_2017, data.frame)
 colnames(cwe_2_2017DataFrame) <- "CWE_ID_2"
 
-#[24]
+#[25]
 cwe_2_Description2017 <- dataNVD2017$cwe.1
 cwe_2_Description2017
 cwe_2_Description2017DataFrame <- ldply(cwe_2_Description2017, data.frame)
 colnames(cwe_2_Description2017DataFrame) <- "CWE_ID_2_Description"
 
-#[25]
+#[26]
 #https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
 #https://nvd.nist.gov/vuln/categories
 levels(cwe_2_Description2017DataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2017DataFrame$CWE_ID_2_Description) == "CWE-264"] <- "Permissions, Privileges, and Access Control"
@@ -355,7 +355,7 @@ levels(cwe_2_Description2017DataFrame$CWE_ID_2_Description)[levels(cwe_2_Descrip
 levels(cwe_2_Description2017DataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2017DataFrame$CWE_ID_2_Description) == "CWE-338"] <- "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)"
 View(cwe_2_Description2017DataFrame)
 
-#[26]
+#[27]
 nvd2017Total <- cbind(cveID2017DataFrame, summary2017DataFrame, 
 											publishedDate2017DataFrame, publishedTime2017DataFrame, 
 											lastModifiedDate2017DataFrame, lastModifiedTime2017DataFrame,
@@ -369,17 +369,17 @@ nvd2017Total <- cbind(cveID2017DataFrame, summary2017DataFrame,
 nvd2017TotalDistinct <- distinct(nvd2017Total)
 write.csv(nvd2017TotalDistinct, "CVE_2017.csv", row.names = FALSE)
 
-#[27]
+#[28]
 #https://stat.ethz.ch/pipermail/r-help/2012-December/343413.html
 nvd2017TotalDistinctLastRowRemoved <- nvd2017TotalDistinct[-nrow(nvd2017TotalDistinct),]
 write.csv(nvd2017TotalDistinctLastRowRemoved, "CVE_2017_Last_Row_Removed.csv", row.names = FALSE)
 
-#[28]
+#[29]
 #http://www.duanqu.tech/questions/4900348/how-to-remove-rows-in-a-dataframe-that-contain-certain-words-in-r
 nvd2017TotalDistinctRejectRemoved <- nvd2017TotalDistinctLastRowRemoved[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2017TotalDistinctLastRowRemoved$Vulnerability_Summary), ]
 write.csv(nvd2017TotalDistinctRejectRemoved, "CVE_2017_Rejected_Removed.csv", row.names = FALSE)
 
-#[29]
+#[30]
 #https://stackoverflow.com/questions/20977972/how-to-remove-na-data-in-only-one-columns
 nvd2017TotalDistinctNARemoved <- nvd2017TotalDistinctRejectRemoved[!is.na(nvd2017TotalDistinctRejectRemoved$CVSS_Score),]
 write.csv(nvd2017TotalDistinctNARemoved, "CVE_2017_NA_Removed.csv", row.names = FALSE)

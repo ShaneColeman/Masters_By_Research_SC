@@ -150,7 +150,7 @@ cvssGeneratedOnDate2016 <- anydate(cvssGeneratedOnDateTime2016)
 cvssGeneratedOnDate2016DataFrame <- ldply(cvssGeneratedOnDate2016, data.frame)
 colnames(cvssGeneratedOnDate2016DataFrame) <- "CVSS_Generated_On_Date"
 
-#[20]***
+#[20]
 #----------CVSS_Generated_On_Time----------#
 #http://dirk.eddelbuettel.com/code/anytime.html
 #https://cran.r-project.org/web/packages/anytime/anytime.pdf
@@ -170,19 +170,19 @@ colnames(cvssGeneratedOnTime2016DataFrame) <- "CVSS_Generated_On_Time"
 #cwe2016DataFrame <- ldply(cwe2016, data.frame)
 #colnames(cwe2016DataFrame) <- "CWE_ID"
 
-#[20]
+#[21]
 cwe_1_2016 <- dataNVD2016$cwe
 cwe_1_2016
 cwe_1_2016DataFrame <- ldply(cwe_1_2016, data.frame)
 colnames(cwe_1_2016DataFrame) <- "CWE_ID_1"
 
-#[21]
+#[22]
 cwe_1_Description2016 <- dataNVD2016$cwe
 cwe_1_Description2016
 cwe_1_Description2016DataFrame <- ldply(cwe_1_Description2016, data.frame)
 colnames(cwe_1_Description2016DataFrame) <- "CWE_ID_1_Description"
 
-#[22]
+#[23]
 #https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
 #https://nvd.nist.gov/vuln/categories
 #----------#
@@ -278,19 +278,19 @@ levels(cwe_1_Description2016DataFrame$CWE_ID_1_Description)[levels(cwe_1_Descrip
 levels(cwe_1_Description2016DataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2016DataFrame$CWE_ID_1_Description) == "CWE-332"] <- "Insufficient Entropy in PRNG"
 View(cwe_1_Description2016DataFrame)
 
-#[23]
+#[24]
 cwe_2_2016 <- dataNVD2016$cwe.1
 cwe_2_2016
 cwe_2_2016DataFrame <- ldply(cwe_2_2016, data.frame)
 colnames(cwe_2_2016DataFrame) <- "CWE_ID_2"
 
-#[24]
+#[25]
 cwe_2_Description2016 <- dataNVD2016$cwe.1
 cwe_2_Description2016
 cwe_2_Description2016DataFrame <- ldply(cwe_2_Description2016, data.frame)
 colnames(cwe_2_Description2016DataFrame) <- "CWE_ID_2_Description"
 
-#[25]
+#[26]
 #https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
 #https://nvd.nist.gov/vuln/categories
 #----------#
@@ -386,7 +386,7 @@ levels(cwe_2_Description2016DataFrame$CWE_ID_2_Description)[levels(cwe_2_Descrip
 levels(cwe_2_Description2016DataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2016DataFrame$CWE_ID_2_Description) == "CWE-332"] <- "Insufficient Entropy in PRNG"
 View(cwe_2_Description2016DataFrame)
 
-#[26]
+#[27]
 nvd2016Total <- cbind(cveID2016DataFrame, summary2016DataFrame, 
 											publishedDate2016DataFrame, publishedTime2016DataFrame, 
 											lastModifiedDate2016DataFrame, lastModifiedTime2016DataFrame,
@@ -400,17 +400,17 @@ nvd2016Total <- cbind(cveID2016DataFrame, summary2016DataFrame,
 nvd2016TotalDistinct <-distinct(nvd2016Total)
 write.csv(nvd2016TotalDistinct, "CVE_2016.csv", row.names = FALSE)
 
-#[27]
+#[28]
 #https://stat.ethz.ch/pipermail/r-help/2012-December/343413.html
 nvd2016TotalDistinctLastRowRemoved <- nvd2016TotalDistinct[-nrow(nvd2016TotalDistinct),]
 write.csv(nvd2016TotalDistinctLastRowRemoved, "CVE_2016_Last_Row_Removed.csv", row.names = FALSE)
 
-#[28]
+#[29]
 #http://www.duanqu.tech/questions/4900348/how-to-remove-rows-in-a-dataframe-that-contain-certain-words-in-r
 nvd2016TotalDistinctRejectRemoved <- nvd2016TotalDistinctLastRowRemoved[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2016TotalDistinctLastRowRemoved$Vulnerability_Summary), ]
 write.csv(nvd2016TotalDistinctRejectRemoved, "CVE_2016_Rejected_Removed.csv", row.names = FALSE)
 
-#[29]
+#[30]
 #https://stackoverflow.com/questions/20977972/how-to-remove-na-data-in-only-one-columns
 nvd2016TotalDistinctNARemoved <- nvd2016TotalDistinctRejectRemoved[!is.na(nvd2016TotalDistinctRejectRemoved$CVSS_Score),]
 write.csv(nvd2016TotalDistinctNARemoved, "CVE_2016_NA_Removed.csv", row.names = FALSE)

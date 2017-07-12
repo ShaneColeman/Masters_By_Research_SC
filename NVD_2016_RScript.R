@@ -394,7 +394,7 @@ nvd2016Total <- cbind(cveID2016DataFrame, summary2016DataFrame,
 											cvssAccessVector2016DataFrame, cvssAccessComplexity2016DataFrame, 
 											cvssAuthentication2016DataFrame, cvssConfidentialityImpact2016DataFrame, 
 											cvssIntegrityImpact2016DataFrame, cvssAvailabilityImpact2016DataFrame, 
-											cvssGeneratedOnDate2016DataFrame, 
+											cvssGeneratedOnDate2016DataFrame, cvssGeneratedOnTime2016DataFrame, 
 											cwe_1_2016DataFrame, cwe_1_Description2016DataFrame,
 											cwe_2_2016DataFrame, cwe_2_Description2016DataFrame)
 nvd2016TotalDistinct <-distinct(nvd2016Total)

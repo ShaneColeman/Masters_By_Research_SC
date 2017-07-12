@@ -13,7 +13,7 @@ NVD_2015_RScript.R
 NVD_2014_RScript.R
 
 #---------------------------------------- Steps ----------------------------------------#
-
+#---------------------------------------------------------------------------------------#
 [1]
 NVD_XXXX_RScript.R R Script created and added. 
 NOTE: XXXX represents the year (e.g. 2017)
@@ -154,4 +154,28 @@ NAs removed from nvdXXXXTotalDistinctRejectRemoved data frame, based on the CVSS
 write.csv() function used on nvdXXXXTotalDistinctNARemoved data frame to create CSV file called "CVE_XXXX_NA_Removed.csv".
 CVE_XXXX_NA_Removed.csv file saved in RStudio project workspace.
 NOTE: XXXX represents the year (e.g. 2017)
+#---------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------#
+
+
+R Script Files: 
+NVD_Training_Testing_RScript.R
+#---------------------------------------- Steps ----------------------------------------#
+#---------------------------------------------------------------------------------------#
+[30]
+nvd2014TotalDistinctNARemoved data frame and nvd2015TotalDistinctNARemoved data frame merged, by use of the merge() function. Data frame nvdMerge2014_2015 was created, which combines both data frames: nvd2014TotalDistinctNARemoved and nvd2015TotalDistinctNARemoved. 
+
+[31]
+nvdMerge2014_2015 data frame and nvd2016TotalDistinctNARemoved data frame merged, by use of the merge() function. Data frame nvdMerge2014_2015_2016 was created, which combines both data frames: nvd2014TotalDistinctNARemoved and nvd2015TotalDistinctNARemoved. 
+
+[32]
+nvdTraining data frame created, which calls upon the newly created data frame: nvdMerge2014_2015_2016.
+write.csv() function used on nvdTraining data frame to create CSV file called "NVD_Training.csv".
+NVD_Training.csv file saved in RStudio project workspace.
+
+[33]
+nvdTesting data frame created, which calls upon the data frame: nvd2017TotalDistinctNARemoved.
+write.csv() function used on nvdTesting data frame to create CSV file called "NVD_Testing.csv".
+NVD_Testing.csv file saved in RStudio project workspace.
+#---------------------------------------------------------------------------------------#
 #---------------------------------------------------------------------------------------#

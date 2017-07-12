@@ -103,53 +103,57 @@ CVSS generated on date / time attribute extracted from dataNVDXXXX data frame, a
 NOTE: XXXX represents the year (e.g. 2017)
 
 [20]
-CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_1_XXXX. Data frame created to store CWEs, called cweXXXXDataFrame. Column name "CWE_ID_1" added to data frame cwe_1_XXXXDataFrame.
+CVSS generated on time extracted by use of the anytime() function, via the iso8601() function and stored in variable cvssGeneratedOnTimeXXXX. cvssGeneratedOnTimeXXXX variable split through the strsplit() function (split by a blank space) and stored in variable cvssGeneratedOnTimeSplitXXXX. Second element of cvssGeneratedOnTimeSplitXXXX data frame extracted thorugh the sapply() function. Data frame created to store last modified times, called cvssGeneratedOnTimeXXXXDataFrame. Column name "CVSS_Generated_On_Time" added to data frame cvssGeneratedOnTimeXXXXDataFrame.
 NOTE: XXXX represents the year (e.g. 2017)
 
 [21]
-CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_1_DescriptionXXXX. Data frame created to store CWEs, called cwe_1_DescriptionXXXXDataFrame. Column name "CWE_ID_1_Description" added to data frame cwe_1_Description2014DataFrame.
+CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_1_XXXX. Data frame created to store CWEs, called cweXXXXDataFrame. Column name "CWE_ID_1" added to data frame cwe_1_XXXXDataFrame.
 NOTE: XXXX represents the year (e.g. 2017)
 
 [22]
+CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_1_DescriptionXXXX. Data frame created to store CWEs, called cwe_1_DescriptionXXXXDataFrame. Column name "CWE_ID_1_Description" added to data frame cwe_1_Description2014DataFrame.
+NOTE: XXXX represents the year (e.g. 2017)
+
+[23]
 CWE descriptions located within cwe_1_DescriptionXXXXDataFrame converted from their CWE ID into their text representation, through use of the levels() function. 
 (e.g. "CWE-264" = "Permissions, Privileges, and Access Control") etc. 
 View() function utilised to display cwe_1_DescriptionXXXXDataFrame, as a whole. 
 NOTE: XXXX represents the year (e.g. 2017)
 
-[23]
+[24]
 CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_2_XXXX. Data frame created to store CWEs, called cweXXXXDataFrame. Column name "CWE_ID_2" added to data frame cwe_2_XXXXDataFrame.
 NOTE: XXXX represents the year (e.g. 2017)
 
-[24]
+[25]
 CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_2_DescriptionXXXX. Data frame created to store CWEs, called cwe_2_DescriptionXXXXDataFrame. Column name "CWE_ID_2_Description" added to data frame cwe_2_Description2014DataFrame.
 NOTE: XXXX represents the year (e.g. 2017)
 
-[25]
+[26]
 CWE descriptions located within cwe_2_DescriptionXXXXDataFrame converted from their CWE ID into their text representation, through use of the levels() function. 
 (e.g. "CWE-264" = "Permissions, Privileges, and Access Control") etc. 
 View() function utilised to display cwe_2_DescriptionXXXXDataFrame, as a whole. 
 NOTE: XXXX represents the year (e.g. 2017)
 
-[26]
+[27]
 Multiple created data frames combined and stored into one data frame called nvdXXXXTotal, through the use of the cbind() function. 
 New data frame nvdXXXXTotalDistinct created to stored the nvdXXXXTotal data frame, the distinct() function is used to remove duplicate rows.
 write.csv() function used on nvdXXXXTotalDistinct data frame to create CSV file called "CVE_XXXX.csv".
 CVE_XXXX.csv file saved in RStudio project workspace.
 NOTE: XXXX represents the year (e.g. 2017)
 
-[27]
+[28]
 nvdXXXXTotalDistinctLastRowRemoved data frame created. nvdXXXXTotalDistinct data frame is accessed and the last row within this data frame is removed. All rows and columns in the nvdXXXXTotalDistinct data frame are stored within the nvdXXXXTotalDistinctLastRowRemoved data frame, minus the last blank row.
 write.csv() function used on nvdXXXXTotalDistinctLastRowRemoved data frame to create CSV file called "CVE_XXXX_Last_Row_Removed.csv".
 CVE_XXXX_Last_Row_Removed.csv file saved in RStudio project workspace.
 NOTE: XXXX represents the year (e.g. 2017)
 
-[28]
+[29]
 nvdXXXXTotalDistinctRejectRemoved data frame created. nvdXXXXTotalDistinctLastRowRemoved data frame is accessed and the last row within this data frame is removed. All rows and columns in the nvdXXXXTotalDistinctLastRowRemoved data frame are stored within the nvdXXXXTotalDistinctRejectRemoved data frame, minus the last blank row.
 write.csv() function used on nvdXXXXTotalDistinctRejectRemoved data frame to create CSV file called "CVE_XXXX_Rejected_Removed.csv".
 CVE_XXXX_Rejected_Removed.csv file saved in RStudio project workspace.
 NOTE: XXXX represents the year (e.g. 2017)
 
-[29]
+[30]
 NAs removed from nvdXXXXTotalDistinctRejectRemoved data frame, based on the CVSS_Score attribute. nvdXXXXTotalDistinctNARemoved data frame created to store the nvdXXXXTotalDistinctRejectRemoved data frame without the inclusion of NA cells.
 write.csv() function used on nvdXXXXTotalDistinctNARemoved data frame to create CSV file called "CVE_XXXX_NA_Removed.csv".
 CVE_XXXX_NA_Removed.csv file saved in RStudio project workspace.
@@ -162,18 +166,18 @@ R Script Files:
 NVD_Training_Testing_RScript.R
 #---------------------------------------- Steps ----------------------------------------#
 #---------------------------------------------------------------------------------------#
-[30]
+[31]
 nvd2014TotalDistinctNARemoved data frame and nvd2015TotalDistinctNARemoved data frame merged, by use of the merge() function. Data frame nvdMerge2014_2015 was created, which combines both data frames: nvd2014TotalDistinctNARemoved and nvd2015TotalDistinctNARemoved. 
 
-[31]
+[32]
 nvdMerge2014_2015 data frame and nvd2016TotalDistinctNARemoved data frame merged, by use of the merge() function. Data frame nvdMerge2014_2015_2016 was created, which combines both data frames: nvd2014TotalDistinctNARemoved and nvd2015TotalDistinctNARemoved. 
 
-[32]
+[33]
 nvdTraining data frame created, which calls upon the newly created data frame: nvdMerge2014_2015_2016.
 write.csv() function used on nvdTraining data frame to create CSV file called "NVD_Training.csv".
 NVD_Training.csv file saved in RStudio project workspace.
 
-[33]
+[34]
 nvdTesting data frame created, which calls upon the data frame: nvd2017TotalDistinctNARemoved.
 write.csv() function used on nvdTesting data frame to create CSV file called "NVD_Testing.csv".
 NVD_Testing.csv file saved in RStudio project workspace.

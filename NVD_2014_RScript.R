@@ -145,9 +145,25 @@ colnames(cvssAvailabilityImpact2014DataFrame) <- "CVSS_Availability_Impact"
 #[19]
 cvssGeneratedOnDateTime2014 <- dataNVD2014$cvss.base_metrics.generated.on.datetime
 cvssGeneratedOnDateTime2014
+#----------CVSS_Generated_On_Date----------#
 cvssGeneratedOnDate2014 <- anydate(cvssGeneratedOnDateTime2014)
 cvssGeneratedOnDate2014DataFrame <- ldply(cvssGeneratedOnDate2014, data.frame)
 colnames(cvssGeneratedOnDate2014DataFrame) <- "CVSS_Generated_On_Date"
+
+#[20]***
+#----------CVSS_Generated_On_Time----------#
+#http://dirk.eddelbuettel.com/code/anytime.html
+#https://cran.r-project.org/web/packages/anytime/anytime.pdf
+cvssGeneratedOnTime2014 <- iso8601(anytime(cvssGeneratedOnDateTime2014, tz = "UTC"))
+cvssGeneratedOnTime2014
+#http://rfunction.com/archives/1499
+cvssGeneratedOnTimeSplit2014 <- strsplit(cvssGeneratedOnTime2014, " ") 
+cvssGeneratedOnTimeSplit2014
+#https://stackoverflow.com/questions/14347970/splitting-strings-in-r-and-extracting-information-from-lists
+cvssGeneratedOnTimeSplitSecondElement2014 <- sapply(cvssGeneratedOnTimeSplit2014, "[", 2)
+cvssGeneratedOnTimeSplitSecondElement2014
+cvssGeneratedOnTime2014DataFrame <- ldply(cvssGeneratedOnTimeSplitSecondElement2014, data.frame)
+colnames(cvssGeneratedOnTime2014DataFrame) <- "CVSS_Generated_On_Time"
 
 #cwe2014 <- dataNVD2014$cwe
 #cwe2014

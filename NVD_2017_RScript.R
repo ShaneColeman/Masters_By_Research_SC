@@ -355,6 +355,17 @@ levels(cwe_2_Description2017DataFrame$CWE_ID_2_Description)[levels(cwe_2_Descrip
 levels(cwe_2_Description2017DataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2017DataFrame$CWE_ID_2_Description) == "CWE-338"] <- "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)"
 View(cwe_2_Description2017DataFrame)
 
+#[Test]
+vulnerabilitySoftwareListProduct <- dataNVD2017$vulnerable.software.list.product
+vulnerabilitySoftwareListProduct
+vulnerabilitySoftwareListProduct2017DataFrame <- ldply(vulnerabilitySoftwareListProduct, data.frame)
+colnames(vulnerabilitySoftwareListProduct2017DataFrame) <- "Vulnerability_Software_List_Product"
+
+vulnerabilitySoftwareListProduct1 <- dataNVD2017$vulnerable.software.list.product.1
+vulnerabilitySoftwareListProduct1
+vulnerabilitySoftwareListProduct12017DataFrame <- ldply(vulnerabilitySoftwareListProduct1, data.frame)
+colnames(vulnerabilitySoftwareListProduct12017DataFrame) <- "Vulnerability_Software_List_Product"
+
 #[27]
 nvd2017Total <- cbind(cveID2017DataFrame, summary2017DataFrame, 
 											publishedDate2017DataFrame, publishedTime2017DataFrame, 

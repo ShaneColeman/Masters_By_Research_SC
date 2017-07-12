@@ -363,7 +363,7 @@ nvd2017Total <- cbind(cveID2017DataFrame, summary2017DataFrame,
 											cvssAccessVector2017DataFrame, cvssAccessComplexity2017DataFrame, 
 											cvssAuthentication2017DataFrame, cvssConfidentialityImpact2017DataFrame, 
 											cvssIntegrityImpact2017DataFrame, cvssAvailabilityImpact2017DataFrame, 
-											cvssGeneratedOnDate2017DataFrame, 
+											cvssGeneratedOnDate2017DataFrame, cvssGeneratedOnTime2017DataFrame,
 											cwe_1_2017DataFrame, cwe_1_Description2017DataFrame,
 											cwe_2_2017DataFrame, cwe_2_Description2017DataFrame)
 nvd2017TotalDistinct <- distinct(nvd2017Total)

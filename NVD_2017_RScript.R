@@ -387,10 +387,12 @@ write.csv(nvd2017TotalDistinctLastRowRemoved, "CVE_2017_Last_Row_Removed.csv", r
 
 #[29]
 #http://www.duanqu.tech/questions/4900348/how-to-remove-rows-in-a-dataframe-that-contain-certain-words-in-r
+nvd2017TotalDistinctReject <- nvd2017TotalDistinctLastRowRemoved[grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2017TotalDistinctLastRowRemoved$Vulnerability_Summary), ]
 nvd2017TotalDistinctRejectRemoved <- nvd2017TotalDistinctLastRowRemoved[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2017TotalDistinctLastRowRemoved$Vulnerability_Summary), ]
 write.csv(nvd2017TotalDistinctRejectRemoved, "CVE_2017_Rejected_Removed.csv", row.names = FALSE)
 
 #[30]
 #https://stackoverflow.com/questions/20977972/how-to-remove-na-data-in-only-one-columns
+nvd2017TotalDistinctNA <- nvd2017TotalDistinctRejectRemoved[is.na(nvd2017TotalDistinctRejectRemoved$CVSS_Score),]
 nvd2017TotalDistinctNARemoved <- nvd2017TotalDistinctRejectRemoved[!is.na(nvd2017TotalDistinctRejectRemoved$CVSS_Score),]
 write.csv(nvd2017TotalDistinctNARemoved, "CVE_2017_NA_Removed.csv", row.names = FALSE)

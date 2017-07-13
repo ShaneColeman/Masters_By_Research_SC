@@ -148,12 +148,14 @@ CVE_XXXX_Last_Row_Removed.csv file saved in RStudio project workspace.
 NOTE: XXXX represents the year (e.g. 2017)
 
 [29]
+nvdXXXXTotalDistinctReject data frame created, which comprises of all the values where the text "DO NOT USE THIS CANDIDATE NUMBER" within the Vulnerability_Summary appears.
 nvdXXXXTotalDistinctRejectRemoved data frame created. nvdXXXXTotalDistinctLastRowRemoved data frame is accessed and the last row within this data frame is removed. All rows and columns in the nvdXXXXTotalDistinctLastRowRemoved data frame are stored within the nvdXXXXTotalDistinctRejectRemoved data frame, minus the last blank row.
 write.csv() function used on nvdXXXXTotalDistinctRejectRemoved data frame to create CSV file called "CVE_XXXX_Rejected_Removed.csv".
 CVE_XXXX_Rejected_Removed.csv file saved in RStudio project workspace.
 NOTE: XXXX represents the year (e.g. 2017)
 
 [30]
+nvdXXXXTotalDistinctNA data frame created, which comprises of all the CVSS_Scores which are NA.
 NAs removed from nvdXXXXTotalDistinctRejectRemoved data frame, based on the CVSS_Score attribute. nvdXXXXTotalDistinctNARemoved data frame created to store the nvdXXXXTotalDistinctRejectRemoved data frame without the inclusion of NA cells.
 write.csv() function used on nvdXXXXTotalDistinctNARemoved data frame to create CSV file called "CVE_XXXX_NA_Removed.csv".
 CVE_XXXX_NA_Removed.csv file saved in RStudio project workspace.

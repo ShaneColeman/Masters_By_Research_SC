@@ -124,3 +124,9 @@ cvssAuthentication2017Updated <- dataNVD2017Updated$cvss.base_metrics.authentica
 cvssAuthentication2017Updated
 cvssAuthentication2017UpdatedDataFrame <- ldply(cvssAuthentication2017Updated, data.frame)
 colnames(cvssAuthentication2017UpdatedDataFrame) <- "CVSS_Authentication"
+
+#[16]
+cvssConfidentialityImpact2017Updated <- dataNVD2017Updated$cvss.base_metrics.confidentiality.impact
+cvssConfidentialityImpact2017Updated
+cvssConfidentialityImpact2017UpdatedDataFrame <- ldply(cvssConfidentialityImpact2017Updated, data.frame)
+colnames(cvssConfidentialityImpact2017UpdatedDataFrame) <- "CVSS_Confidentiality_Impact"

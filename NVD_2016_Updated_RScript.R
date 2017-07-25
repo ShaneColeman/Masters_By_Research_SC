@@ -1,6 +1,11 @@
 #[1]
 #NVD_2016_Updated_RScript.R
 
+#[2]***
+#https://support.rstudio.com/hc/en-us/community/posts/115000475648-Memory-limit
+memory.limit()
+memory.size(15000)
+
 #[2]
 install.packages("XML")
 install.packages("methods")
@@ -22,3 +27,11 @@ summary(nvd2016Updated)
 nvd2016UpdatedList <- xmlToList(nvd2016Updated)
 nvd2016UpdatedList
 dataNVD2016Updated <- ldply(.data = nvd2016UpdatedList, data.frame)
+
+#[5]
+cveID2016Updated <- dataNVD2016Updated$cve.id
+cveID2016Updated
+cveID2016UpdatedDataFrame <- ldply(cveID2016Updated, data.frame)
+colnames(cveID2016UpdatedDataFrame) <- "CVE_ID"
+
+

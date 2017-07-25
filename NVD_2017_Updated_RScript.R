@@ -264,3 +264,9 @@ levels(cwe_1_Description2017UpdatedDataFrame$CWE_ID_1_Description)[levels(cwe_1_
 levels(cwe_1_Description2017UpdatedDataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017UpdatedDataFrame$CWE_ID_1_Description) == "CWE-769"] <- "File Descriptor Exhaustion"
 levels(cwe_1_Description2017UpdatedDataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2017UpdatedDataFrame$CWE_ID_1_Description) == "CWE-824"] <- "Access of Uninitialized Pointer"
 View(cwe_1_Description2017UpdatedDataFrame)
+
+#[24]
+cwe_2_2017Updated <- dataNVD2017Updated$cwe.1
+cwe_2_2017Updated
+cwe_2_2017UpdatedDataFrame <- ldply(cwe_2_2017Updated, data.frame)
+colnames(cwe_2_2017UpdatedDataFrame) <- "CWE_ID_2"

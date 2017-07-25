@@ -67,3 +67,18 @@ lastModifiedDate2017Updated <- anydate(lastModifiedDateTime2017Updated)
 lastModifiedDate2017Updated
 lastModifiedDate2017UpdatedDataFrame <- ldply(lastModifiedDate2017Updated, data.frame)
 colnames(lastModifiedDate2017UpdatedDataFrame) <- "Vulnerability_Last_Modified_Date"
+
+#[10]
+#----------Vulnerability_Last_Modified_Time----------#
+#http://dirk.eddelbuettel.com/code/anytime.html
+#https://cran.r-project.org/web/packages/anytime/anytime.pdf
+lastModifiedTime2017Updated <- iso8601(anytime(lastModifiedDateTime2017Updated, tz = "UTC"))
+lastModifiedTime2017Updated
+#http://rfunction.com/archives/1499
+lastModifiedTimeSplit2017Updated <- strsplit(lastModifiedTime2017Updated, " ") 
+lastModifiedTimeSplit2017Updated
+#https://stackoverflow.com/questions/14347970/splitting-strings-in-r-and-extracting-information-from-lists
+lastModifiedTimeSplitSecondElement2017Updated <- sapply(lastModifiedTimeSplit2017Updated, "[", 2)
+lastModifiedTimeSplitSecondElement2017Updated
+lastModifiedTime2017UpdatedDataFrame <- ldply(lastModifiedTimeSplitSecondElement2017Updated, data.frame)
+colnames(lastModifiedTime2017UpdatedDataFrame) <- "Vulnerability_Last_Modified_Time"

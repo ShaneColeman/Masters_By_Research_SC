@@ -111,7 +111,7 @@ CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_
 NOTE: XXXX represents the year (e.g. 2017)
 
 [22]
-CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_1_DescriptionXXXX. Data frame created to store CWEs, called cwe_1_DescriptionXXXXDataFrame. Column name "CWE_ID_1_Description" added to data frame cwe_1_Description2014DataFrame.
+CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_1_DescriptionXXXX. Data frame created to store CWEs, called cwe_1_DescriptionXXXXDataFrame. Column name "CWE_ID_1_Description" added to data frame cwe_1_DescriptionXXXXDataFrame.
 NOTE: XXXX represents the year (e.g. 2017)
 
 [23]
@@ -125,7 +125,7 @@ CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_
 NOTE: XXXX represents the year (e.g. 2017)
 
 [25]
-CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_2_DescriptionXXXX. Data frame created to store CWEs, called cwe_2_DescriptionXXXXDataFrame. Column name "CWE_ID_2_Description" added to data frame cwe_2_Description2014DataFrame.
+CWE attribute extracted from dataNVDXXXX data frame, and stored in variable cwe_2_DescriptionXXXX. Data frame created to store CWEs, called cwe_2_DescriptionXXXXDataFrame. Column name "CWE_ID_2_Description" added to data frame cwe_2_DescriptionXXXXDataFrame.
 NOTE: XXXX represents the year (e.g. 2017)
 
 [26]

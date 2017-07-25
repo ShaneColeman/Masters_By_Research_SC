@@ -363,3 +363,17 @@ levels(cwe_2_Description2017UpdatedDataFrame$CWE_ID_2_Description)[levels(cwe_2_
 levels(cwe_2_Description2017UpdatedDataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2017UpdatedDataFrame$CWE_ID_2_Description) == "CWE-769"] <- "File Descriptor Exhaustion"
 levels(cwe_2_Description2017UpdatedDataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2017UpdatedDataFrame$CWE_ID_2_Description) == "CWE-824"] <- "Access of Uninitialized Pointer"
 View(cwe_2_Description2017UpdatedDataFrame)
+
+#[27]
+nvd2017UpdatedTotal <- cbind(cveID2017UpdatedDataFrame, summary2017UpdatedDataFrame, 
+											publishedDate2017UpdatedDataFrame, publishedTime2017UpdatedDataFrame, 
+											lastModifiedDate2017UpdatedDataFrame, lastModifiedTime2017UpdatedDataFrame,
+											cvss2017UpdatedDataFrame, cvssSeverity2017UpdatedDataFrame,
+											cvssAccessVector2017UpdatedDataFrame, cvssAccessComplexity2017UpdatedDataFrame, 
+											cvssAuthentication2017UpdatedDataFrame, cvssConfidentialityImpact2017UpdatedDataFrame, 
+											cvssIntegrityImpact2017UpdatedDataFrame, cvssAvailabilityImpact2017UpdatedDataFrame, 
+											cvssGeneratedOnDate2017UpdatedDataFrame, cvssGeneratedOnTime2017UpdatedDataFrame,
+											cwe_1_2017UpdatedDataFrame, cwe_1_Description2017UpdatedDataFrame,
+											cwe_2_2017UpdatedDataFrame, cwe_2_Description2017UpdatedDataFrame)
+nvd2017UpdatedTotalDistinct <- distinct(nvd2017UpdatedTotal)
+write.csv(nvd2017UpdatedTotalDistinct, "CVE_2017_Updated.csv", row.names = FALSE)

@@ -382,3 +382,11 @@ write.csv(nvd2017UpdatedTotalDistinct, "CVE_2017_Updated.csv", row.names = FALSE
 #https://stat.ethz.ch/pipermail/r-help/2012-December/343413.html
 nvd2017UpdatedTotalDistinctLastRowRemoved <- nvd2017UpdatedTotalDistinct[-nrow(nvd2017UpdatedTotalDistinct),]
 write.csv(nvd2017UpdatedTotalDistinctLastRowRemoved, "CVE_2017_Updated_Last_Row_Removed.csv", row.names = FALSE)
+
+#[29]
+#http://www.duanqu.tech/questions/4900348/how-to-remove-rows-in-a-dataframe-that-contain-certain-words-in-r
+nvd2017UpdatedTotalDistinctReject <- nvd2017UpdatedTotalDistinctLastRowRemoved[grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2017UpdatedTotalDistinctLastRowRemoved$Vulnerability_Summary), ]
+View(nvd2017UpdatedTotalDistinctReject)
+nvd2017UpdatedTotalDistinctRejectRemoved <- nvd2017UpdatedTotalDistinctLastRowRemoved[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2017UpdatedTotalDistinctLastRowRemoved$Vulnerability_Summary), ]
+View(nvd2017UpdatedTotalDistinctRejectRemoved)
+write.csv(nvd2017UpdatedTotalDistinctRejectRemoved, "CVE_2017_Updated_Rejected_Removed.csv", row.names = FALSE)

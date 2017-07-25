@@ -112,3 +112,9 @@ cvssAccessVector2017Updated <- dataNVD2017Updated$cvss.base_metrics.access.vecto
 cvssAccessVector2017Updated
 cvssAccessVector2017UpdatedDataFrame <- ldply(cvssAccessVector2017Updated, data.frame)
 colnames(cvssAccessVector2017UpdatedDataFrame) <- "CVSS_Access_Vector"
+
+#[14]
+cvssAccessComplexity2017Updated <- dataNVD2017Updated$cvss.base_metrics.access.complexity
+cvssAccessComplexity2017Updated
+cvssAccessComplexity2017UpdatedDataFrame <- ldply(cvssAccessComplexity2017Updated, data.frame)
+colnames(cvssAccessComplexity2017UpdatedDataFrame) <- "CVSS_Access_Complexity"

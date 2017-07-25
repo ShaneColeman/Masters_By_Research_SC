@@ -390,3 +390,11 @@ View(nvd2017UpdatedTotalDistinctReject)
 nvd2017UpdatedTotalDistinctRejectRemoved <- nvd2017UpdatedTotalDistinctLastRowRemoved[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2017UpdatedTotalDistinctLastRowRemoved$Vulnerability_Summary), ]
 View(nvd2017UpdatedTotalDistinctRejectRemoved)
 write.csv(nvd2017UpdatedTotalDistinctRejectRemoved, "CVE_2017_Updated_Rejected_Removed.csv", row.names = FALSE)
+
+#[30]
+#https://stackoverflow.com/questions/20977972/how-to-remove-na-data-in-only-one-columns
+nvd2017UpdatedTotalDistinctNA <- nvd2017UpdatedTotalDistinctRejectRemoved[is.na(nvd2017UpdatedTotalDistinctRejectRemoved$CVSS_Score),]
+View(nvd2017UpdatedTotalDistinctNA)
+nvd2017UpdatedTotalDistinctNARemoved <- nvd2017UpdatedTotalDistinctRejectRemoved[!is.na(nvd2017UpdatedTotalDistinctRejectRemoved$CVSS_Score),]
+View(nvd2017UpdatedTotalDistinctNARemoved)
+write.csv(nvd2017UpdatedTotalDistinctNARemoved, "CVE_2017_Updated_NA_Removed.csv", row.names = FALSE)

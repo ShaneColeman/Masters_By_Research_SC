@@ -43,3 +43,18 @@ publishedDate2017Updated <- anydate(publishedDateTime2017Updated) #Published Dat
 publishedDate2017Updated
 publishedDate2017UpdatedDataFrame <- ldply(publishedDate2017Updated, data.frame)
 colnames(publishedDate2017UpdatedDataFrame) <- "Vulnerability_Published_Date"
+
+#[8]
+#----------Vulnerability_Published_Time----------#
+#http://dirk.eddelbuettel.com/code/anytime.html
+#https://cran.r-project.org/web/packages/anytime/anytime.pdf
+publishedTime2017Updated <- iso8601(anytime(publishedDateTime2017Updated, tz = "UTC"))
+publishedTime2017Updated
+#http://rfunction.com/archives/1499
+publishedTimeSplit2017Updated <- strsplit(publishedTime2017Updated, " ") 
+publishedTimeSplit2017Updated
+#https://stackoverflow.com/questions/14347970/splitting-strings-in-r-and-extracting-information-from-lists
+publishedTimeSplitSecondElement2017Updated <- sapply(publishedTimeSplit2017Updated, "[", 2)
+publishedTimeSplitSecondElement2017Updated
+publishedTime2017UpdatedDataFrame <- ldply(publishedTimeSplitSecondElement2017Updated, data.frame)
+colnames(publishedTime2017UpdatedDataFrame) <- "Vulnerability_Published_Time"

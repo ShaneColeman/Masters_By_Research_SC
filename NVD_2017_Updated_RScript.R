@@ -82,3 +82,9 @@ lastModifiedTimeSplitSecondElement2017Updated <- sapply(lastModifiedTimeSplit201
 lastModifiedTimeSplitSecondElement2017Updated
 lastModifiedTime2017UpdatedDataFrame <- ldply(lastModifiedTimeSplitSecondElement2017Updated, data.frame)
 colnames(lastModifiedTime2017UpdatedDataFrame) <- "Vulnerability_Last_Modified_Time"
+
+#[11]
+cvss2017Updated <- dataNVD2017Updated$cvss.base_metrics.score
+cvss2017Updated
+cvss2017UpdatedDataFrame <- ldply(cvss2017Updated, data.frame)
+colnames(cvss2017UpdatedDataFrame) <- "CVSS_Score"

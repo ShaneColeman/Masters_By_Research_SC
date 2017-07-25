@@ -13,3 +13,7 @@ library(methods)
 library(plyr)
 library(dplyr)
 library(anytime)
+
+#[3]
+nvd2016Updated <- xmlParse(file = "nvdcve-2.0-2016-updated.xml")
+summary(nvd2016Updated)

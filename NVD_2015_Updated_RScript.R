@@ -63,3 +63,12 @@ publishedTimeSplitSecondElement2015Updated <- sapply(publishedTimeSplit2015Updat
 publishedTimeSplitSecondElement2015Updated
 publishedTime2015UpdatedDataFrame <- ldply(publishedTimeSplitSecondElement2015Updated, data.frame)
 colnames(publishedTime2015UpdatedDataFrame) <- "Vulnerability_Published_Time"
+
+#[9]
+lastModifiedDateTime2015Updated <- dataNVD2015Updated$last.modified.datetime
+lastModifiedDateTime2015Updated
+#----------Vulnerability_Last_Modified_Date----------#
+lastModifiedDate2015Updated <- anydate(lastModifiedDateTime2015Updated)
+lastModifiedDate2015Updated
+lastModifiedDate2015UpdatedDataFrame <- ldply(lastModifiedDate2015Updated, data.frame)
+colnames(lastModifiedDate2015UpdatedDataFrame) <- "Vulnerability_Last_Modified_Date"

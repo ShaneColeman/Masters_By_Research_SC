@@ -111,3 +111,9 @@ levels(cvssSeverity2016UpdatedDataFrame$CVSS_Severity)[levels(cvssSeverity2016Up
 levels(cvssSeverity2016UpdatedDataFrame$CVSS_Severity)[levels(cvssSeverity2016UpdatedDataFrame$CVSS_Severity) >= 0.0 & 
 																											 	levels(cvssSeverity2016UpdatedDataFrame$CVSS_Severity) <= 3.9] <- "LOW"
 View(cvssSeverity2016UpdatedDataFrame)
+
+#[13]
+cvssAccessVector2016Updated <- dataNVD2016Updated$cvss.base_metrics.access.vector
+cvssAccessVector2016Updated
+cvssAccessVector2016UpdatedDataFrame <- ldply(cvssAccessVector2016Updated, data.frame)
+colnames(cvssAccessVector2016UpdatedDataFrame) <- "CVSS_Access_Vector"

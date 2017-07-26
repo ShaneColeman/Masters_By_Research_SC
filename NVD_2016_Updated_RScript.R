@@ -123,3 +123,9 @@ cvssAccessComplexity2016Updated <- dataNVD2016Updated$cvss.base_metrics.access.c
 cvssAccessComplexity2016Updated
 cvssAccessComplexity2016UpdatedDataFrame <- ldply(cvssAccessComplexity2016Updated, data.frame)
 colnames(cvssAccessComplexity2016UpdatedDataFrame) <- "CVSS_Access_Complexity"
+
+#[15]
+cvssAuthentication2016Updated <- dataNVD2016Updated$cvss.base_metrics.authentication
+cvssAuthentication2016Updated
+cvssAuthentication2016UpdatedDataFrame <- ldply(cvssAuthentication2016Updated, data.frame)
+colnames(cvssAuthentication2016UpdatedDataFrame) <- "CVSS_Authentication"

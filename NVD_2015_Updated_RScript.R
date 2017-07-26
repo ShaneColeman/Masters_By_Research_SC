@@ -27,3 +27,9 @@ summary(nvd2015Updated)
 nvd2015UpdatedList <- xmlToList(nvd2015Updated)
 nvd2015UpdatedList
 dataNVD2015Updated <- ldply(.data = nvd2015UpdatedList, data.frame)
+
+#[5]
+cveID2015Updated <- dataNVD2015Updated$cve.id
+cveID2015Updated
+cveID2015UpdatedDataFrame <- ldply(cveID2015Updated, data.frame)
+colnames(cveID2015UpdatedDataFrame) <- "CVE_ID"

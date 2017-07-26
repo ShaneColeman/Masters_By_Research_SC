@@ -402,3 +402,8 @@ nvd2016UpdatedTotal <- cbind(cveID2016UpdatedDataFrame, summary2016UpdatedDataFr
 														 cwe_2_2016UpdatedDataFrame, cwe_2_Description2016UpdatedDataFrame)
 nvd2016UpdatedTotalDistinct <- distinct(nvd2016UpdatedTotal)
 write.csv(nvd2016UpdatedTotalDistinct, "CVE_2016_Updated.csv", row.names = FALSE)
+
+#[28]
+#https://stat.ethz.ch/pipermail/r-help/2012-December/343413.html
+nvd2016UpdatedTotalDistinctLastRowRemoved <- nvd2016UpdatedTotalDistinct[-nrow(nvd2016UpdatedTotalDistinct),]
+write.csv(nvd2016UpdatedTotalDistinctLastRowRemoved, "CVE_2016_Updated_Last_Row_Removed.csv", row.names = FALSE)

@@ -388,3 +388,17 @@ levels(cwe_2_Description2016UpdatedDataFrame$CWE_ID_2_Description)[levels(cwe_2_
 #----------#
 levels(cwe_2_Description2016UpdatedDataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2016UpdatedDataFrame$CWE_ID_2_Description) == "CWE-88"] <- "Argument Injection or Modification"
 View(cwe_2_Description2016UpdatedDataFrame)
+
+#[27]
+nvd2016UpdatedTotal <- cbind(cveID2016UpdatedDataFrame, summary2016UpdatedDataFrame, 
+														 publishedDate2016UpdatedDataFrame, publishedTime2016UpdatedDataFrame, 
+														 lastModifiedDate2016UpdatedDataFrame, lastModifiedTime2016UpdatedDataFrame,
+														 cvss2016UpdatedDataFrame, cvssSeverity2016UpdatedDataFrame,
+														 cvssAccessVector2016UpdatedDataFrame, cvssAccessComplexity2016UpdatedDataFrame, 
+														 cvssAuthentication2016UpdatedDataFrame, cvssConfidentialityImpact2016UpdatedDataFrame, 
+														 cvssIntegrityImpact2016UpdatedDataFrame, cvssAvailabilityImpact2016UpdatedDataFrame, 
+														 cvssGeneratedOnDate2016UpdatedDataFrame, cvssGeneratedOnTime2016UpdatedDataFrame,
+														 cwe_1_2016UpdatedDataFrame, cwe_1_Description2016UpdatedDataFrame,
+														 cwe_2_2016UpdatedDataFrame, cwe_2_Description2016UpdatedDataFrame)
+nvd2016UpdatedTotalDistinct <- distinct(nvd2016UpdatedTotal)
+write.csv(nvd2016UpdatedTotalDistinct, "CVE_2016_Updated.csv", row.names = FALSE)

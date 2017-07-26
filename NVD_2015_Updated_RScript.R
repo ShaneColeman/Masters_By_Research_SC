@@ -39,3 +39,12 @@ summary2015Updated <- dataNVD2015Updated$summary
 summary2015Updated
 summary2015UpdatedDataFrame <- ldply(summary2015Updated, data.frame)
 colnames(summary2015UpdatedDataFrame) <- "Vulnerability_Summary"
+
+#[7]
+publishedDateTime2015Updated <- dataNVD2015Updated$published.datetime
+publishedDateTime2015Updated
+#----------Vulnerability_Published_Date----------#
+publishedDate2015Updated <- anydate(publishedDateTime2015Updated) #Published Date 2015
+publishedDate2015Updated
+publishedDate2015UpdatedDataFrame <- ldply(publishedDate2015Updated, data.frame)
+colnames(publishedDate2015UpdatedDataFrame) <- "Vulnerability_Published_Date"

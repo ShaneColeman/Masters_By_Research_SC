@@ -287,3 +287,9 @@ levels(cwe_1_Description2014UpdatedDataFrame$CWE_ID_1_Description)[levels(cwe_1_
 levels(cwe_1_Description2014UpdatedDataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2014UpdatedDataFrame$CWE_ID_1_Description) == "CWE-913"] <- "Improper Control of Dynamically-Managed Code Resources"
 levels(cwe_1_Description2014UpdatedDataFrame$CWE_ID_1_Description)[levels(cwe_1_Description2014UpdatedDataFrame$CWE_ID_1_Description) == "CWE-665"] <- "Improper Initialization"
 View(cwe_1_Description2014UpdatedDataFrame)
+
+#[24]
+cwe_2_2014Updated <- dataNVD2014Updated$cwe.1
+cwe_2_2014Updated
+cwe_2_2014UpdatedDataFrame <- ldply(cwe_2_2014Updated, data.frame)
+colnames(cwe_2_2014UpdatedDataFrame) <- "CWE_ID_2"

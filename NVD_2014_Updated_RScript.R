@@ -93,3 +93,21 @@ cvss2014Updated <- dataNVD2014Updated$cvss.base_metrics.score
 cvss2014Updated
 cvss2014UpdatedDataFrame <- ldply(cvss2014Updated, data.frame)
 colnames(cvss2014UpdatedDataFrame) <- "CVSS_Score"
+
+#[12]
+#https://nvd.nist.gov/vuln-metrics/cvss
+cvssSeverity2014Updated <- dataNVD2014Updated$cvss.base_metrics.score
+cvssSeverity2014Updated
+cvssSeverity2014UpdatedDataFrame <- ldply(cvssSeverity2014Updated, data.frame)
+colnames(cvssSeverity2014UpdatedDataFrame) <- "CVSS_Severity"
+str(cvssSeverity2014UpdatedDataFrame)
+View(cvssSeverity2014UpdatedDataFrame)
+#https://stackoverflow.com/questions/14634964/how-does-one-change-the-levels-of-a-factor-column-in-a-data-table
+levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity)[levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity) == "10.0"] <- "HIGH"
+levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity)[levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity) >= 7.0 & 
+																											 	levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity) < 9.9] <- "HIGH"
+levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity)[levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity) >= 4.0 & 
+																											 	levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity) <= 6.9] <- "MEDIUM"
+levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity)[levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity) >= 0.0 & 
+																											 	levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity) <= 3.9] <- "LOW"
+View(cvssSeverity2014UpdatedDataFrame)

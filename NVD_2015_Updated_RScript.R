@@ -393,3 +393,16 @@ levels(cwe_2_Description2015UpdatedDataFrame$CWE_ID_2_Description)[levels(cwe_2_
 levels(cwe_2_Description2015UpdatedDataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2015UpdatedDataFrame$CWE_ID_2_Description) == "CWE-123"] <- "Write-what-where Condition"
 levels(cwe_2_Description2015UpdatedDataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2015UpdatedDataFrame$CWE_ID_2_Description) == "CWE-185"] <- "Incorrect Regular Expression"
 View(cwe_2_Description2015UpdatedDataFrame)
+
+nvd2015UpdatedTotal <- cbind(cveID2015UpdatedDataFrame, summary2015UpdatedDataFrame, 
+														 publishedDate2015UpdatedDataFrame, publishedTime2015UpdatedDataFrame, 
+														 lastModifiedDate2015UpdatedDataFrame, lastModifiedTime2015UpdatedDataFrame,
+														 cvss2015UpdatedDataFrame, cvssSeverity2015UpdatedDataFrame,
+														 cvssAccessVector2015UpdatedDataFrame, cvssAccessComplexity2015UpdatedDataFrame, 
+														 cvssAuthentication2015UpdatedDataFrame, cvssConfidentialityImpact2015UpdatedDataFrame, 
+														 cvssIntegrityImpact2015UpdatedDataFrame, cvssAvailabilityImpact2015UpdatedDataFrame, 
+														 cvssGeneratedOnDate2015UpdatedDataFrame, cvssGeneratedOnTime2015UpdatedDataFrame,
+														 cwe_1_2015UpdatedDataFrame, cwe_1_Description2015UpdatedDataFrame,
+														 cwe_2_2015UpdatedDataFrame, cwe_2_Description2015UpdatedDataFrame)
+nvd2015UpdatedTotalDistinct <- distinct(nvd2015UpdatedTotal)
+write.csv(nvd2015UpdatedTotalDistinct, "CVE_2015_Updated.csv", row.names = FALSE)

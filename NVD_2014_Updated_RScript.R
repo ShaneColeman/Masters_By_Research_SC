@@ -111,3 +111,21 @@ levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity)[levels(cvssSeverity2014Up
 levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity)[levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity) >= 0.0 & 
 																											 	levels(cvssSeverity2014UpdatedDataFrame$CVSS_Severity) <= 3.9] <- "LOW"
 View(cvssSeverity2014UpdatedDataFrame)
+
+#[13]
+cvssAccessVector2014Updated <- dataNVD2014Updated$cvss.base_metrics.access.vector
+cvssAccessVector2014Updated
+cvssAccessVector2014UpdatedDataFrame <- ldply(cvssAccessVector2014Updated, data.frame)
+colnames(cvssAccessVector2014UpdatedDataFrame) <- "CVSS_Access_Vector"
+
+#[14]
+cvssAccessComplexity2014Updated <- dataNVD2014Updated$cvss.base_metrics.access.complexity
+cvssAccessComplexity2014Updated
+cvssAccessComplexity2014UpdatedDataFrame <- ldply(cvssAccessComplexity2014Updated, data.frame)
+colnames(cvssAccessComplexity2014UpdatedDataFrame) <- "CVSS_Access_Complexity"
+
+#[15]
+cvssAuthentication2014Updated <- dataNVD2014Updated$cvss.base_metrics.authentication
+cvssAuthentication2014Updated
+cvssAuthentication2014UpdatedDataFrame <- ldply(cvssAuthentication2014Updated, data.frame)
+colnames(cvssAuthentication2014UpdatedDataFrame) <- "CVSS_Authentication"

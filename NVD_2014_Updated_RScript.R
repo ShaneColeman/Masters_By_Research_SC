@@ -129,3 +129,21 @@ cvssAuthentication2014Updated <- dataNVD2014Updated$cvss.base_metrics.authentica
 cvssAuthentication2014Updated
 cvssAuthentication2014UpdatedDataFrame <- ldply(cvssAuthentication2014Updated, data.frame)
 colnames(cvssAuthentication2014UpdatedDataFrame) <- "CVSS_Authentication"
+
+#[16]
+cvssConfidentialityImpact2014Updated <- dataNVD2014Updated$cvss.base_metrics.confidentiality.impact
+cvssConfidentialityImpact2014Updated
+cvssConfidentialityImpact2014UpdatedDataFrame <- ldply(cvssConfidentialityImpact2014Updated, data.frame)
+colnames(cvssConfidentialityImpact2014UpdatedDataFrame) <- "CVSS_Confidentiality_Impact"
+
+#[17]
+cvssIntegrityImpact2014Updated <- dataNVD2014Updated$cvss.base_metrics.integrity.impact
+cvssIntegrityImpact2014Updated
+cvssIntegrityImpact2014UpdatedDataFrame <- ldply(cvssIntegrityImpact2014Updated, data.frame)
+colnames(cvssIntegrityImpact2014UpdatedDataFrame) <- "CVSS_Integrity_Impact"
+
+#[18]
+cvssAvailabilityImpact2014Updated <- dataNVD2014Updated$cvss.base_metrics.availability.impact
+cvssAvailabilityImpact2014Updated
+cvssAvailabilityImpact2014UpdatedDataFrame <- ldply(cvssAvailabilityImpact2014Updated, data.frame)
+colnames(cvssAvailabilityImpact2014UpdatedDataFrame) <- "CVSS_Availability_Impact"

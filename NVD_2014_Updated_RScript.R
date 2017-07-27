@@ -422,3 +422,19 @@ write.csv(nvd2014UpdatedTotalDistinct, "CVE_2014_Updated.csv", row.names = FALSE
 #https://stat.ethz.ch/pipermail/r-help/2012-December/343413.html
 nvd2014UpdatedTotalDistinctLastRowRemoved <- nvd2014UpdatedTotalDistinct[-nrow(nvd2014UpdatedTotalDistinct),]
 write.csv(nvd2014UpdatedTotalDistinctLastRowRemoved, "CVE_2014_Updated_Last_Row_Removed.csv", row.names = FALSE)
+
+#[29]
+#http://www.duanqu.tech/questions/4900348/how-to-remove-rows-in-a-dataframe-that-contain-certain-words-in-r
+nvd2014UpdatedTotalDistinctReject <- nvd2014UpdatedTotalDistinctLastRowRemoved[grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2014UpdatedTotalDistinctLastRowRemoved$Vulnerability_Summary), ]
+View(nvd2014UpdatedTotalDistinctReject)
+nvd2014UpdatedTotalDistinctRejectRemoved <- nvd2014UpdatedTotalDistinctLastRowRemoved[!grepl("DO NOT USE THIS CANDIDATE NUMBER.", nvd2014UpdatedTotalDistinctLastRowRemoved$Vulnerability_Summary), ]
+View(nvd2014UpdatedTotalDistinctRejectRemoved)
+write.csv(nvd2014UpdatedTotalDistinctRejectRemoved, "CVE_2014_Updated_Rejected_Removed.csv", row.names = FALSE)
+
+#[30]
+#https://stackoverflow.com/questions/20977972/how-to-remove-na-data-in-only-one-columns
+nvd2014UpdatedTotalDistinctNA <- nvd2014UpdatedTotalDistinctRejectRemoved[is.na(nvd2014UpdatedTotalDistinctRejectRemoved$CVSS_Score),]
+View(nvd2014UpdatedTotalDistinctNA)
+nvd2014UpdatedTotalDistinctNARemoved <- nvd2014UpdatedTotalDistinctRejectRemoved[!is.na(nvd2014UpdatedTotalDistinctRejectRemoved$CVSS_Score),]
+View(nvd2014UpdatedTotalDistinctNARemoved)
+write.csv(nvd2014UpdatedTotalDistinctNARemoved, "CVE_2014_Updated_NA_Removed.csv", row.names = FALSE)

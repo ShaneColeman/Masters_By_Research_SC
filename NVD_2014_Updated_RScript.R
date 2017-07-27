@@ -403,3 +403,17 @@ levels(cwe_2_Description2014UpdatedDataFrame$CWE_ID_2_Description)[levels(cwe_2_
 levels(cwe_2_Description2014UpdatedDataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2014UpdatedDataFrame$CWE_ID_2_Description) == "CWE-913"] <- "Improper Control of Dynamically-Managed Code Resources"
 levels(cwe_2_Description2014UpdatedDataFrame$CWE_ID_2_Description)[levels(cwe_2_Description2014UpdatedDataFrame$CWE_ID_2_Description) == "CWE-665"] <- "Improper Initialization"
 View(cwe_2_Description2014UpdatedDataFrame)
+
+#[27]
+nvd2014UpdatedTotal <- cbind(cveID2014UpdatedDataFrame, summary2014UpdatedDataFrame, 
+														 publishedDate2014UpdatedDataFrame, publishedTime2014UpdatedDataFrame, 
+														 lastModifiedDate2014UpdatedDataFrame, lastModifiedTime2014UpdatedDataFrame,
+														 cvss2014UpdatedDataFrame, cvssSeverity2014UpdatedDataFrame,
+														 cvssAccessVector2014UpdatedDataFrame, cvssAccessComplexity2014UpdatedDataFrame, 
+														 cvssAuthentication2014UpdatedDataFrame, cvssConfidentialityImpact2014UpdatedDataFrame, 
+														 cvssIntegrityImpact2014UpdatedDataFrame, cvssAvailabilityImpact2014UpdatedDataFrame, 
+														 cvssGeneratedOnDate2014UpdatedDataFrame, cvssGeneratedOnTime2014UpdatedDataFrame,
+														 cwe_1_2014UpdatedDataFrame, cwe_1_Description2014UpdatedDataFrame,
+														 cwe_2_2014UpdatedDataFrame, cwe_2_Description2014UpdatedDataFrame)
+nvd2014UpdatedTotalDistinct <- distinct(nvd2014UpdatedTotal)
+write.csv(nvd2014UpdatedTotalDistinct, "CVE_2014_Updated.csv", row.names = FALSE)

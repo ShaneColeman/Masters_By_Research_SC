@@ -22,3 +22,8 @@ library(anytime)
 #[3]
 nvd2014Updated <- xmlParse(file = "nvdcve-2.0-2014-updated.xml")
 summary(nvd2014Updated)
+
+#[4]
+nvd2014UpdatedList <- xmlToList(nvd2014Updated)
+nvd2014UpdatedList
+dataNVD2014Updated <- ldply(.data = nvd2014UpdatedList, data.frame)

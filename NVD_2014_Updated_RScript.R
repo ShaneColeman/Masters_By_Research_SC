@@ -170,3 +170,9 @@ cvssGeneratedOnTimeSplitSecondElement2014Updated <- sapply(cvssGeneratedOnTimeSp
 cvssGeneratedOnTimeSplitSecondElement2014Updated
 cvssGeneratedOnTime2014UpdatedDataFrame <- ldply(cvssGeneratedOnTimeSplitSecondElement2014Updated, data.frame)
 colnames(cvssGeneratedOnTime2014UpdatedDataFrame) <- "CVSS_Generated_On_Time"
+
+#[21]
+cwe_1_2014Updated <- dataNVD2014Updated$cwe
+cwe_1_2014Updated
+cwe_1_2014UpdatedDataFrame <- ldply(cwe_1_2014Updated, data.frame)
+colnames(cwe_1_2014UpdatedDataFrame) <- "CWE_ID_1"

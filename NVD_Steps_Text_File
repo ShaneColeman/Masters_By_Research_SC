@@ -194,7 +194,7 @@ nvdMerge2014_2015Updated data frame and nvd2016UpdatedTotalDistinctRejectRemoved
 
 [32]*** (NVD_Training_Testing_Updated_RScript.R)
 nvdMerge2014_2015_2016Updated data frame and nvd2017UpdatedTotalDistinctRejectRemoved data frame merged, by use of the merge() function. Data frame nvdMerge2014_2015_2016_2017Updated was created, which combines both data frames: nvdMerge2014_2015_2016Updated and nvd2017UpdatedTotalDistinctRejectRemoved. 
-
+nvdMerge2014_2017TotalUpdated data frame created, which contains the data frame: nvdMerge2014_2015_2016_2017Updated.
 [33]
 nvdTraining data frame created, which calls upon the newly created data frame: nvdMerge2014_2015_2016.
 write.csv() function used on nvdTraining data frame to create CSV file called "NVD_Training.csv".

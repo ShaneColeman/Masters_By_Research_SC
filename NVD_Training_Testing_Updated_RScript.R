@@ -10,6 +10,12 @@ nvdMerge2014_2015_2016Updated <- merge(nvdMerge2014_2015Updated, nvd2016UpdatedT
 #[32]***
 nvdMerge2014_2015_2016_2017Updated <- merge(nvdMerge2014_2015_2016Updated, nvd2017UpdatedTotalDistinctRejectRemoved, all = TRUE)
 
+#----------Training----------#
 #[33]
 nvdTrainingUpdated <- nvdMerge2014_2015_2016Updated
 write.csv(nvdTrainingUpdated, "NVD_Training_Updated.csv", row.names = FALSE)
+
+#----------Testing----------#
+#[34]
+nvdTestingUpdated <- nvd2017UpdatedTotalDistinctRejectRemoved
+write.csv(nvdTestingUpdated, "NVD_Testing_Updated.csv", row.names = FALSE)

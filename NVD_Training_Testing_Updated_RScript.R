@@ -6,3 +6,6 @@ nvdMerge2014_2015Updated <- merge(nvd2014UpdatedTotalDistinctRejectRemoved, nvd2
 
 #[32]
 nvdMerge2014_2015_2016Updated <- merge(nvdMerge2014_2015Updated, nvd2016UpdatedTotalDistinctRejectRemoved, all = TRUE)
+
+#[32]***
+nvdMerge2014_2015_2016_2017Updated <- merge(nvdMerge2014_2015_2016Updated, nvd2017UpdatedTotalDistinctRejectRemoved, all = TRUE)

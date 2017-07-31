@@ -176,22 +176,43 @@ NOTE: XXXX represents the year (e.g. 2017)
 
 R Script Files: 
 NVD_Training_Testing_RScript.R
+#-----Updated-----#
+NVD_Training_Testing_Updated_RScript.R
 #---------------------------------------- Steps ----------------------------------------#
 #---------------------------------------------------------------------------------------#
 [31]
 nvd2014TotalDistinctNARemoved data frame and nvd2015TotalDistinctNARemoved data frame merged, by use of the merge() function. Data frame nvdMerge2014_2015 was created, which combines both data frames: nvd2014TotalDistinctNARemoved and nvd2015TotalDistinctNARemoved. 
 
+[31] - Updated (NVD_Training_Testing_Updated_RScript.R)
+nvd2014UpdatedTotalDistinctRejectRemoved data frame and nvd2015UpdatedTotalDistinctRejectRemoved data frame merged, by use of the merge() function. Data frame nvdMerge2014_2015Updated was created, which combines both data frames: nvd2014UpdatedTotalDistinctRejectRemoved and nvd2015UpdatedTotalDistinctRejectRemoved. 
+
 [32]
 nvdMerge2014_2015 data frame and nvd2016TotalDistinctNARemoved data frame merged, by use of the merge() function. Data frame nvdMerge2014_2015_2016 was created, which combines both data frames: nvd2014TotalDistinctNARemoved and nvd2015TotalDistinctNARemoved. 
+
+[32] - Updated (NVD_Training_Testing_Updated_RScript.R)
+nvdMerge2014_2015Updated data frame and nvd2016UpdatedTotalDistinctRejectRemoved data frame merged, by use of the merge() function. Data frame nvdMerge2014_2015_2016Updated was created, which combines both data frames: nvdMerge2014_2015Updated and nvd2016UpdatedTotalDistinctRejectRemoved. 
+
+[32]*** (NVD_Training_Testing_Updated_RScript.R)
+nvdMerge2014_2015_2016Updated data frame and nvd2017UpdatedTotalDistinctRejectRemoved data frame merged, by use of the merge() function. Data frame nvdMerge2014_2015_2016_2017Updated was created, which combines both data frames: nvdMerge2014_2015_2016Updated and nvd2017UpdatedTotalDistinctRejectRemoved. 
 
 [33]
 nvdTraining data frame created, which calls upon the newly created data frame: nvdMerge2014_2015_2016.
 write.csv() function used on nvdTraining data frame to create CSV file called "NVD_Training.csv".
 NVD_Training.csv file saved in RStudio project workspace.
 
+[33] - Updated (NVD_Training_Testing_Updated_RScript.R)
+nvdTrainingUpdated data frame created, which calls upon the newly created data frame: nvdMerge2014_2015_2016Updated.
+write.csv() function used on nvdTraining data frame to create CSV file called "NVD_Training_Updated.csv".
+NVD_Training_Updated.csv file saved in RStudio project workspace.
+
 [34]
 nvdTesting data frame created, which calls upon the data frame: nvd2017TotalDistinctNARemoved.
 write.csv() function used on nvdTesting data frame to create CSV file called "NVD_Testing.csv".
 NVD_Testing.csv file saved in RStudio project workspace.
+
+[34] - Updated (NVD_Training_Testing_Updated_RScript.R)
+nvdTestingUpdated data frame created, which calls upon the data frame: nvd2017UpdatedTotalDistinctRejectRemoved.
+write.csv() function used on nvdTesting data frame to create CSV file called "NVD_Testing_Updated.csv".
+NVD_Testing_Updated.csv file saved in RStudio project workspace.
 #---------------------------------------------------------------------------------------#
 #---------------------------------------------------------------------------------------#

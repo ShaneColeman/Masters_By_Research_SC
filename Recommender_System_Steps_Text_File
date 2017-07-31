@@ -7,3 +7,8 @@ Recommender_System_RScript.R
 #---------------------------------------------------------------------------------------#
 [1]
 Recommender_System_RScript.R R Script created and added to RStudio workspace. 
+
+[Memory]
+Memory limited observed through the use of the memory.limit() function.
+Memory limit increased by the use of the memory.size() function, which was increased to 
+15000.

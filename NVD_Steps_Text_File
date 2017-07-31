@@ -11,12 +11,22 @@ NVD_2017_RScript.R
 NVD_2016_RScript.R 
 NVD_2015_RScript.R 
 NVD_2014_RScript.R
+#-----Updated-----#
+NVD_2017_Updated_RScript.R
+NVD_2016_Updated_RScript.R 
+NVD_2015_Updated_RScript.R 
+NVD_2014_Updated_RScript.R
 
 #---------------------------------------- Steps ----------------------------------------#
 #---------------------------------------------------------------------------------------#
 [1]
 NVD_XXXX_RScript.R R Script created and added. 
 NOTE: XXXX represents the year (e.g. 2017)
+
+[Memory]
+Memory limited observed through the use of the memory.limit() function.
+Memory limit increased by the use of the memory.size() function, which was increased to 
+15000.
 
 [2]
 Packages installed through the install.packages() function and imported via the library() function.

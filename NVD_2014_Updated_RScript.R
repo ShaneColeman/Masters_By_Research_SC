@@ -1,7 +1,7 @@
 #[1]
 #NVD_2014_Updated_RScript.R
 
-#[2]***
+#[Memory]
 #https://support.rstudio.com/hc/en-us/community/posts/115000475648-Memory-limit
 memory.limit()
 memory.size(15000)

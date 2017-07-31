@@ -12,3 +12,8 @@ Recommender_System_RScript.R R Script created and added to RStudio workspace.
 Memory limited observed through the use of the memory.limit() function.
 Memory limit increased by the use of the memory.size() function, which was increased to 
 15000.
+
+[2]
+Packages installed through the install.packages() function and imported via the library() function.
+"recommenderlab".
+set.seed() function applied and set to '1', in order to reproduce the code obtaining the same output.

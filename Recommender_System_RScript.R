@@ -18,8 +18,8 @@ set.seed(1)
 
 #[3]
 object.size(nvdMerge2014_2017TotalUpdated)
-object.size(as(nvdMerge2014_2017TotalUpdated, "matrix"))
-object.size(as(nvdMerge2014_2017TotalUpdated, "matrix")) / object.size(nvdMerge2014_2017TotalUpdated)
+object.size(as(nvdMerge2014_2017TotalUpdated, "realRatingMatrix"))
+object.size(as(nvdMerge2014_2017TotalUpdated, "realRatingMatrix")) / object.size(nvdMerge2014_2017TotalUpdated)
 
 #[Test Code]
 nvd2014_2017SelectedColumns <- nvdMerge2014_2015_2016_2017Updated[c(1, 9:14, 17:18, 19:20, 2, 7:8)]
@@ -122,3 +122,98 @@ str(nvd2014_2017SelectedColumns$CVSS_Severity)
 View(nvd2014_2017SelectedColumns)
 
 summary(nvd2014_2017SelectedColumns)
+
+#[3]
+object.size(nvd2014_2017SelectedColumns)
+object.size(as(nvd2014_2017SelectedColumns, "matrix"))
+object.size(as(nvd2014_2017SelectedColumns, "matrix")) / object.size(nvd2014_2017SelectedColumns)
+#----------#
+nvd2014_2017CVEID_CVSSScore <- nvd2014_2017SelectedColumns[c(1, 13)]
+nvd2014_2017CVEID_CVSSScore
+#str(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
+#nvd2014_2017CVEID_CVSSScore$CVSS_Score
+#as.data.frame(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
+#nvd2014_2017CVEID_CVSSScore$CVSS_Score <- as.character(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
+#nvd2014_2017CVEID_CVSSScore$CVSS_Score
+#nvd2014_2017CVEID_CVSSScore$CVSS_Score[!is.na(nvd2014_2017CVEID_CVSSScore$CVSS_Score)] <- "1"
+#str(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
+#nvd2014_2017CVEID_CVSSScore$CVSS_Score <- as.factor(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
+#str(nvd2014_2017CVEID_CVSSScore)
+
+nvd2014_2017CVEID_CVSSScore_Wide <- reshape(data = nvd2014_2017CVEID_CVSSScore, 
+																		direction = "wide",
+																		idvar = "CVE_ID",
+																		timevar = "CVSS_Score",
+																		v.names = "CVSS_Score")
+head(nvd2014_2017CVEID_CVSSScore_Wide[,1:7])
+View(nvd2014_2017CVEID_CVSSScore_Wide)
+rownames(nvd2014_2017CVEID_CVSSScore_Wide) <- nvd2014_2017CVEID_CVSSScore_Wide$CVE_ID
+
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.7.5 <- as.character(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.7.5)
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.7.5[!is.na(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.7.5)] <- "1"
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.7.5 <- as.factor(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.7.5)
+str(nvd2014_2017CVEID_CVSSScore_Wide)
+
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.6.9 <- as.character(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.6.9)
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.6.9[!is.na(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.6.9)] <- "1"
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.6.9 <- as.factor(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.6.9)
+str(nvd2014_2017CVEID_CVSSScore_Wide)
+
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.3.6 <- as.character(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.3.6)
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.3.6[!is.na(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.3.6)] <- "1"
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.3.6 <- as.factor(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.3.6)
+str(nvd2014_2017CVEID_CVSSScore_Wide)
+
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.4.3 <- as.character(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.4.3)
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.4.3[!is.na(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.4.3)] <- "1"
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.4.3 <- as.factor(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.4.3)
+str(nvd2014_2017CVEID_CVSSScore_Wide)
+
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.4.0 <- as.character(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.4.0)
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.4.0[!is.na(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.4.0)] <- "1"
+nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.4.0 <- as.factor(nvd2014_2017CVEID_CVSSScore_Wide$CVSS_Score.4.0)
+str(nvd2014_2017CVEID_CVSSScore_Wide)
+
+#https://stackoverflow.com/questions/18580506/recommenderlab-error-in-asmethodobject-invalid-class-na-to-dup-mmatrix-as
+nvd2014_2017CVEID_CVSSScore_Wide_Matrix <- as.matrix(nvd2014_2017CVEID_CVSSScore_Wide[2:6])
+nvd2014_2017CVEID_CVSSScore_Wide_Matrix[is.na(nvd2014_2017CVEID_CVSSScore_Wide_Matrix)] <- 0
+nvd2014_2017CVEID_CVSSScore_Wide_Matrix <- sapply(data.frame(nvd2014_2017CVEID_CVSSScore_Wide_Matrix), as.numeric)
+nvd2014_2017CVEID_CVSSScore_Wide_Matrix[nvd2014_2017CVEID_CVSSScore_Wide_Matrix == 2] <- 3
+nvd2014_2017CVEID_CVSSScore_Wide_Matrix[nvd2014_2017CVEID_CVSSScore_Wide_Matrix == 1] <- 0
+nvd2014_2017CVEID_CVSSScore_Wide_Matrix[nvd2014_2017CVEID_CVSSScore_Wide_Matrix == 3] <- 1
+str(nvd2014_2017CVEID_CVSSScore_Wide_Matrix)
+
+testRealMatrix <- as(nvd2014_2017CVEID_CVSSScore_Wide_Matrix, "binaryRatingMatrix")
+testRealMatrix
+image(testRealMatrix[1:5, 1:5], main = "Binary Rating Matrix")
+
+str(nvd2014_2017CVEID_CVSSScore_Wide_Matrix)
+nvd2014_2017CVEID_CVSSScore_Wide_Matrix[is.na(nvd2014_2017CVEID_CVSSScore_Wide_Matrix)] <- 0
+testMatrix <- as(nvd2014_2017CVEID_CVSSScore_Wide_Matrix, "realRatingMatrix")
+View(nvd2014_2017CVEID_CVSSScore_Wide_Matrix)
+#----------#
+nvd2014_2017CVEID_CWEID1 <- nvd2014_2017SelectedColumns[c(1, 8)]
+nvd2014_2017CVEID_CWEID1
+
+nvd2014_2017CVEID_CWEID1_Wide <- reshape(data = nvd2014_2017CVEID_CWEID1, 
+																						direction = "wide",
+																						idvar = "CVE_ID",
+																						timevar = "CWE_ID_1",
+																						v.names = "CWE_ID_1")
+head(nvd2014_2017CVEID_CWEID1_Wide[,1:7])
+View(nvd2014_2017CVEID_CWEID1_Wide)
+nvd2014_2017CVEID_CWEID1_Wide_Matrix <- as.matrix(nvd2014_2017CVEID_CWEID1_Wide)
+View(nvd2014_2017CVEID_CWEID1_Wide_Matrix)
+#----------#
+nvd2014_2017CVEID_CWEID1Description <- nvd2014_2017SelectedColumns[c(1, 9)]
+nvd2014_2017CVEID_CWEID1Description
+
+nvd2014_2017CVEID_CWEID1Description_Wide <- reshape(data = nvd2014_2017CVEID_CWEID1Description, 
+																						 direction = "wide",
+																						 idvar = "CVE_ID",
+																						 timevar = "CWE_ID_1_Description",
+																						 v.names = "CWE_ID_1_Description")
+head(nvd2014_2017CVEID_CWEID1Description_Wide[,1:7])
+View(nvd2014_2017CVEID_CWEID1Description_Wide)
+nvd2014_2017CVEID_CWEID1Description_Wide_Matrix <- as.matrix(nvd2014_2017CVEID_CWEID1Description_Wide)
+View(nvd2014_2017CVEID_CWEID1Description_Wide_Matrix)

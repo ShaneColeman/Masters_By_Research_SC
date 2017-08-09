@@ -16,83 +16,63 @@ library(recommenderlab)
 help(package = "recommenderlab")
 set.seed(1)
 
-#[3]
-object.size(nvdMerge2014_2017TotalUpdated)
-object.size(as(nvdMerge2014_2017TotalUpdated, "realRatingMatrix"))
-object.size(as(nvdMerge2014_2017TotalUpdated, "realRatingMatrix")) / object.size(nvdMerge2014_2017TotalUpdated)
-
 #[Test Code]
+#----------#
 #nvd2014_2017SelectedColumns <- nvdMerge2014_2015_2016_2017Updated[c(1, 9:14, 17:18, 19:20, 2, 7:8)]
 #str(nvd2014_2017SelectedColumns$CWE_ID_1)
+#rm(nvd2014_2017SelectedColumns)
 #----------#
-nvd2014_2017SelectedColumnsUpdated <- nvdMerge2014_2015_2016_2017NAUpdated[c(1, 9:14, 17:18, 19:20, 2, 7:8)]
-str(nvd2014_2017SelectedColumnsUpdated)
-
-summary(nvd2014_2017SelectedColumnsUpdated)
 
 #[3]
+nvd2014_2017SelectedColumnsUpdated <- nvdMerge2014_2015_2016_2017NAUpdated[c(1, 9:14, 17:18, 19:20, 2, 7:8)]
+str(nvd2014_2017SelectedColumnsUpdated)
+View(nvd2014_2017SelectedColumnsUpdated)
+summary(nvd2014_2017SelectedColumnsUpdated)
+
+#[4]
 object.size(nvd2014_2017SelectedColumnsUpdated)
 object.size(as(nvd2014_2017SelectedColumnsUpdated, "matrix"))
 object.size(as(nvd2014_2017SelectedColumnsUpdated, "matrix")) / object.size(nvd2014_2017SelectedColumnsUpdated)
-#----------#
-#nvd2014_2017CVEID_CVSSScore <- nvd2014_2017SelectedColumns[c(1, 13)]
-#nvd2014_2017CVEID_CVSSScore
-#----------#
 
 #---------------------------------------------#
-###TEST CODE - REMOVE IF IT DOES NOT WORK!!!###
 View(nvd2014_2017SelectedColumnsUpdated)
 
+#[5]
+
+#[Columns: 1 and 2] - CVE_ID & CVSS_Access_Vector
 nvd2014_2017Columns_1_2 <- nvd2014_2017SelectedColumnsUpdated[c(1, 2)]
 View(nvd2014_2017Columns_1_2)
 
+#[Columns: 1 and 3] - CVE_ID & CVSS_Access_Complexity
 nvd2014_2017Columns_1_3 <- nvd2014_2017SelectedColumnsUpdated[c(1, 3)]
 View(nvd2014_2017Columns_1_3)
 
+#[Columns: 1 and 4] - CVE_ID & CVSS_Authentication
 nvd2014_2017Columns_1_4 <- nvd2014_2017SelectedColumnsUpdated[c(1, 4)]
 View(nvd2014_2017Columns_1_4)
 
+#[Columns: 1 and 5] - CVE_ID & CVSS_Confidentiality_Impact
 nvd2014_2017Columns_1_5 <- nvd2014_2017SelectedColumnsUpdated[c(1, 5)]
 View(nvd2014_2017Columns_1_5)
 
+#[Columns: 1 and 6] - CVE_ID & CVSS_Integrity_Impact
 nvd2014_2017Columns_1_6 <- nvd2014_2017SelectedColumnsUpdated[c(1, 6)]
 View(nvd2014_2017Columns_1_6)
 
+#[Columns: 1 and 7] - CVE_ID & CVSS_Availability_Impact
 nvd2014_2017Columns_1_7 <- nvd2014_2017SelectedColumnsUpdated[c(1, 7)]
 View(nvd2014_2017Columns_1_7)
 
+#[Columns: 1 and 8] CVE_ID & CWE_ID_1
 nvd2014_2017Columns_1_8 <- nvd2014_2017SelectedColumnsUpdated[c(1, 8)]
 View(nvd2014_2017Columns_1_8)
 
+#[Columns: 1 and 13] CVE_ID & CVSS_Score
 nvd2014_2017Columns_1_13 <- nvd2014_2017SelectedColumnsUpdated[c(1, 13)]
 View(nvd2014_2017Columns_1_13)
 #---------------------------------------------#
-#---------------------------------------------#
 
-nvd2014_2017CVEID_CVSSScoreUpdated <- nvd2014_2017SelectedColumnsUpdated[c(1, 13)]
-nvd2014_2017CVEID_CVSSScoreUpdated
-#str(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
-#nvd2014_2017CVEID_CVSSScore$CVSS_Score
-#as.data.frame(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
-#nvd2014_2017CVEID_CVSSScore$CVSS_Score <- as.character(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
-#nvd2014_2017CVEID_CVSSScore$CVSS_Score
-#nvd2014_2017CVEID_CVSSScore$CVSS_Score[!is.na(nvd2014_2017CVEID_CVSSScore$CVSS_Score)] <- "1"
-#str(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
-#nvd2014_2017CVEID_CVSSScore$CVSS_Score <- as.factor(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
-#str(nvd2014_2017CVEID_CVSSScore)
-
-#nvd2014_2017CVEID_CVSSScore_Wide <- reshape(data = nvd2014_2017CVEID_CVSSScore, 
-#																		direction = "wide",
-#																		idvar = "CVE_ID",
-#																		timevar = "CVSS_Score",
-#																		v.names = "CVSS_Score")
-#head(nvd2014_2017CVEID_CVSSScore_Wide[,1:7])
-#View(nvd2014_2017CVEID_CVSSScore_Wide)
-#rownames(nvd2014_2017CVEID_CVSSScore_Wide) <- nvd2014_2017CVEID_CVSSScore_Wide$CVE_ID
-#----------#
-
-#---------------------------------------------#
-###TEST CODE - REMOVE IF IT DOES NOT WORK!!!###
+#[6]
 #[Columns: 1 and 2] - CVE_ID & CVSS_Access_Vector
 nvd2014_2017Columns_1_2_Wide <- reshape(data = nvd2014_2017Columns_1_2, direction = "wide", idvar = "CVE_ID",
 															 timevar = "CVSS_Access_Vector", v.names = "CVSS_Access_Vector")
@@ -100,6 +80,8 @@ head(nvd2014_2017Columns_1_2_Wide)
 View(nvd2014_2017Columns_1_2_Wide)
 lengthColumns_1_2 <- length(nvd2014_2017Columns_1_2_Wide)
 lengthColumns_1_2
+
+#[7]
 #-----CVSS_Access_Vector.NETWORK-----#
 str(nvd2014_2017Columns_1_2_Wide)
 nvd2014_2017Columns_1_2_Wide$CVSS_Access_Vector.NETWORK <- as.character(nvd2014_2017Columns_1_2_Wide$CVSS_Access_Vector.NETWORK)
@@ -122,6 +104,7 @@ nvd2014_2017Columns_1_2_Wide$CVSS_Access_Vector.ADJACENT_NETWORK <- as.factor(nv
 str(nvd2014_2017Columns_1_2_Wide)
 View(nvd2014_2017Columns_1_2_Wide)
 
+#[8]
 #[Columns: 1 and 3] - CVE_ID & CVSS_Access_Complexity
 nvd2014_2017Columns_1_3_Wide <- reshape(data = nvd2014_2017Columns_1_3, direction = "wide", idvar = "CVE_ID",
 															 timevar = "CVSS_Access_Complexity", v.names = "CVSS_Access_Complexity")
@@ -129,6 +112,8 @@ head(nvd2014_2017Columns_1_3_Wide)
 View(nvd2014_2017Columns_1_3_Wide)
 lengthColumns_1_3 <- length(nvd2014_2017Columns_1_3_Wide)
 lengthColumns_1_3
+
+#[9]
 #-----CVSS_Access_Complexity.LOW-----#
 str(nvd2014_2017Columns_1_3_Wide)
 nvd2014_2017Columns_1_3_Wide$CVSS_Access_Complexity.LOW <- as.character(nvd2014_2017Columns_1_3_Wide$CVSS_Access_Complexity.LOW)
@@ -151,6 +136,7 @@ nvd2014_2017Columns_1_3_Wide$CVSS_Access_Complexity.HIGH <- as.factor(nvd2014_20
 str(nvd2014_2017Columns_1_3_Wide)
 View(nvd2014_2017Columns_1_3_Wide)
 
+#[10]
 #[Columns: 1 and 4] - CVE_ID & CVSS_Authentication
 nvd2014_2017Columns_1_4_Wide <- reshape(data = nvd2014_2017Columns_1_4, direction = "wide", idvar = "CVE_ID",
 																timevar = "CVSS_Authentication", v.names = "CVSS_Authentication")
@@ -158,6 +144,8 @@ head(nvd2014_2017Columns_1_4_Wide)
 View(nvd2014_2017Columns_1_4_Wide)
 lengthColumns_1_4 <- length(nvd2014_2017Columns_1_4_Wide)
 lengthColumns_1_4
+
+#[11]
 #-----CVSS_Authentication.NONE-----#
 str(nvd2014_2017Columns_1_4_Wide)
 nvd2014_2017Columns_1_4_Wide$CVSS_Authentication.NONE <- as.character(nvd2014_2017Columns_1_4_Wide$CVSS_Authentication.NONE)
@@ -180,6 +168,7 @@ nvd2014_2017Columns_1_4_Wide$CVSS_Authentication.MULTIPLE_INSTANCES <- as.factor
 str(nvd2014_2017Columns_1_4_Wide)
 View(nvd2014_2017Columns_1_4_Wide)
 
+#[12]
 #[Columns: 1 and 5] - CVE_ID & CVSS_Confidentiality_Impact
 nvd2014_2017Columns_1_5_Wide <- reshape(data = nvd2014_2017Columns_1_5, direction = "wide", idvar = "CVE_ID",
 																				timevar = "CVSS_Confidentiality_Impact", v.names = "CVSS_Confidentiality_Impact")
@@ -187,6 +176,8 @@ head(nvd2014_2017Columns_1_5_Wide)
 View(nvd2014_2017Columns_1_5_Wide)
 lengthColumns_1_5 <- length(nvd2014_2017Columns_1_5_Wide)
 lengthColumns_1_5
+
+#[13]
 #-----CVSS_Confidentiality_Impact.PARTIAL-----#
 str(nvd2014_2017Columns_1_5_Wide)
 nvd2014_2017Columns_1_5_Wide$CVSS_Confidentiality_Impact.PARTIAL <- as.character(nvd2014_2017Columns_1_5_Wide$CVSS_Confidentiality_Impact.PARTIAL)
@@ -209,6 +200,7 @@ nvd2014_2017Columns_1_5_Wide$CVSS_Confidentiality_Impact.NONE <- as.factor(nvd20
 str(nvd2014_2017Columns_1_5_Wide)
 View(nvd2014_2017Columns_1_5_Wide)
 
+#[14]
 #[Columns: 1 and 6] - CVE_ID & CVSS_Integrity_Impact
 nvd2014_2017Columns_1_6_Wide <- reshape(data = nvd2014_2017Columns_1_6, direction = "wide", idvar = "CVE_ID",
 																				timevar = "CVSS_Integrity_Impact", v.names = "CVSS_Integrity_Impact")
@@ -216,6 +208,8 @@ head(nvd2014_2017Columns_1_6_Wide)
 View(nvd2014_2017Columns_1_6_Wide)
 lengthColumns_1_6 <- length(nvd2014_2017Columns_1_6_Wide)
 lengthColumns_1_6
+
+#[15]
 #-----CVSS_Integrity_Impact.PARTIAL-----#
 str(nvd2014_2017Columns_1_6_Wide)
 nvd2014_2017Columns_1_6_Wide$CVSS_Integrity_Impact.PARTIAL <- as.character(nvd2014_2017Columns_1_6_Wide$CVSS_Integrity_Impact.PARTIAL)
@@ -238,6 +232,7 @@ nvd2014_2017Columns_1_6_Wide$CVSS_Integrity_Impact.NONE <- as.factor(nvd2014_201
 str(nvd2014_2017Columns_1_6_Wide)
 View(nvd2014_2017Columns_1_6_Wide)
 
+#[16]
 #[Columns: 1 and 7] - CVE_ID & CVSS_Availability_Impact
 nvd2014_2017Columns_1_7_Wide <- reshape(data = nvd2014_2017Columns_1_7, direction = "wide", idvar = "CVE_ID",
 																				timevar = "CVSS_Availability_Impact", v.names = "CVSS_Availability_Impact")
@@ -245,6 +240,8 @@ head(nvd2014_2017Columns_1_7_Wide)
 View(nvd2014_2017Columns_1_7_Wide)
 lengthColumns_1_7 <- length(nvd2014_2017Columns_1_7_Wide)
 lengthColumns_1_7
+
+#[17]
 #-----CVSS_Availability_Impact.PARTIAL-----#
 str(nvd2014_2017Columns_1_7_Wide)
 nvd2014_2017Columns_1_7_Wide$CVSS_Availability_Impact.PARTIAL <- as.character(nvd2014_2017Columns_1_7_Wide$CVSS_Availability_Impact.PARTIAL)
@@ -267,6 +264,7 @@ nvd2014_2017Columns_1_7_Wide$CVSS_Availability_Impact.NONE <- as.factor(nvd2014_
 str(nvd2014_2017Columns_1_7_Wide)
 View(nvd2014_2017Columns_1_7_Wide)
 
+#[18]
 #[Columns: 1 and 8] CVE_ID & CWE_ID_1
 nvd2014_2017Columns_1_8_Wide <- reshape(data = nvd2014_2017Columns_1_8, direction = "wide", idvar = "CVE_ID",
 																				timevar = "CWE_ID_1", v.names = "CWE_ID_1")
@@ -274,6 +272,8 @@ head(nvd2014_2017Columns_1_8_Wide[,1:6])
 View(nvd2014_2017Columns_1_8_Wide)
 lengthColumns_1_8 <- length(nvd2014_2017Columns_1_8_Wide)
 lengthColumns_1_8
+
+#[19]
 #-----`CWE_ID_1.CWE-119`-----#
 str(nvd2014_2017Columns_1_8_Wide)
 nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-119` <- as.character(nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-119`)
@@ -975,13 +975,16 @@ nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-769` <- as.factor(nvd2014_2017Columns
 str(nvd2014_2017Columns_1_8_Wide)
 View(nvd2014_2017Columns_1_8_Wide)
 
-#[Columns: 1 and 13]
+#[20]
+#[Columns: 1 and 13] CVE_ID & CVSS_Score
 nvd2014_2017Columns_1_13_Wide <- reshape(data = nvd2014_2017Columns_1_13, direction = "wide", idvar = "CVE_ID",
 																				timevar = "CVSS_Score", v.names = "CVSS_Score")
 head(nvd2014_2017Columns_1_13_Wide[,1:6])
 View(nvd2014_2017Columns_1_13_Wide)
 lengthColumns_1_13 <- length(nvd2014_2017Columns_1_13_Wide)
 lengthColumns_1_13
+
+#[21]
 #-----CVSS_Score.7.5-----#
 str(nvd2014_2017Columns_1_13_Wide)
 nvd2014_2017Columns_1_13_Wide$CVSS_Score.7.5 <- as.character(nvd2014_2017Columns_1_13_Wide$CVSS_Score.7.5)
@@ -1473,6 +1476,7 @@ nvd2014_2017Columns_1_13_Wide$CVSS_Score.5.9 <- as.factor(nvd2014_2017Columns_1_
 str(nvd2014_2017Columns_1_13_Wide)
 View(nvd2014_2017Columns_1_13_Wide)
 
+#[Length]
 #[Length of Columns (Total)]
 lengthColumnsTotal <- lengthColumns_1_2 + lengthColumns_1_3 + lengthColumns_1_4 + 
 											lengthColumns_1_5 + lengthColumns_1_6 + lengthColumns_1_7 +
@@ -1481,7 +1485,7 @@ lengthColumnsTotal
 lengthColumnsTotalUpdated <- lengthColumnsTotal - 7
 lengthColumnsTotalUpdated
 
-
+#[22]
 #https://stackoverflow.com/questions/16666643/merging-more-than-2-dataframes-in-r-by-rownames
 library(plyr)
 nvd2014_2017ColumnsTotal <- join_all(list(nvd2014_2017Columns_1_2_Wide, nvd2014_2017Columns_1_3_Wide,
@@ -1494,6 +1498,7 @@ View(nvd2014_2017ColumnsTotal)
 write.csv(nvd2014_2017ColumnsTotal, "NVD_2014_2017_Columns_Total.csv", row.names = FALSE)
 write.csv(nvd2014_2017ColumnsTotal, "NVD_2014_2017_Columns_Total_Binary.csv", row.names = FALSE)
 
+#[23]
 #https://stackoverflow.com/questions/18580506/recommenderlab-error-in-asmethodobject-invalid-class-na-to-dup-mmatrix-as
 nvd2014_2017ColumnsTotalMatrix <- as.matrix(nvd2014_2017ColumnsTotal[2:188])
 nvd2014_2017ColumnsTotalMatrix[is.na(nvd2014_2017ColumnsTotalMatrix)] <- 0
@@ -1502,7 +1507,9 @@ nvd2014_2017ColumnsTotalMatrix[nvd2014_2017ColumnsTotalMatrix == 1] <- 0
 nvd2014_2017ColumnsTotalMatrix[nvd2014_2017ColumnsTotalMatrix == 2] <- 1
 rownames(nvd2014_2017ColumnsTotalMatrix) <- nvd2014_2017ColumnsTotal[,1]
 str(nvd2014_2017ColumnsTotalMatrix)
+View(nvd2014_2017ColumnsTotalMatrix)
 
+#[24]
 nvd2014_2017ColumnsTotalMatrixBinary <- as(nvd2014_2017ColumnsTotalMatrix, "binaryRatingMatrix")
 nvd2014_2017ColumnsTotalMatrixBinary
 image(nvd2014_2017ColumnsTotalMatrixBinary[1:187, 1:187], main = "Binary Rating Matrix")

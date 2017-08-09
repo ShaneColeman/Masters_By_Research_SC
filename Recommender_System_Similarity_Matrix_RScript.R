@@ -1,5 +1,5 @@
 #[1]
-#Recommender_System_Similarity_Matrix_RScript.R
+#Recommender_System_Similarity_Matrix_S_M_RScript.R
 
 #[Memory]
 #https://support.rstudio.com/hc/en-us/community/posts/115000475648-Memory-limit

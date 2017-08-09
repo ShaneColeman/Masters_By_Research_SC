@@ -1,5 +1,20 @@
 #Removed_R_Code_Recommender_System_RScript.R
 
+
+
+
+#-----Code was located underneath: 'set.seed(1)' (line 19 - 23)-----#
+#----------#
+#[3]
+View(nvdMerge2014_2017TotalUpdated)
+object.size(nvdMerge2014_2017TotalUpdated)
+object.size(as(nvdMerge2014_2017TotalUpdated, "binaryRatingMatrix"))
+object.size(as(nvdMerge2014_2017TotalUpdated, "binaryRatingMatrix")) / object.size(nvdMerge2014_2017TotalUpdated)
+#----------#
+
+
+
+
 #RScript: Recommender_System_RScript.R
 #Code Lines: 27 - 122
 #----------#
@@ -100,6 +115,48 @@ str(nvd2014_2017SelectedColumns$CVSS_Severity)
 View(nvd2014_2017SelectedColumns)
 
 
+
+
+#-----Code was located underneath: 'object.size(as(nvd2014_2017SelectedColumnsUpdated, "matrix")) / object.size(nvd2014_2017SelectedColumnsUpdated)' (line 40 - 44)-----#
+#----------#
+#nvd2014_2017CVEID_CVSSScore <- nvd2014_2017SelectedColumns[c(1, 13)]
+#nvd2014_2017CVEID_CVSSScore
+#rm(nvd2014_2017CVEID_CVSSScore)
+#----------#
+
+
+
+
+#-----Code was located underneath: 'View(nvd2014_2017Columns_1_13)' (line 68 - 93)-----#
+#---------------------------------------------#
+#---------------------------------------------#
+nvd2014_2017CVEID_CVSSScoreUpdated <- nvd2014_2017SelectedColumnsUpdated[c(1, 13)]
+nvd2014_2017CVEID_CVSSScoreUpdated
+rm(nvd2014_2017CVEID_CVSSScoreUpdated)
+#str(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
+#nvd2014_2017CVEID_CVSSScore$CVSS_Score
+#as.data.frame(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
+#nvd2014_2017CVEID_CVSSScore$CVSS_Score <- as.character(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
+#nvd2014_2017CVEID_CVSSScore$CVSS_Score
+#nvd2014_2017CVEID_CVSSScore$CVSS_Score[!is.na(nvd2014_2017CVEID_CVSSScore$CVSS_Score)] <- "1"
+#str(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
+#nvd2014_2017CVEID_CVSSScore$CVSS_Score <- as.factor(nvd2014_2017CVEID_CVSSScore$CVSS_Score)
+#str(nvd2014_2017CVEID_CVSSScore)
+
+#nvd2014_2017CVEID_CVSSScore_Wide <- reshape(data = nvd2014_2017CVEID_CVSSScore, 
+#																		direction = "wide",
+#																		idvar = "CVE_ID",
+#																		timevar = "CVSS_Score",
+#																		v.names = "CVSS_Score")
+#head(nvd2014_2017CVEID_CVSSScore_Wide[,1:7])
+#View(nvd2014_2017CVEID_CVSSScore_Wide)
+#rownames(nvd2014_2017CVEID_CVSSScore_Wide) <- nvd2014_2017CVEID_CVSSScore_Wide$CVE_ID
+#rm(nvd2014_2017CVEID_CVSSScore_Wide)
+#----------#
+
+
+
+
 #-----Code was located underneath the 'Binary Rating Matrix' Graph (line 1016)-----#
 #---------------------------------------------#
 #---------------------------------------------#
@@ -122,6 +179,7 @@ nvd2014_2017CVEID_CVSSScore_WideUpdated <- reshape(data = nvd2014_2017CVEID_CVSS
 																									 v.names = "CVSS_Score")
 head(nvd2014_2017CVEID_CVSSScore_WideUpdated[,1:7])
 View(nvd2014_2017CVEID_CVSSScore_WideUpdated)
+rm(nvd2014_2017CVEID_CVSSScore_WideUpdated)
 #rownames(nvd2014_2017CVEID_CVSSScore_Wide) <- nvd2014_2017CVEID_CVSSScore_Wide$CVE_ID
 
 nvd2014_2017CVEID_CVSSScore_WideUpdated$CVSS_Score.7.5 <- as.character(nvd2014_2017CVEID_CVSSScore_WideUpdated$CVSS_Score.7.5)
@@ -332,12 +390,16 @@ nvd2014_2017CVEID_CVSSScore_Wide_MatrixUpdated[nvd2014_2017CVEID_CVSSScore_Wide_
 nvd2014_2017CVEID_CVSSScore_Wide_MatrixUpdated[nvd2014_2017CVEID_CVSSScore_Wide_MatrixUpdated == 1] <- 0
 nvd2014_2017CVEID_CVSSScore_Wide_MatrixUpdated[nvd2014_2017CVEID_CVSSScore_Wide_MatrixUpdated == 3] <- 1
 str(nvd2014_2017CVEID_CVSSScore_Wide_MatrixUpdated)
+View(nvd2014_2017CVEID_CVSSScore_Wide_MatrixUpdated)
+rm(nvd2014_2017CVEID_CVSSScore_Wide_MatrixUpdated)
 
 testRealMatrixUpdated <- as(nvd2014_2017CVEID_CVSSScore_Wide_MatrixUpdated, "binaryRatingMatrix")
 testRealMatrixUpdated
 image(testRealMatrixUpdated[1:40, 1:40], main = "Binary Rating Matrix")
+rm(testRealMatrixUpdated)
 
 #str(nvd2014_2017CVEID_CVSSScore_Wide_Matrix)
+#rm(nvd2014_2017CVEID_CVSSScore_Wide_Matrix)
 #nvd2014_2017CVEID_CVSSScore_Wide_Matrix[is.na(nvd2014_2017CVEID_CVSSScore_Wide_Matrix)] <- 0
 #testMatrix <- as(nvd2014_2017CVEID_CVSSScore_Wide_Matrix, "realRatingMatrix")
 #View(nvd2014_2017CVEID_CVSSScore_Wide_Matrix)
@@ -367,3 +429,7 @@ image(testRealMatrixUpdated[1:40, 1:40], main = "Binary Rating Matrix")
 #View(nvd2014_2017CVEID_CWEID1Description_Wide)
 #nvd2014_2017CVEID_CWEID1Description_Wide_Matrix <- as.matrix(nvd2014_2017CVEID_CWEID1Description_Wide)
 #View(nvd2014_2017CVEID_CWEID1Description_Wide_Matrix)
+
+
+
+

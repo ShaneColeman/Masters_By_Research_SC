@@ -28,3 +28,20 @@ recommender_system_training_data <- nvd2014_2017ColumnsTotalMatrixBinary[trainin
 recommender_system_training_data #21541 x 187 rating matrix of class ‘binaryRatingMatrix’ with 169190 ratings.
 recommender_system_testing_data <- nvd2014_2017ColumnsTotalMatrixBinary[!training, ]
 recommender_system_testing_data #5493 x 187 rating matrix of class ‘binaryRatingMatrix’ with 43191 ratings.
+
+#[4]
+recommender_system_model <- Recommender(data = recommender_system_training_data, 
+															method = "IBCF",
+															parameter = list(method = "Jaccard"))
+recommender_system_model
+
+#class(recommender_system_model@model$sim)
+#dim(recommender_system_model@model$sim)
+#image(recommender_system_model@model$sim)
+#range(recommender_system_model@model$sim)
+#getModel(recommender_system_model)
+
+#[Test]
+#dist_test <- as(recommender_system_model@model$sim, "matrix")
+#View(dist_test)
+#summary(dist_test)

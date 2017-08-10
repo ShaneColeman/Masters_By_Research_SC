@@ -15,3 +15,16 @@ if(!"recommenderlab" %in% rownames(install.packages()))
 library(recommenderlab)
 help(package = "recommenderlab")
 set.seed(1)
+
+#[3]
+training <- sample(x = c(TRUE, FALSE),
+										size = nrow(nvd2014_2017ColumnsTotalMatrixBinary),
+										replace = TRUE,
+										prob = c(0.8, 0.2))
+summary(training)
+21541 + 5493 #TRUE = 21541 / FALSE = 5493
+nvd2014_2017ColumnsTotalMatrixBinary #27034 x 187 rating matrix of class ‘binaryRatingMatrix’ with 212381 ratings.
+recommender_system_training_data <- nvd2014_2017ColumnsTotalMatrixBinary[training, ]
+recommender_system_training_data #21541 x 187 rating matrix of class ‘binaryRatingMatrix’ with 169190 ratings.
+recommender_system_testing_data <- nvd2014_2017ColumnsTotalMatrixBinary[!training, ]
+recommender_system_testing_data #5493 x 187 rating matrix of class ‘binaryRatingMatrix’ with 43191 ratings.

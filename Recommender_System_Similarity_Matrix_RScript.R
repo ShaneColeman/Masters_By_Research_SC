@@ -16,11 +16,12 @@ library(recommenderlab)
 help(package = "recommenderlab")
 set.seed(1)
 
-#[Test Code]
+#[3]***
 #----------#
 #nvd2014_2017SelectedColumns <- nvdMerge2014_2015_2016_2017Updated[c(1, 9:14, 17:18, 19:20, 2, 7:8)]
-#str(nvd2014_2017SelectedColumns$CWE_ID_1)
-#rm(nvd2014_2017SelectedColumns)
+#str(nvd2014_2017SelectedColumns)
+#View(nvd2014_2017SelectedColumns)
+#summary(nvd2014_2017SelectedColumns)
 #----------#
 
 #[3]
@@ -1513,4 +1514,14 @@ View(nvd2014_2017ColumnsTotalMatrix)
 nvd2014_2017ColumnsTotalMatrixBinary <- as(nvd2014_2017ColumnsTotalMatrix, "binaryRatingMatrix")
 nvd2014_2017ColumnsTotalMatrixBinary
 image(nvd2014_2017ColumnsTotalMatrixBinary[1:187, 1:187], main = "Binary Rating Matrix")
+
+#[25]
+library(ggplot2)
+#Distribution of the number of CVE_IDs
+number_CVE_ID_Column_Count <- colCounts(nvd2014_2017ColumnsTotalMatrixBinary)
+summary(number_CVE_ID_Column_Count)
+qplot(number_CVE_ID_Column_Count) + stat_bin(binwidth = 1000) + 
+	ggtitle("Distribution of the number of CVE IDs")
+#qplot(number_CVE_ID_Column_Count[number_CVE_ID_Column_Count < 1000]) + stat_bin(binwidth = 100) + 
+	#ggtitle("Distribution of the number of CVE IDs")
 

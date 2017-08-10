@@ -1,2 +1,23 @@
 R Script Files: 
 Recommender_System_Model_Build_RScript.R
+
+#---------------------------------------- Steps ----------------------------------------#
+#---------------------------------------------------------------------------------------#
+[1]
+Recommender_System_Model_Build_RScript.R R Script created and added to RStudio workspace. 
+
+[Memory]
+Memory limited observed through the use of the memory.limit() function.
+Memory limit increased by the use of the memory.size() function, which was increased to 
+15000.
+
+[2]
+Packages installed through the install.packages() function and imported via the library() function.
+"recommenderlab".
+set.seed() function applied and set to '1', in order to reproduce the code obtaining the same output.
+
+[3]
+Binary rating matrix 'nvd2014_2017ColumnsTotalMatrixBinary' split into training and testing data set (variable name: training), called: recommender_system_training_data (training - 80% (0.8 - training)) and recommender_system_testing_data (testing - 20% (0.2 - !training)). 
+
+[4]
+Recommender system model called 'recommender_system_model' created, which uses the training data set 'recommender_system_training_data', the 'IBCF' (Item-Based Collaborative Filtering) method and the distance method 'Jaccard' (as it is binary rating data).

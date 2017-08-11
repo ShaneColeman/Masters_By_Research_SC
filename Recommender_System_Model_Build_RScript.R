@@ -22,7 +22,7 @@ training <- sample(x = c(TRUE, FALSE),
 										replace = TRUE,
 										prob = c(0.8, 0.2))
 summary(training)
-21541 + 5493 #TRUE = 21541 / FALSE = 5493
+21571 + 5463 #TRUE = 21571 / FALSE = 5463
 nvd2014_2017ColumnsTotalMatrixBinary #27034 x 187 rating matrix of class ‘binaryRatingMatrix’ with 212381 ratings.
 recommender_system_training_data <- nvd2014_2017ColumnsTotalMatrixBinary[training, ]
 recommender_system_training_data #21541 x 187 rating matrix of class ‘binaryRatingMatrix’ with 169190 ratings.
@@ -35,11 +35,11 @@ recommender_system_model <- Recommender(data = recommender_system_training_data,
 															parameter = list(method = "Jaccard"))
 recommender_system_model
 
-#class(recommender_system_model@model$sim)
-#dim(recommender_system_model@model$sim)
-#image(recommender_system_model@model$sim)
-#range(recommender_system_model@model$sim)
-#getModel(recommender_system_model)
+class(recommender_system_model@model$sim)
+dim(recommender_system_model@model$sim)
+image(recommender_system_model@model$sim)
+range(recommender_system_model@model$sim)
+getModel(recommender_system_model)
 
 #[Test]
 #dist_test <- as(recommender_system_model@model$sim, "matrix")

@@ -17,3 +17,550 @@ Memory limit increased by the use of the memory.size() function, which was incre
 Packages installed through the install.packages() function and imported via the library() function.
 "recommenderlab".
 set.seed() function applied and set to '1', in order to reproduce the code obtaining the same output.
+
+[3]***
+Identical to step [3], however data frame nvdMerge2014_2015_2016_2017Updated is used instead of data frame nvdMerge2014_2015_2016_2017NAUpdated (as used in step [3]), and stored in nvd2014_2017SelectedColumns data frame.
+
+[3]
+nvd2014_2017SelectedColumnsUpdated data frame created, which comprises of the following data frames (from the nvdMerge2014_2015_2016_2017NAUpdated data frame): 1, 9:14, 17:18, 19:20, 2, 7:8.
+1 	= 	CVE_ID
+9 	= 	CVSS_Access_Vector
+10 	= 	CVSS_Access_Complexity
+11 	=		CVSS_Authentication
+12 	=		CVSS_Confidentiality_Impact
+13 	=		CVSS_Integrity_Impact
+14 	= 	CVSS_Availability_Impact
+17	=		CWE_ID_1
+18 	=		CWE_ID_1_Description
+19 	=		CWE_ID_2
+20 	=		CWE_ID_2_Description
+2		=		Vulnerability_Summary
+7 	=		CVSS_Score
+8 	=		CVSS_Severity
+
+[4]
+Multiple two column data frames created from utilising the previously created nvd2014_2017SelectedColumnsUpdated data frame. They contain the CVE_ID (1) as the primary identifer column and the data frame columns: (2, 3, 4, 5, 6, 7, 8, 13), located in the nvd2014_2017SelectedColumnsUpdated data frame where individual data frame were then created.
+List of multiple two column data frames created:
+a. nvd2014_2017Columns_1_2		-		[Columns: 1 and 2]	-	CVE_ID & CVSS_Access_Vector
+b. nvd2014_2017Columns_1_3		-		[Columns: 1 and 3]	- CVE_ID & CVSS_Access_Complexity
+c. nvd2014_2017Columns_1_4		-		[Columns: 1 and 4] 	- CVE_ID & CVSS_Authentication
+d. nvd2014_2017Columns_1_5		-		[Columns: 1 and 5] 	- CVE_ID & CVSS_Confidentiality_Impact
+e. nvd2014_2017Columns_1_6		-		[Columns: 1 and 6] 	- CVE_ID & CVSS_Integrity_Impact
+f. nvd2014_2017Columns_1_7		-		[Columns: 1 and 7] 	- CVE_ID & CVSS_Availability_Impact
+g. nvd2014_2017Columns_1_8		-		[Columns: 1 and 8] 	- CVE_ID & CWE_ID_1
+h. nvd2014_2017Columns_1_13		-		[Columns: 1 and 13] - CVE_ID & CVSS_Score
+
+[5]
+Data frame nvd2014_2017Columns_1_2_Wide created, which utilises data frame (a. nvd2014_2017Columns_1_2). 
+The reshape function was used, to alter the data frame from a 'long' format into a 'wide' format, meaning that each value that is possible for the CVSS_Access_Vector: 
+NETWORK, 
+LOCAL, 
+ADJACENT_NETWORK 
+now has its own unique column, and these values are not stored into the one column with the header 'CVSS_Access_Vector'. 
+The alteration and reshaping of the from long format to wide format of the nvd2014_2017Columns_1_2 data frame is achieved through the use of the 'direction' variable. 
+The variable 'idvar'signifies the primary identifer, which is the "CVE_ID". 
+The variable 'timevar'signifies the attribute within the same group association. 
+The variable 'v.names' signifies the unique name given to the unique columns headers, for instance: CVSS_Access_Vector.NETWORK, 
+CVSS_Access_Vector.LOCAL, 
+CVSS_Access_Vector.ADJACENT_NETWORK.
+
+[6]
+Unique columns from the nvd2014_2017Columns_1_2_Wide data frame extracted: 
+nvd2014_2017Columns_1_2_Wide$CVSS_Access_Vector.NETWORK, 
+nvd2014_2017Columns_1_2_Wide$CVSS_Access_Vector.LOCAL, 
+nvd2014_2017Columns_1_2_Wide$CVSS_Access_Vector.ADJACENT_NETWORK
+and converted into character format via the 'as.character' function.
+Existing values within these unique columns are converted into the numerical value '1', through the use of the 'is.na' function. 
+Once the exisiting values within the unique columns are converted into a numerical value '1', the unique columns are converted back into their original format 'factor', through the use of the 'as.factor' function. 
+
+[7]
+Data frame nvd2014_2017Columns_1_3_Wide created, which utilises data frame (b. nvd2014_2017Columns_1_3). 
+The reshape function was used, to alter the data frame from a 'long' format into a 'wide' format, meaning that each value that is possible for the CVSS_Access_Complexity: 
+LOW, 
+MEDIUM, 
+HIGH 
+now has its own unique column, and these values are not stored into the one column with the header 'CVSS_Access_Complexity'. 
+The alteration and reshaping of the from long format to wide format of the nvd2014_2017Columns_1_3 data frame is achieved through the use of the 'direction' variable. 
+The variable 'idvar'signifies the primary identifer, which is the "CVE_ID". 
+The variable 'timevar'signifies the attribute within the same group association. 
+The variable 'v.names' signifies the unique name given to the unique columns headers, for instance: CVSS_Access_Complexity.LOW, 
+CVSS_Access_Complexity.MEDIUM, 
+CVSS_Access_Complexity.HIGH.
+
+[8]
+Unique columns from the nvd2014_2017Columns_1_3_Wide data frame extracted: 
+nvd2014_2017Columns_1_3_Wide$CVSS_Access_Complexity.LOW, 
+nvd2014_2017Columns_1_3_Wide$CVSS_Access_Complexity.MEDIUM, 
+nvd2014_2017Columns_1_3_Wide$CVSS_Access_Complexity.HIGH 
+and converted into character format via the 'as.character' function.
+Existing values within these unique columns are converted into the numerical value '1', through the use of the 'is.na' function. 
+Once the exisiting values within the unique columns are converted into a numerical value '1', the unique columns are converted back into their original format 'factor', through the use of the 'as.factor' function. 
+
+[9]
+Data frame nvd2014_2017Columns_1_4_Wide created, which utilises data frame (c. nvd2014_2017Columns_1_4). 
+The reshape function was used, to alter the data frame from a 'long' format into a 'wide' format, meaning that each value that is possible for the CVSS_Authentication: 
+NONE, 
+SINGLE_INSTANCE, 
+MULTIPLE_INSTANCES 
+now has its own unique column, and these values are not stored into the one column with the header 'CVSS_Authentication'. 
+The alteration and reshaping of the from long format to wide format of the nvd2014_2017Columns_1_4 data frame is achieved through the use of the 'direction' variable. 
+The variable 'idvar'signifies the primary identifer, which is the "CVE_ID". 
+The variable 'timevar'signifies the attribute within the same group association. 
+The variable 'v.names' signifies the unique name given to the unique columns headers, for instance: CVSS_Authentication.NONE, 
+CVSS_Authentication.SINGLE_INSTANCE, 
+CVSS_Authentication.MULTIPLE_INSTANCES.
+
+[10]
+Unique columns from the nvd2014_2017Columns_1_4_Wide data frame extracted: 
+nvd2014_2017Columns_1_4_Wide$CVSS_Authentication.NONE, 
+nvd2014_2017Columns_1_4_Wide$CVSS_Authentication.SINGLE_INSTANCE, 
+nvd2014_2017Columns_1_4_Wide$CVSS_Authentication.MULTIPLE_INSTANCES
+and converted into character format via the 'as.character' function.
+Existing values within these unique columns are converted into the numerical value '1', through the use of the 'is.na' function. 
+Once the exisiting values within the unique columns are converted into a numerical value '1', the unique columns are converted back into their original format 'factor', through the use of the 'as.factor' function. 
+
+[11]
+Data frame nvd2014_2017Columns_1_5_Wide created, which utilises data frame (d. nvd2014_2017Columns_1_5). 
+The reshape function was used, to alter the data frame from a 'long' format into a 'wide' format, meaning that each value that is possible for the CVSS_Confidentiality_Impact: 
+PARTIAL, 
+COMPLETE, 
+NONE 
+now has its own unique column, and these values are not stored into the one column with the header 'CVSS_Confidentiality_Impact'. 
+The alteration and reshaping of the from long format to wide format of the nvd2014_2017Columns_1_5 data frame is achieved through the use of the 'direction' variable. 
+The variable 'idvar'signifies the primary identifer, which is the "CVE_ID". 
+The variable 'timevar'signifies the attribute within the same group association. 
+The variable 'v.names' signifies the unique name given to the unique columns headers, for instance: 
+CVSS_Confidentiality_Impact.PARTIAL, 
+CVSS_Confidentiality_Impact.COMPLETE, 
+CVSS_Confidentiality_Impact.NONE.
+
+[12]
+Unique columns from the nvd2014_2017Columns_1_5_Wide data frame extracted: 
+nvd2014_2017Columns_1_5_Wide$CVSS_Confidentiality_Impact.PARTIAL, 
+nvd2014_2017Columns_1_5_Wide$CVSS_Confidentiality_Impact.COMPLETE, 
+nvd2014_2017Columns_1_5_Wide$CVSS_Confidentiality_Impact.NONE
+and converted into character format via the 'as.character' function.
+Existing values within these unique columns are converted into the numerical value '1', through the use of the 'is.na' function. 
+Once the exisiting values within the unique columns are converted into a numerical value '1', the unique columns are converted back into their original format 'factor', through the use of the 'as.factor' function. 
+
+[13]
+Data frame nvd2014_2017Columns_1_6_Wide created, which utilises data frame (e. nvd2014_2017Columns_1_6). 
+The reshape function was used, to alter the data frame from a 'long' format into a 'wide' format, meaning that each value that is possible for the CVSS_Integrity_Impact: 
+PARTIAL, 
+COMPLETE, 
+NONE 
+now has its own unique column, and these values are not stored into the one column with the header 'CVSS_Integrity_Impact'. 
+The alteration and reshaping of the from long format to wide format of the nvd2014_2017Columns_1_6 data frame is achieved through the use of the 'direction' variable. 
+The variable 'idvar'signifies the primary identifer, which is the "CVE_ID". 
+The variable 'timevar'signifies the attribute within the same group association. 
+The variable 'v.names' signifies the unique name given to the unique columns headers, for instance: 
+CVSS_Integrity_Impact.PARTIAL, 
+CVSS_Integrity_Impact.COMPLETE, 
+CVSS_Integrity_Impact.NONE.
+
+[14]
+Unique columns from the nvd2014_2017Columns_1_6_Wide data frame extracted: 
+nvd2014_2017Columns_1_6_Wide$CVSS_Integrity_Impact.PARTIAL, 
+nvd2014_2017Columns_1_6_Wide$CVSS_Integrity_Impact.COMPLETE, 
+nvd2014_2017Columns_1_6_Wide$CVSS_Integrity_Impact.NONE
+and converted into character format via the 'as.character' function.
+Existing values within these unique columns are converted into the numerical value '1', through the use of the 'is.na' function. 
+Once the exisiting values within the unique columns are converted into a numerical value '1', the unique columns are converted back into their original format 'factor', through the use of the 'as.factor' function. 
+
+[15]
+Data frame nvd2014_2017Columns_1_7_Wide created, which utilises data frame (f. nvd2014_2017Columns_1_7). 
+The reshape function was used, to alter the data frame from a 'long' format into a 'wide' format, meaning that each value that is possible for the CVSS_Availability_Impact: 
+PARTIAL, 
+COMPLETE, 
+NONE 
+now has its own unique column, and these values are not stored into the one column with the header 'CVSS_Availability_Impact'. 
+The alteration and reshaping of the from long format to wide format of the nvd2014_2017Columns_1_7 data frame is achieved through the use of the 'direction' variable. 
+The variable 'idvar'signifies the primary identifer, which is the "CVE_ID". 
+The variable 'timevar'signifies the attribute within the same group association. 
+The variable 'v.names' signifies the unique name given to the unique columns headers, for instance: 
+CVSS_Availability_Impact.PARTIAL, 
+CVSS_Availability_Impact.COMPLETE, 
+CVSS_Availability_Impact.NONE.
+
+[16]
+Unique columns from the nvd2014_2017Columns_1_7_Wide data frame extracted: 
+nvd2014_2017Columns_1_7_Wide$CVSS_Availability_Impact.PARTIAL, 
+nvd2014_2017Columns_1_7_Wide$CVSS_Availability_Impact.COMPLETE, 
+nvd2014_2017Columns_1_7_Wide$CVSS_Availability_Impact.NONE
+and converted into character format via the 'as.character' function.
+Existing values within these unique columns are converted into the numerical value '1', through the use of the 'is.na' function. 
+Once the exisiting values within the unique columns are converted into a numerical value '1', the unique columns are converted back into their original format 'factor', through the use of the 'as.factor' function. 
+
+[17]
+Data frame nvd2014_2017Columns_1_8_Wide created, which utilises data frame (g. nvd2014_2017Columns_1_8). 
+The reshape function was used, to alter the data frame from a 'long' format into a 'wide' format, meaning that each value that is possible for the CWE_ID_1: 
+PARTIAL, 
+COMPLETE, 
+NONE 
+now has its own unique column, and these values are not stored into the one column with the header 'CWE_ID_1'. 
+The alteration and reshaping of the from long format to wide format of the nvd2014_2017Columns_1_8 data frame is achieved through the use of the 'direction' variable. 
+The variable 'idvar'signifies the primary identifer, which is the "CVE_ID". 
+The variable 'timevar'signifies the attribute within the same group association. 
+The variable 'v.names' signifies the unique name given to the unique columns headers, for instance: 
+`CWE_ID_1.CWE-119`, 
+`CWE_ID_1.CWE-264`, 
+`CWE_ID_1.CWE-200`,
+CWE_ID_1.NA, ***
+`CWE_ID_1.CWE-255`,
+`CWE_ID_1.CWE-352`,
+`CWE_ID_1.CWE-287`,
+`CWE_ID_1.CWE-332`,
+`CWE_ID_1.CWE-20`,
+`CWE_ID_1.CWE-59`,
+`CWE_ID_1.CWE-189`,
+`CWE_ID_1.CWE-79`,
+`CWE_ID_1.CWE-94`,
+`CWE_ID_1.CWE-362`,
+`CWE_ID_1.CWE-89`,
+`CWE_ID_1.CWE-399`,
+`CWE_ID_1.CWE-22`,
+`CWE_ID_1.CWE-611`,
+`CWE_ID_1.CWE-19`,
+`CWE_ID_1.CWE-284`,
+`CWE_ID_1.CWE-416`,
+`CWE_ID_1.CWE-78`,
+`CWE_ID_1.CWE-254`,
+`CWE_ID_1.CWE-415`,
+`CWE_ID_1.CWE-134`,
+`CWE_ID_1.CWE-824`,
+`CWE_ID_1.CWE-199`,
+`CWE_ID_1.CWE-77`,
+`CWE_ID_1.CWE-21`,
+`CWE_ID_1.CWE-17`,
+`CWE_ID_1.CWE-345`,
+`CWE_ID_1.CWE-16`,
+`CWE_ID_1.CWE-400`,
+`CWE_ID_1.CWE-297`,
+`CWE_ID_1.CWE-297`,
+`CWE_ID_1.CWE-384`,
+`CWE_ID_1.CWE-358`,
+`CWE_ID_1.CWE-428`,
+`CWE_ID_1.CWE-74`,
+`CWE_ID_1.CWE-190`,
+`CWE_ID_1.CWE-125`,
+`CWE_ID_1.CWE-327`,
+`CWE_ID_1.CWE-502`,
+`CWE_ID_1.CWE-191`,
+`CWE_ID_1.CWE-18`,
+`CWE_ID_1.CWE-388`,
+`CWE_ID_1.CWE-913`,
+`CWE_ID_1.CWE-347`,
+`CWE_ID_1.CWE-116`,
+`CWE_ID_1.CWE-665`,
+`CWE_ID_1.CWE-285`,
+`CWE_ID_1.CWE-129`,
+`CWE_ID_1.CWE-601`,
+`CWE_ID_1.CWE-434`,
+`CWE_ID_1.CWE-113`,
+`CWE_ID_1.CWE-320`,
+`CWE_ID_1.CWE-295`,
+`CWE_ID_1.CWE-798`,
+`CWE_ID_1.CWE-441`,
+`CWE_ID_1.CWE-640`,
+`CWE_ID_1.CWE-369`,
+`CWE_ID_1.CWE-426`,
+`CWE_ID_1.CWE-918`,
+`CWE_ID_1.CWE-275`,
+`CWE_ID_1.CWE-326`,
+`CWE_ID_1.CWE-123`,
+`CWE_ID_1.CWE-787`,
+`CWE_ID_1.CWE-532`,
+`CWE_ID_1.CWE-330`,
+`CWE_ID_1.CWE-306`,
+`CWE_ID_1.CWE-93`,
+`CWE_ID_1.CWE-693`,
+`CWE_ID_1.CWE-88`,
+`CWE_ID_1.CWE-338`,
+`CWE_ID_1.CWE-404`,
+`CWE_ID_1.CWE-361`,
+`CWE_ID_1.CWE-331`,
+`CWE_ID_1.CWE-91`,
+`CWE_ID_1.CWE-172`,
+`CWE_ID_1.CWE-427`,
+`CWE_ID_1.CWE-704`,
+`CWE_ID_1.CWE-669`,
+`CWE_ID_1.CWE-613`,
+`CWE_ID_1.CWE-346`,
+`CWE_ID_1.CWE-184`,
+`CWE_ID_1.CWE-682`,
+`CWE_ID_1.CWE-749`,
+`CWE_ID_1.CWE-754`,
+`CWE_ID_1.CWE-664`,
+`CWE_ID_1.CWE-775`,
+`CWE_ID_1.CWE-90`,
+`CWE_ID_1.CWE-417`,
+`CWE_ID_1.CWE-118`,
+`CWE_ID_1.CWE-444`,
+`CWE_ID_1.CWE-485`,
+`CWE_ID_1.CWE-99`,
+`CWE_ID_1.CWE-943`,
+`CWE_ID_1.CWE-769`.
+
+[18]
+Unique columns from the nvd2014_2017Columns_1_8_Wide data frame extracted: 
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-119`, 
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-264`, 
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-200`,
+nvd2014_2017Columns_1_8_Wide$CWE_ID_1.NA, ***
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-255`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-352`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-287`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-332`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-20`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-59`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-189`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-79`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-94`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-362`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-89`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-399`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-22`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-611`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-19`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-284`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-416`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-78`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-254`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-415`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-134`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-824`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-199`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-77`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-21`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-17`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-345`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-16`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-400`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-297`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-297`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-384`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-358`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-428`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-74`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-190`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-125`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-327`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-502`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-191`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-18`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-388`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-913`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-347`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-116`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-665`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-285`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-129`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-601`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-434`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-113`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-320`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-295`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-798`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-441`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-640`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-369`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-426`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-918`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-275`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-326`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-123`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-787`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-532`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-330`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-306`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-93`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-693`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-88`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-338`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-404`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-361`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-331`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-91`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-172`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-427`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-704`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-669`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-613`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-346`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-184`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-682`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-749`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-754`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-664`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-775`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-90`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-417`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-118`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-444`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-485`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-99`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-943`,
+nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-769`
+and converted into character format via the 'as.character' function.
+Existing values within these unique columns are converted into the numerical value '1', through the use of the 'is.na' function. 
+Once the exisiting values within the unique columns are converted into a numerical value '1', the unique columns are converted back into their original format 'factor', through the use of the 'as.factor' function. 
+
+[19]
+Data frame nvd2014_2017Columns_1_13_Wide created, which utilises data frame (e. nvd2014_2017Columns_1_13). 
+The reshape function was used, to alter the data frame from a 'long' format into a 'wide' format, meaning that each value that is possible for the CVSS_Score: 
+PARTIAL, 
+COMPLETE, 
+NONE 
+now has its own unique column, and these values are not stored into the one column with the header 'CVSS_Score'. 
+The alteration and reshaping of the from long format to wide format of the nvd2014_2017Columns_1_6 data frame is achieved through the use of the 'direction' variable. 
+The variable 'idvar'signifies the primary identifer, which is the "CVE_ID". 
+The variable 'timevar'signifies the attribute within the same group association. 
+The variable 'v.names' signifies the unique name given to the unique columns headers, for instance: 
+CVSS_Score.7.5,
+CVSS_Score.6.9,
+CVSS_Score.3.6,
+CVSS_Score.4.3,
+CVSS_Score.4.0,
+CVSS_Score.5.5,
+CVSS_Score.6.8,
+CVSS_Score.4.4,
+CVSS_Score.1.9,
+CVSS_Score.5.0,
+CVSS_Score.3.3,
+CVSS_Score.2.6,
+CVSS_Score.7.4,
+CVSS_Score.2.1,
+CVSS_Score.6.5,
+CVSS_Score.4.9,
+CVSS_Score.4.6,
+CVSS_Score.6.2,
+CVSS_Score.6.4,
+CVSS_Score.5.8,
+CVSS_Score.9.3,
+CVSS_Score.7.1,
+CVSS_Score.5.2,
+CVSS_Score.6.0,
+CVSS_Score.6.6,
+CVSS_Score.2.9,
+CVSS_Score.5.1,
+CVSS_Score.3.5,
+CVSS_Score.7.2,
+CVSS_Score.9.0,
+CVSS_Score.7.8,
+CVSS_Score.10.0,
+CVSS_Score.5.4,
+CVSS_Score.6.1,
+CVSS_Score.7.9,
+CVSS_Score.3.0,
+CVSS_Score.2.8,
+CVSS_Score.4.1,
+CVSS_Score.7.6,
+CVSS_Score.6.3,
+CVSS_Score.2.4,
+CVSS_Score.3.7,
+CVSS_Score.2.7,
+CVSS_Score.8.5,
+CVSS_Score.7.7,
+CVSS_Score.4.7,
+CVSS_Score.8.3,
+CVSS_Score.5.6,
+CVSS_Score.1.7,
+CVSS_Score.2.3,
+CVSS_Score.9.7,
+CVSS_Score.1.4,
+CVSS_Score.1.0,
+CVSS_Score.8.2,
+CVSS_Score.9.4,
+CVSS_Score.8.0,
+CVSS_Score.6.7,
+CVSS_Score.4.8,
+CVSS_Score.5.7,
+CVSS_Score.1.2,
+CVSS_Score.1.8,
+CVSS_Score.1.5,
+CVSS_Score.3.2,
+CVSS_Score.7.0,
+CVSS_Score.8.7,
+CVSS_Score.3.8,
+CVSS_Score.7.3,
+CVSS_Score.8.8,
+CVSS_Score.1.3,
+CVSS_Score.5.9.
+
+[20]
+Unique columns from the nvd2014_2017Columns_1_8_Wide data frame extracted: 
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.7.5,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.6.9,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.3.6,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.4.3,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.4.0,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.5.5,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.6.8,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.4.4,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.1.9,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.5.0,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.3.3,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.2.6,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.7.4,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.2.1,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.6.5,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.4.9,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.4.6,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.6.2,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.6.4,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.5.8,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.9.3,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.7.1,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.5.2,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.6.0,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.6.6,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.2.9,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.5.1,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.3.5,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.7.2,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.9.0,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.7.8,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.10.0,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.5.4,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.6.1,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.7.9,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.3.0,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.2.8,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.4.1,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.7.6,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.6.3,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.2.4,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.3.7,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.2.7,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.8.5,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.7.7,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.4.7,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.8.3,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.5.6,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.1.7,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.2.3,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.9.7,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.1.4,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.1.0,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.8.2,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.9.4,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.8.0,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.6.7,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.4.8,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.5.7,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.1.2,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.1.8,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.1.5,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.3.2,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.7.0,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.8.7,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.3.8,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.7.3,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.8.8,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.1.3,
+nvd2014_2017Columns_1_13_Wide$CVSS_Score.5.9.
+and converted into character format via the 'as.character' function.
+Existing values within these unique columns are converted into the numerical value '1', through the use of the 'is.na' function. 
+Once the exisiting values within the unique columns are converted into a numerical value '1', the unique columns are converted back into their original format 'factor', through the use of the 'as.factor' function. 
+
+[21]

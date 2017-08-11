@@ -540,7 +540,7 @@ nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-358`[!is.na(nvd2014_2017Columns_1_8_W
 nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-358` <- as.factor(nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-358`)
 str(nvd2014_2017Columns_1_8_Wide)
 View(nvd2014_2017Columns_1_8_Wide)
-#-----`CWE_ID_1.CWE-358`-----#
+#-----`CWE_ID_1.CWE-428`-----#
 str(nvd2014_2017Columns_1_8_Wide)
 nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-428` <- as.character(nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-428`)
 nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-428`[!is.na(nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-428`)] <- "1"
@@ -1501,10 +1501,12 @@ nvd2014_2017ColumnsTotalMatrix[nvd2014_2017ColumnsTotalMatrix == 2] <- 1
 rownames(nvd2014_2017ColumnsTotalMatrix) <- nvd2014_2017ColumnsTotal[,1]
 str(nvd2014_2017ColumnsTotalMatrix)
 View(nvd2014_2017ColumnsTotalMatrix)
+summary(nvd2014_2017ColumnsTotalMatrix)
 
 #[23]
 nvd2014_2017ColumnsTotalMatrixBinary <- as(nvd2014_2017ColumnsTotalMatrix, "binaryRatingMatrix")
 nvd2014_2017ColumnsTotalMatrixBinary
+summary(nvd2014_2017ColumnsTotalMatrixBinary)
 image(nvd2014_2017ColumnsTotalMatrixBinary[1:187, 1:187], main = "Binary Rating Matrix")
 
 #[24]

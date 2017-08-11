@@ -400,13 +400,6 @@ nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-22`[!is.na(nvd2014_2017Columns_1_8_Wi
 nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-22` <- as.factor(nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-22`)
 str(nvd2014_2017Columns_1_8_Wide)
 View(nvd2014_2017Columns_1_8_Wide)
-#-----`CWE_ID_1.CWE-22`-----# - REMOVE
-#str(nvd2014_2017Columns_1_8_Wide)
-#nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-22` <- as.character(nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-22`)
-#nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-22`[!is.na(nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-22`)] <- "1"
-#nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-22` <- as.factor(nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-22`)
-#str(nvd2014_2017Columns_1_8_Wide)
-#View(nvd2014_2017Columns_1_8_Wide)
 #-----`CWE_ID_1.CWE-611`-----#
 str(nvd2014_2017Columns_1_8_Wide)
 nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-611` <- as.character(nvd2014_2017Columns_1_8_Wide$`CWE_ID_1.CWE-611`)

@@ -45,4 +45,4 @@ install.packages("RWekajars")
 library(RWekajars)
 
 install.packages("RWeka")
-library(RWekajars)
+library(RWeka)

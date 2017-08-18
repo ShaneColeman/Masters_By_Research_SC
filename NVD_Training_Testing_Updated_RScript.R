@@ -35,9 +35,3 @@ write.csv(nvdTrainingUpdated, "NVD_Training_Updated.csv", row.names = FALSE)
 #[34]
 nvdTestingUpdated <- nvd2017UpdatedTotalDistinctRejectRemoved
 write.csv(nvdTestingUpdated, "NVD_Testing_Updated.csv", row.names = FALSE)
-
-#----------ARTT Conversion----------#
-#Test
-install.packages("foreign")
-library(foreign)
-write.arff(summary2017DataFrame, file = "summary_test.arff")

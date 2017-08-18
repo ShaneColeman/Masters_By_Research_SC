@@ -38,11 +38,6 @@ write.csv(nvdTestingUpdated, "NVD_Testing_Updated.csv", row.names = FALSE)
 
 #----------ARTT Conversion----------#
 #Test
-install.packages("rJava")
-library("rJava")
-
-install.packages("RWekajars")
-library(RWekajars)
-
-install.packages("RWeka")
-library(RWeka)
+install.packages("foreign")
+library(foreign)
+write.arff(summary2017DataFrame, file = "summary_test.arff")

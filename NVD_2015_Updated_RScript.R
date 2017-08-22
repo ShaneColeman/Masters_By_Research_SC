@@ -405,11 +405,13 @@ nvd2015UpdatedTotal <- cbind(cveID2015UpdatedDataFrame, summary2015UpdatedDataFr
 														 cwe_1_2015UpdatedDataFrame, cwe_1_Description2015UpdatedDataFrame,
 														 cwe_2_2015UpdatedDataFrame, cwe_2_Description2015UpdatedDataFrame)
 nvd2015UpdatedTotalDistinct <- distinct(nvd2015UpdatedTotal)
+View(nvd2015UpdatedTotalDistinct)
 write.csv(nvd2015UpdatedTotalDistinct, "CVE_2015_Updated.csv", row.names = FALSE)
 
 #[28]
 #https://stat.ethz.ch/pipermail/r-help/2012-December/343413.html
 nvd2015UpdatedTotalDistinctLastRowRemoved <- nvd2015UpdatedTotalDistinct[-nrow(nvd2015UpdatedTotalDistinct),]
+View(nvd2015UpdatedTotalDistinctLastRowRemoved)
 write.csv(nvd2015UpdatedTotalDistinctLastRowRemoved, "CVE_2015_Updated_Last_Row_Removed.csv", row.names = FALSE)
 
 #[29]

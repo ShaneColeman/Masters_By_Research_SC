@@ -440,3 +440,13 @@ View(nvd2014UpdatedTotalDistinctNA)
 nvd2014UpdatedTotalDistinctNARemoved <- nvd2014UpdatedTotalDistinctRejectRemoved[!is.na(nvd2014UpdatedTotalDistinctRejectRemoved$CVSS_Score),]
 View(nvd2014UpdatedTotalDistinctNARemoved)
 write.csv(nvd2014UpdatedTotalDistinctNARemoved, "CVE_2014_Updated_NA_Removed.csv", row.names = FALSE)
+
+#[CVE ID, CWE & CVSS Score]
+View(nvd2014UpdatedTotalDistinctNARemoved)
+nvd2014CVEIDCVSS <- nvd2014UpdatedTotalDistinctNARemoved[c(1,17,7)]
+View(nvd2014CVEIDCVSS)
+#https://stackoverflow.com/questions/18514694/how-to-save-a-data-frame-in-a-txt-or-excel-file-separated-by-columns
+#https://www.math.ucla.edu/~anderson/rw1001/library/base/html/write.table.html
+write.table(nvd2014CVEIDCVSS, "nvd2014CVEIDCWECVSS.txt", 
+						row.names = FALSE, col.names = FALSE, 
+						quote = FALSE, sep = "\t")

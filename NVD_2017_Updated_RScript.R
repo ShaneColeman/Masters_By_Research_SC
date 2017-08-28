@@ -408,14 +408,14 @@ write.csv(nvd2017UpdatedTotalDistinctNARemoved, "CVE_2017_Updated_NA_Removed.csv
 
 #[CVE ID, CWE & CVSS Score]
 View(nvd2017UpdatedTotalDistinctNARemoved)
-nvd2017CVEIDCVSS <- nvd2017UpdatedTotalDistinctNARemoved[c(1,17,7)]
-View(nvd2017CVEIDCVSS)
+nvd2017CVEIDCWECVSS <- nvd2017UpdatedTotalDistinctNARemoved[c(1,17,7)]
+View(nvd2017CVEIDCWECVSS)
 #https://stackoverflow.com/questions/18514694/how-to-save-a-data-frame-in-a-txt-or-excel-file-separated-by-columns
 #https://www.math.ucla.edu/~anderson/rw1001/library/base/html/write.table.html
-write.table(nvd2017CVEIDCVSS, "nvd2017CVEIDCWECVSS.txt", 
-						row.names = FALSE, col.names = FALSE, 
+write.table(nvd2017CVEIDCWECVSS, "nvd2017CVEIDCWECVSS.txt", 
+						row.names = FALSE, col.names = FALSE,
 						quote = FALSE, sep = "\t")
 
-#nvd2017TestTXT <- read.table("nvd2017CVEIDCVSS.txt")
-#View(nvd2017TestTXT)
-#rm(nvd2017TestTXT)
+nvd2017DataTXT <- read.table("nvd2017CVEIDCWECVSS.txt")
+View(nvd2017DataTXT)
+write.arff(nvd2017DataTXT, file = "nvd2017ARFF.arff")

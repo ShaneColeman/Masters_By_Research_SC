@@ -19,6 +19,8 @@ library(plyr)
 library(dplyr)
 library(anytime)
 
+install.packages("installr")
+
 #[3]
 nvd2017Updated <- xmlParse(file = "nvdcve-2.0-2017-updated.xml")
 summary(nvd2017Updated)

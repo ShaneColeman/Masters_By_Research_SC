@@ -7,11 +7,11 @@ memory.limit()
 memory.size(15000)
 
 #[2]
-install.packages("XML")
-install.packages("methods")
-install.packages("plyr")
-install.packages("dplyr")
-install.packages("anytime")
+#install.packages("XML")
+#install.packages("methods")
+#install.packages("plyr")
+#install.packages("dplyr")
+#install.packages("anytime")
 
 library(XML)
 library(methods)
@@ -370,7 +370,7 @@ levels(cwe_2_Description2017UpdatedDataFrame$CWE_ID_2_Description)[levels(cwe_2_
 View(cwe_2_Description2017UpdatedDataFrame)
 
 #[Vulnerability Software Product List]
-install.packages("tm")
+#install.packages("tm")
 library(tm)
 
 vulnerabilitySoftwareListProduct2017 <- dataNVD2017Updated$vulnerable.software.list.product
@@ -378,14 +378,15 @@ vulnerabilitySoftwareListProduct2017
 vulnerabilitySoftwareListProduct2017DataFrame <- ldply(vulnerabilitySoftwareListProduct2017, data.frame)
 colnames(vulnerabilitySoftwareListProduct2017DataFrame) <- "Vulnerability_Software_List_Product"
 View(vulnerabilitySoftwareListProduct2017DataFrame)
-testRemoveWords <- vulnerabilitySoftwareListProduct2017DataFrame$Vulnerability_Software_List_Product
-str(testRemoveWords)
-testRemoveWords <- as.character(testRemoveWords)
-str(testRemoveWords)
-testRemoveWords <- removeWords(testRemoveWords, "cpe:/o:")
-testRemoveWords <- removeWords(testRemoveWords, "cpe:/a:")
-testRemoveWords <- as.data.frame(testRemoveWords)
-View(testRemoveWords)
+vulnerabilitySoftwareListProduct2017DataFrame <- vulnerabilitySoftwareListProduct2017DataFrame$Vulnerability_Software_List_Product
+str(vulnerabilitySoftwareListProduct2017DataFrame)
+vulnerabilitySoftwareListProduct2017DataFrame <- as.character(vulnerabilitySoftwareListProduct2017DataFrame)
+str(vulnerabilitySoftwareListProduct2017DataFrame)
+stopWords <- c("cpe:/o:", "cpe:/a:")
+vulnerabilitySoftwareListProduct2017DataFrame <- removeWords(vulnerabilitySoftwareListProduct2017DataFrame, stopWords)
+vulnerabilitySoftwareListProduct2017DataFrame <- as.data.frame(vulnerabilitySoftwareListProduct2017DataFrame)
+colnames(vulnerabilitySoftwareListProduct2017DataFrame) <- "Vulnerability_Software_List_Product"
+View(vulnerabilitySoftwareListProduct2017DataFrame)
 
 
 vulnerabilitySoftwareListProduct_1_2017 <- dataNVD2017Updated$vulnerable.software.list.product.1
@@ -393,36 +394,42 @@ vulnerabilitySoftwareListProduct_1_2017
 vulnerabilitySoftwareListProduct_1_2017DataFrame <- ldply(vulnerabilitySoftwareListProduct_1_2017, data.frame)
 colnames(vulnerabilitySoftwareListProduct_1_2017DataFrame) <- "Vulnerability_Software_List_Product_1"
 View(vulnerabilitySoftwareListProduct_1_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_1_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_2_2017 <- dataNVD2017Updated$vulnerable.software.list.product.2
 vulnerabilitySoftwareListProduct_2_2017
 vulnerabilitySoftwareListProduct_2_2017DataFrame <- ldply(vulnerabilitySoftwareListProduct_2_2017, data.frame)
 colnames(vulnerabilitySoftwareListProduct_2_2017DataFrame) <- "Vulnerability_Software_List_Product_2"
 View(vulnerabilitySoftwareListProduct_2_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_2_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_3_2017 <- dataNVD2017Updated$vulnerable.software.list.product.3
 vulnerabilitySoftwareListProduct_3_2017
 vulnerabilitySoftwareListProduct_3_2017DataFrame <- ldply(vulnerabilitySoftwareListProduct_3_2017, data.frame)
 colnames(vulnerabilitySoftwareListProduct_3_2017DataFrame) <- "Vulnerability_Software_List_Product_3"
 View(vulnerabilitySoftwareListProduct_3_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_3_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_4_2017 <- dataNVD2017Updated$vulnerable.software.list.product.4
 vulnerabilitySoftwareListProduct_4_2017
 vulnerabilitySoftwareListProduct_4_2017DataFrame <- ldply(vulnerabilitySoftwareListProduct_4_2017, data.frame)
 colnames(vulnerabilitySoftwareListProduct_4_2017DataFrame) <- "Vulnerability_Software_List_Product_4"
 View(vulnerabilitySoftwareListProduct_4_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_4_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_5_2017 <- dataNVD2017Updated$vulnerable.software.list.product.5
 vulnerabilitySoftwareListProduct_5_2017
 vulnerabilitySoftwareListProduct_5_2017DataFrame <- ldply(vulnerabilitySoftwareListProduct_5_2017, data.frame)
 colnames(vulnerabilitySoftwareListProduct_5_2017DataFrame) <- "Vulnerability_Software_List_Product_5"
 View(vulnerabilitySoftwareListProduct_5_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_5_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_6_2017 <- dataNVD2017Updated$vulnerable.software.list.product.6
 vulnerabilitySoftwareListProduct_6_2017
 vulnerabilitySoftwareListProduct_6_2017DataFrame <- ldply(vulnerabilitySoftwareListProduct_6_2017, data.frame)
 colnames(vulnerabilitySoftwareListProduct_6_2017DataFrame) <- "Vulnerability_Software_List_Product_6"
 View(vulnerabilitySoftwareListProduct_6_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_6_2017DataFrame)
 
 nvd2017vulnerabilitySoftwareProductList <- cbind(cveID2017UpdatedDataFrame, vulnerabilitySoftwareListProduct2017DataFrame,
 																								 vulnerabilitySoftwareListProduct_1_2017DataFrame, vulnerabilitySoftwareListProduct_2_2017DataFrame,

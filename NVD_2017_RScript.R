@@ -360,11 +360,13 @@ vulnerabilitySoftwareListProduct <- dataNVD2017$vulnerable.software.list.product
 vulnerabilitySoftwareListProduct
 vulnerabilitySoftwareListProduct2017DataFrame <- ldply(vulnerabilitySoftwareListProduct, data.frame)
 colnames(vulnerabilitySoftwareListProduct2017DataFrame) <- "Vulnerability_Software_List_Product"
+rm(vulnerabilitySoftwareListProduct2017DataFrame)
 
 vulnerabilitySoftwareListProduct1 <- dataNVD2017$vulnerable.software.list.product.1
 vulnerabilitySoftwareListProduct1
 vulnerabilitySoftwareListProduct12017DataFrame <- ldply(vulnerabilitySoftwareListProduct1, data.frame)
 colnames(vulnerabilitySoftwareListProduct12017DataFrame) <- "Vulnerability_Software_List_Product"
+rm(vulnerabilitySoftwareListProduct12017DataFrame)
 
 #[27]
 nvd2017Total <- cbind(cveID2017DataFrame, summary2017DataFrame, 

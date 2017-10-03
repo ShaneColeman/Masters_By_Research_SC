@@ -7,19 +7,17 @@ memory.limit()
 memory.size(15000)
 
 #[2]
-#install.packages("XML")
-#install.packages("methods")
-#install.packages("plyr")
-#install.packages("dplyr")
-#install.packages("anytime")
+install.packages("XML")
+install.packages("methods")
+install.packages("plyr")
+install.packages("dplyr")
+install.packages("anytime")
 
 library(XML)
 library(methods)
 library(plyr)
 library(dplyr)
 library(anytime)
-
-install.packages("installr")
 
 #[3]
 nvd2017Updated <- xmlParse(file = "nvdcve-2.0-2017-updated.xml")
@@ -372,12 +370,23 @@ levels(cwe_2_Description2017UpdatedDataFrame$CWE_ID_2_Description)[levels(cwe_2_
 View(cwe_2_Description2017UpdatedDataFrame)
 
 #[Vulnerability Software Product List]
+install.packages("tm")
 library(tm)
+
 vulnerabilitySoftwareListProduct2017 <- dataNVD2017Updated$vulnerable.software.list.product
 vulnerabilitySoftwareListProduct2017
 vulnerabilitySoftwareListProduct2017DataFrame <- ldply(vulnerabilitySoftwareListProduct2017, data.frame)
 colnames(vulnerabilitySoftwareListProduct2017DataFrame) <- "Vulnerability_Software_List_Product"
 View(vulnerabilitySoftwareListProduct2017DataFrame)
+testRemoveWords <- vulnerabilitySoftwareListProduct2017DataFrame$Vulnerability_Software_List_Product
+str(testRemoveWords)
+testRemoveWords <- as.character(testRemoveWords)
+str(testRemoveWords)
+testRemoveWords <- removeWords(testRemoveWords, "cpe:/o:")
+testRemoveWords <- removeWords(testRemoveWords, "cpe:/a:")
+testRemoveWords <- as.data.frame(testRemoveWords)
+View(testRemoveWords)
+
 
 vulnerabilitySoftwareListProduct_1_2017 <- dataNVD2017Updated$vulnerable.software.list.product.1
 vulnerabilitySoftwareListProduct_1_2017
@@ -409,10 +418,16 @@ vulnerabilitySoftwareListProduct_5_2017DataFrame <- ldply(vulnerabilitySoftwareL
 colnames(vulnerabilitySoftwareListProduct_5_2017DataFrame) <- "Vulnerability_Software_List_Product_5"
 View(vulnerabilitySoftwareListProduct_5_2017DataFrame)
 
+vulnerabilitySoftwareListProduct_6_2017 <- dataNVD2017Updated$vulnerable.software.list.product.6
+vulnerabilitySoftwareListProduct_6_2017
+vulnerabilitySoftwareListProduct_6_2017DataFrame <- ldply(vulnerabilitySoftwareListProduct_6_2017, data.frame)
+colnames(vulnerabilitySoftwareListProduct_6_2017DataFrame) <- "Vulnerability_Software_List_Product_6"
+View(vulnerabilitySoftwareListProduct_6_2017DataFrame)
+
 nvd2017vulnerabilitySoftwareProductList <- cbind(cveID2017UpdatedDataFrame, vulnerabilitySoftwareListProduct2017DataFrame,
 																								 vulnerabilitySoftwareListProduct_1_2017DataFrame, vulnerabilitySoftwareListProduct_2_2017DataFrame,
 																								 vulnerabilitySoftwareListProduct_3_2017DataFrame, vulnerabilitySoftwareListProduct_4_2017DataFrame,
-																								 vulnerabilitySoftwareListProduct_5_2017DataFrame)
+																								 vulnerabilitySoftwareListProduct_5_2017DataFrame, vulnerabilitySoftwareListProduct_6_2017DataFrame)
 
 nvd2017vulnerabilitySoftwareProductListDistinct <- distinct(nvd2017vulnerabilitySoftwareProductList)
 View(nvd2017vulnerabilitySoftwareProductListDistinct)

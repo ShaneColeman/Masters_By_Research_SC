@@ -13,42 +13,52 @@ nvd2014_2017SelectedColumnsModified <- nvdMerge2014_2015_2016_2017NAUpdated[c(1,
 str(nvd2014_2017SelectedColumnsModified)
 View(nvd2014_2017SelectedColumnsModified)
 summary(nvd2014_2017SelectedColumnsModified)
+rm(nvd2014_2017SelectedColumnsModified)
 #----------#
 nvd2014_2017SelectedColumnsModifiedOrdered <- nvd2014_2017SelectedColumnsModified[c(1, 2:4, 5:7, 8, 13)]
 View(nvd2014_2017SelectedColumnsModifiedOrdered)
+rm(nvd2014_2017SelectedColumnsModifiedOrdered)
 
 #[4]
 #[Columns: 1 and 2] - CVE_ID & CVSS_Access_Vector
 nvd2014_2017ColumnsModified_1_2 <- nvd2014_2017SelectedColumnsModifiedOrdered[c(1, 2)]
 View(nvd2014_2017ColumnsModified_1_2)
+rm(nvd2014_2017ColumnsModified_1_2)
 
 #[Columns: 1 and 3] - CVE_ID & CVSS_Access_Complexity
 nvd2014_2017ColumnsModified_1_3 <- nvd2014_2017SelectedColumnsModifiedOrdered[c(1, 3)]
 View(nvd2014_2017ColumnsModified_1_3)
+rm(nvd2014_2017ColumnsModified_1_3)
 
 #[Columns: 1 and 4] - CVE_ID & CVSS_Authentication
 nvd2014_2017ColumnsModified_1_4 <- nvd2014_2017SelectedColumnsModifiedOrdered[c(1, 4)]
 View(nvd2014_2017ColumnsModified_1_4)
+rm(nvd2014_2017ColumnsModified_1_4)
 
 #[Columns: 1 and 5] - CVE_ID & CVSS_Confidentiality_Impact
 nvd2014_2017ColumnsModified_1_5 <- nvd2014_2017SelectedColumnsModifiedOrdered[c(1, 5)]
 View(nvd2014_2017ColumnsModified_1_5)
+rm(nvd2014_2017ColumnsModified_1_5)
 
 #[Columns: 1 and 6] - CVE_ID & CVSS_Integrity_Impact
 nvd2014_2017ColumnsModified_1_6 <- nvd2014_2017SelectedColumnsModifiedOrdered[c(1, 6)]
 View(nvd2014_2017ColumnsModified_1_6)
+rm(nvd2014_2017ColumnsModified_1_6)
 
 #[Columns: 1 and 7] - CVE_ID & CVSS_Availability_Impact
 nvd2014_2017ColumnsModified_1_7 <- nvd2014_2017SelectedColumnsModifiedOrdered[c(1, 7)]
 View(nvd2014_2017ColumnsModified_1_7)
+rm(nvd2014_2017ColumnsModified_1_7)
 
 #[Columns: 1 and 8] - CVE_ID & CWE_ID_1
 nvd2014_2017ColumnsModified_1_8 <- nvd2014_2017SelectedColumnsModifiedOrdered[c(1, 8)]
 View(nvd2014_2017ColumnsModified_1_8)
+rm(nvd2014_2017ColumnsModified_1_8)
 
 #[Columns: 1 and 9] - CVE_ID & CVSS_Score
 nvd2014_2017ColumnsModified_1_9 <- nvd2014_2017SelectedColumnsModifiedOrdered[c(1, 9)]
 View(nvd2014_2017ColumnsModified_1_9)
+rm(nvd2014_2017ColumnsModified_1_9)
 #---------------------------------------------#
 
 #[5]
@@ -59,6 +69,7 @@ head(nvd2014_2017ColumnsModified_1_2_Wide)
 View(nvd2014_2017ColumnsModified_1_2_Wide)
 lengthColumnsModified_1_2 <- length(nvd2014_2017ColumnsModified_1_2_Wide)
 lengthColumnsModified_1_2
+rm(nvd2014_2017ColumnsModified_1_2_Wide)
 
 #[6]
 #-----CVSS_Access_Vector.NETWORK-----#
@@ -91,6 +102,7 @@ head(nvd2014_2017ColumnsModified_1_3_Wide)
 View(nvd2014_2017ColumnsModified_1_3_Wide)
 lengthColumnsModified_1_3 <- length(nvd2014_2017ColumnsModified_1_3_Wide)
 lengthColumnsModified_1_3
+rm(nvd2014_2017ColumnsModified_1_3_Wide)
 
 #[8]
 #-----CVSS_Access_Complexity.LOW-----#
@@ -123,6 +135,7 @@ head(nvd2014_2017ColumnsModified_1_4_Wide)
 View(nvd2014_2017ColumnsModified_1_4_Wide)
 lengthColumnsModified_1_4 <- length(nvd2014_2017ColumnsModified_1_4_Wide)
 lengthColumnsModified_1_4
+rm(nvd2014_2017ColumnsModified_1_4_Wide)
 
 #[10]
 #-----CVSS_Authentication.NONE-----#
@@ -155,6 +168,7 @@ head(nvd2014_2017ColumnsModified_1_5_Wide)
 View(nvd2014_2017ColumnsModified_1_5_Wide)
 lengthColumnsModified_1_5 <- length(nvd2014_2017ColumnsModified_1_5_Wide)
 lengthColumnsModified_1_5
+rm(nvd2014_2017ColumnsModified_1_5_Wide)
 
 #[12]
 #-----CVSS_Confidentiality_Impact.PARTIAL-----#
@@ -187,6 +201,7 @@ head(nvd2014_2017ColumnsModified_1_6_Wide)
 View(nvd2014_2017ColumnsModified_1_6_Wide)
 lengthColumnsModified_1_6 <- length(nvd2014_2017ColumnsModified_1_6_Wide)
 lengthColumnsModified_1_6
+rm(nvd2014_2017ColumnsModified_1_6_Wide)
 
 #[14]
 #-----CVSS_Integrity_Impact.PARTIAL-----#
@@ -219,6 +234,7 @@ head(nvd2014_2017ColumnsModified_1_7_Wide)
 View(nvd2014_2017ColumnsModified_1_7_Wide)
 lengthColumnsModified_1_7 <- length(nvd2014_2017ColumnsModified_1_7_Wide)
 lengthColumnsModified_1_7
+rm(nvd2014_2017ColumnsModified_1_7_Wide)
 
 #[16]
 #-----CVSS_Availability_Impact.PARTIAL-----#
@@ -251,6 +267,7 @@ head(nvd2014_2017ColumnsModified_1_8_Wide[,1:6])
 View(nvd2014_2017ColumnsModified_1_8_Wide)
 lengthColumnsModified_1_8 <- length(nvd2014_2017ColumnsModified_1_8_Wide)
 lengthColumnsModified_1_8
+rm(nvd2014_2017ColumnsModified_1_8_Wide)
 
 #[18]
 #-----`CWE_ID_1.CWE-119`-----#
@@ -955,6 +972,7 @@ head(nvd2014_2017ColumnsModified_1_9_Wide[,1:6])
 View(nvd2014_2017ColumnsModified_1_9_Wide)
 lengthColumnsModified_1_9 <- length(nvd2014_2017ColumnsModified_1_9_Wide)
 lengthColumnsModified_1_9
+rm(nvd2014_2017ColumnsModified_1_9_Wide)
 
 #[20]
 #-----CVSS_Score.7.5-----#
@@ -1456,6 +1474,7 @@ lengthColumnsModifiedTotal <- lengthColumnsModified_1_2 + lengthColumnsModified_
 lengthColumnsModifiedTotal
 lengthColumnsTotalModifiedUpdated <- lengthColumnsModifiedTotal - 7
 lengthColumnsTotalModifiedUpdated
+rm()
 
 #[21]
 #https://stackoverflow.com/questions/16666643/merging-more-than-2-dataframes-in-r-by-rownames
@@ -1469,6 +1488,7 @@ str(nvd2014_2017ColumnsModifiedTotal)
 View(nvd2014_2017ColumnsModifiedTotal)
 #write.csv(nvd2014_2017ColumnsTotal, "NVD_2014_2017_Columns_Total.csv", row.names = FALSE)
 write.csv(nvd2014_2017ColumnsModifiedTotal, "NVD_2014_2017_Columns_Modified_Total_Binary.csv", row.names = FALSE)
+rm(nvd2014_2017ColumnsModifiedTotal)
 
 #[22]
 #https://stackoverflow.com/questions/18580506/recommenderlab-error-in-asmethodobject-invalid-class-na-to-dup-mmatrix-as
@@ -1481,12 +1501,14 @@ rownames(nvd2014_2017ColumnsTotalModifiedMatrix) <- nvd2014_2017ColumnsModifiedT
 str(nvd2014_2017ColumnsTotalModifiedMatrix)
 View(nvd2014_2017ColumnsTotalModifiedMatrix)
 summary(nvd2014_2017ColumnsTotalModifiedMatrix)
+rm(nvd2014_2017ColumnsTotalModifiedMatrix)
 
 #[23]
 nvd2014_2017ColumnsTotalModifiedMatrixBinary <- as(nvd2014_2017ColumnsTotalModifiedMatrix, "binaryRatingMatrix")
 nvd2014_2017ColumnsTotalModifiedMatrixBinary
 summary(nvd2014_2017ColumnsTotalModifiedMatrixBinary)
 image(nvd2014_2017ColumnsTotalModifiedMatrixBinary[1:187, 1:187], main = "Binary Rating Matrix")
+rm(nvd2014_2017ColumnsTotalModifiedMatrixBinary)
 
 #[24]
 object.size(nvd2014_2017ColumnsTotalModifiedMatrixBinary)
@@ -1502,3 +1524,4 @@ qplot(number_CVE_ID_Column_Modified_Count) + stat_bin(binwidth = 1000) +
 	ggtitle("Distribution of the number of CVE IDs")
 #qplot(number_CVE_ID_Column_Count[number_CVE_ID_Column_Count < 1000]) + stat_bin(binwidth = 100) + 
 #ggtitle("Distribution of the number of CVE IDs")
+rm(number_CVE_ID_Column_Modified_Count)

@@ -29,6 +29,7 @@ nvd2014_2017SelectedColumnsUpdated <- nvdMerge2014_2015_2016_2017NAUpdated[c(1, 
 str(nvd2014_2017SelectedColumnsUpdated)
 View(nvd2014_2017SelectedColumnsUpdated)
 summary(nvd2014_2017SelectedColumnsUpdated)
+rm(nvd2014_2017SelectedColumnsUpdated)
 
 #[NA]
 object.size(nvd2014_2017SelectedColumnsUpdated)
@@ -42,34 +43,42 @@ View(nvd2014_2017SelectedColumnsUpdated)
 #[Columns: 1 and 2] - CVE_ID & CVSS_Access_Vector
 nvd2014_2017Columns_1_2 <- nvd2014_2017SelectedColumnsUpdated[c(1, 2)]
 View(nvd2014_2017Columns_1_2)
+rm(nvd2014_2017Columns_1_2)
 
 #[Columns: 1 and 3] - CVE_ID & CVSS_Access_Complexity
 nvd2014_2017Columns_1_3 <- nvd2014_2017SelectedColumnsUpdated[c(1, 3)]
 View(nvd2014_2017Columns_1_3)
+rm(nvd2014_2017Columns_1_3)
 
 #[Columns: 1 and 4] - CVE_ID & CVSS_Authentication
 nvd2014_2017Columns_1_4 <- nvd2014_2017SelectedColumnsUpdated[c(1, 4)]
 View(nvd2014_2017Columns_1_4)
+rm(nvd2014_2017Columns_1_4)
 
 #[Columns: 1 and 5] - CVE_ID & CVSS_Confidentiality_Impact
 nvd2014_2017Columns_1_5 <- nvd2014_2017SelectedColumnsUpdated[c(1, 5)]
 View(nvd2014_2017Columns_1_5)
+rm(nvd2014_2017Columns_1_5)
 
 #[Columns: 1 and 6] - CVE_ID & CVSS_Integrity_Impact
 nvd2014_2017Columns_1_6 <- nvd2014_2017SelectedColumnsUpdated[c(1, 6)]
 View(nvd2014_2017Columns_1_6)
+rm(nvd2014_2017Columns_1_6)
 
 #[Columns: 1 and 7] - CVE_ID & CVSS_Availability_Impact
 nvd2014_2017Columns_1_7 <- nvd2014_2017SelectedColumnsUpdated[c(1, 7)]
 View(nvd2014_2017Columns_1_7)
+rm(nvd2014_2017Columns_1_7)
 
 #[Columns: 1 and 8] - CVE_ID & CWE_ID_1
 nvd2014_2017Columns_1_8 <- nvd2014_2017SelectedColumnsUpdated[c(1, 8)]
 View(nvd2014_2017Columns_1_8)
+rm(nvd2014_2017Columns_1_8)
 
 #[Columns: 1 and 13] - CVE_ID & CVSS_Score
 nvd2014_2017Columns_1_13 <- nvd2014_2017SelectedColumnsUpdated[c(1, 13)]
 View(nvd2014_2017Columns_1_13)
+rm(nvd2014_2017Columns_1_13)
 #---------------------------------------------#
 
 #[5]
@@ -80,6 +89,7 @@ head(nvd2014_2017Columns_1_2_Wide)
 View(nvd2014_2017Columns_1_2_Wide)
 lengthColumns_1_2 <- length(nvd2014_2017Columns_1_2_Wide)
 lengthColumns_1_2
+rm(nvd2014_2017Columns_1_2_Wide)
 
 #[6]
 #-----CVSS_Access_Vector.NETWORK-----#
@@ -112,6 +122,7 @@ head(nvd2014_2017Columns_1_3_Wide)
 View(nvd2014_2017Columns_1_3_Wide)
 lengthColumns_1_3 <- length(nvd2014_2017Columns_1_3_Wide)
 lengthColumns_1_3
+rm(nvd2014_2017Columns_1_3_Wide)
 
 #[8]
 #-----CVSS_Access_Complexity.LOW-----#
@@ -144,6 +155,7 @@ head(nvd2014_2017Columns_1_4_Wide)
 View(nvd2014_2017Columns_1_4_Wide)
 lengthColumns_1_4 <- length(nvd2014_2017Columns_1_4_Wide)
 lengthColumns_1_4
+rm(nvd2014_2017Columns_1_4_Wide)
 
 #[10]
 #-----CVSS_Authentication.NONE-----#
@@ -176,6 +188,7 @@ head(nvd2014_2017Columns_1_5_Wide)
 View(nvd2014_2017Columns_1_5_Wide)
 lengthColumns_1_5 <- length(nvd2014_2017Columns_1_5_Wide)
 lengthColumns_1_5
+rm(nvd2014_2017Columns_1_5_Wide)
 
 #[12]
 #-----CVSS_Confidentiality_Impact.PARTIAL-----#
@@ -208,6 +221,7 @@ head(nvd2014_2017Columns_1_6_Wide)
 View(nvd2014_2017Columns_1_6_Wide)
 lengthColumns_1_6 <- length(nvd2014_2017Columns_1_6_Wide)
 lengthColumns_1_6
+rm(nvd2014_2017Columns_1_6_Wide)
 
 #[14]
 #-----CVSS_Integrity_Impact.PARTIAL-----#
@@ -240,6 +254,7 @@ head(nvd2014_2017Columns_1_7_Wide)
 View(nvd2014_2017Columns_1_7_Wide)
 lengthColumns_1_7 <- length(nvd2014_2017Columns_1_7_Wide)
 lengthColumns_1_7
+rm(nvd2014_2017Columns_1_7_Wide)
 
 #[16]
 #-----CVSS_Availability_Impact.PARTIAL-----#
@@ -272,6 +287,7 @@ head(nvd2014_2017Columns_1_8_Wide[,1:6])
 View(nvd2014_2017Columns_1_8_Wide)
 lengthColumns_1_8 <- length(nvd2014_2017Columns_1_8_Wide)
 lengthColumns_1_8
+rm(nvd2014_2017Columns_1_8_Wide)
 
 #[18]
 #-----`CWE_ID_1.CWE-119`-----#
@@ -976,6 +992,7 @@ head(nvd2014_2017Columns_1_13_Wide[,1:6])
 View(nvd2014_2017Columns_1_13_Wide)
 lengthColumns_1_13 <- length(nvd2014_2017Columns_1_13_Wide)
 lengthColumns_1_13
+rm(nvd2014_2017Columns_1_13_Wide)
 
 #[20]
 #-----CVSS_Score.7.5-----#
@@ -1477,6 +1494,7 @@ lengthColumnsTotal <- lengthColumns_1_2 + lengthColumns_1_3 + lengthColumns_1_4 
 lengthColumnsTotal
 lengthColumnsTotalUpdated <- lengthColumnsTotal - 7
 lengthColumnsTotalUpdated
+rm(lengthColumnsTotal)
 
 #[21]
 #https://stackoverflow.com/questions/16666643/merging-more-than-2-dataframes-in-r-by-rownames
@@ -1490,6 +1508,7 @@ str(nvd2014_2017ColumnsTotal)
 View(nvd2014_2017ColumnsTotal)
 write.csv(nvd2014_2017ColumnsTotal, "NVD_2014_2017_Columns_Total.csv", row.names = FALSE)
 write.csv(nvd2014_2017ColumnsTotal, "NVD_2014_2017_Columns_Total_Binary.csv", row.names = FALSE)
+rm(nvd2014_2017ColumnsTotal)
 
 #[22]
 #https://stackoverflow.com/questions/18580506/recommenderlab-error-in-asmethodobject-invalid-class-na-to-dup-mmatrix-as
@@ -1502,12 +1521,14 @@ rownames(nvd2014_2017ColumnsTotalMatrix) <- nvd2014_2017ColumnsTotal[,1]
 str(nvd2014_2017ColumnsTotalMatrix)
 View(nvd2014_2017ColumnsTotalMatrix)
 summary(nvd2014_2017ColumnsTotalMatrix)
+rm(nvd2014_2017ColumnsTotalMatrix)
 
 #[23]
 nvd2014_2017ColumnsTotalMatrixBinary <- as(nvd2014_2017ColumnsTotalMatrix, "binaryRatingMatrix")
 nvd2014_2017ColumnsTotalMatrixBinary
 summary(nvd2014_2017ColumnsTotalMatrixBinary)
 image(nvd2014_2017ColumnsTotalMatrixBinary[1:187, 1:187], main = "Binary Rating Matrix")
+rm(nvd2014_2017ColumnsTotalMatrixBinary)
 
 #[24]
 object.size(nvd2014_2017ColumnsTotalMatrixBinary)
@@ -1523,4 +1544,4 @@ qplot(number_CVE_ID_Column_Count) + stat_bin(binwidth = 1000) +
 	ggtitle("Distribution of the number of CVE IDs")
 #qplot(number_CVE_ID_Column_Count[number_CVE_ID_Column_Count < 1000]) + stat_bin(binwidth = 100) + 
 	#ggtitle("Distribution of the number of CVE IDs")
-
+rm(number_CVE_ID_Column_Count)

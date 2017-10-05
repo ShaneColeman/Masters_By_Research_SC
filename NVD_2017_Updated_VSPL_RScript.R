@@ -3,6 +3,7 @@
 
 #[Memory]
 #https://support.rstudio.com/hc/en-us/community/posts/115000475648-Memory-limit
+memory.size()
 memory.limit()
 memory.size(15000)
 
@@ -10,15 +11,52 @@ memory.size(15000)
 #install.packages("plyr")
 #install.packages("dplyr")
 #install.packages("Hmisc")
+#install.packages("qdap")
+#install.packages("tm")
 
 library(plyr)
 library(dplyr)
 library(Hmisc)
-
-#[Vulnerability Software Product List]
-#install.packages("tm")
+#library(qdap)
 library(tm)
 
+
+#-----FIRST-----#
+vulnerabilitySoftwareListProduct_1_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product, data.frame)
+colnames(vulnerabilitySoftwareListProduct_1_2017DataFrame) <- "Vulnerability_Software_List_Product_1"
+View(vulnerabilitySoftwareListProduct_1_2017DataFrame)
+
+vulnerabilitySoftwareListProduct_2_2017DataFrame <- ldply(dataNVD2017Updated$product, data.frame)
+colnames(vulnerabilitySoftwareListProduct_2_2017DataFrame) <- "Vulnerability_Software_List_Product_2"
+View(vulnerabilitySoftwareListProduct_2_2017DataFrame)
+
+VSPL1_2_2017DataFrame <- cbind(vulnerabilitySoftwareListProduct_1_2017DataFrame, 
+															 vulnerabilitySoftwareListProduct_2_2017DataFrame)
+View(VSPL1_2_2017DataFrame)
+VSPL1_2_2017DataFrame["Vulnerability_Software_List_Product"] <- NA
+VSPL1_2_2017DataFrame$Vulnerability_Software_List_Product <- paste(VSPL1_2_2017DataFrame$Vulnerability_Software_List_Product_1, 
+																																	 VSPL1_2_2017DataFrame$Vulnerability_Software_List_Product_2, 
+																																	 sep = " ")
+View(VSPL1_2_2017DataFrame)
+
+VSPL2017CombinedDataFrame <- VSPL1_2_2017DataFrame[3]
+View(VSPL2017CombinedDataFrame)
+
+CVEID_VSPL2017DataFrame <- cbind(cveID2017UpdatedDataFrame, VSPL2017CombinedDataFrame)
+View(CVEID_VSPL2017DataFrame)
+
+CVEID_VSPL2017DataFrame$Vulnerability_Software_List_Product <- 
+	removeWords(CVEID_VSPL2017DataFrame$Vulnerability_Software_List_Product, "NA")
+View(CVEID_VSPL2017DataFrame)
+
+CVEID_VSPL2017DataFrame <- distinct(CVEID_VSPL2017DataFrame)
+View(CVEID_VSPL2017DataFrame)
+#-----FIRST-----#
+
+
+
+#----------#
+#[Vulnerability Software Product List]
 #https://nmap.org/book/output-formats-cpe.html
 #'a' - applications
 #'h' - hardware platforms
@@ -40,6 +78,7 @@ levels(productType2017DataFrame$Product_Type)[levels(productType2017DataFrame$Pr
 levels(productType2017DataFrame$Product_Type)[levels(productType2017DataFrame$Product_Type) == "/h"] <- "Hardware Platform"
 levels(productType2017DataFrame$Product_Type)[levels(productType2017DataFrame$Product_Type) == "/o"] <- "Operating System"
 View(productType2017DataFrame)
+rm(productType2017DataFrame)
 
 #vulnerabilitySoftwareListProduct2017 <- dataNVD2017Updated$vulnerable.software.list.product
 #vulnerabilitySoftwareListProduct2017
@@ -61,54 +100,66 @@ vulnerabilitySoftwareListProduct2017DataFrame
 vulnerabilitySoftwareListProduct2017DataFrame <- as.data.frame(vulnerabilitySoftwareListProduct2017DataFrame)
 colnames(vulnerabilitySoftwareListProduct2017DataFrame) <- "Vulnerability_Software_List_Product"
 View(vulnerabilitySoftwareListProduct2017DataFrame)
+rm(vulnerabilitySoftwareListProduct2017DataFrame)
+#----------#
 
-vulnerabilitySoftwareListProduct2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product, data.frame)
-colnames(vulnerabilitySoftwareListProduct2017DataFrame) <- "Vulnerability_Software_List_Product"
-View(vulnerabilitySoftwareListProduct2017DataFrame)
 
-vulnerabilitySoftwareListProduct_1_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product.1, data.frame)
-colnames(vulnerabilitySoftwareListProduct_1_2017DataFrame) <- "Vulnerability_Software_List_Product_1"
-View(vulnerabilitySoftwareListProduct_1_2017DataFrame)
+
+#----------#
+vulnerabilitySoftwareListProduct_3_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product.1, data.frame)
+colnames(vulnerabilitySoftwareListProduct_3_2017DataFrame) <- "Vulnerability_Software_List_Product_3"
+View(vulnerabilitySoftwareListProduct_3_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_3_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_2_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product.2, data.frame)
 colnames(vulnerabilitySoftwareListProduct_2_2017DataFrame) <- "Vulnerability_Software_List_Product_2"
 View(vulnerabilitySoftwareListProduct_2_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_2_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_3_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product.3, data.frame)
 colnames(vulnerabilitySoftwareListProduct_3_2017DataFrame) <- "Vulnerability_Software_List_Product_3"
 View(vulnerabilitySoftwareListProduct_3_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_3_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_4_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product.4, data.frame)
 colnames(vulnerabilitySoftwareListProduct_4_2017DataFrame) <- "Vulnerability_Software_List_Product_4"
 View(vulnerabilitySoftwareListProduct_4_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_4_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_5_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product.5, data.frame)
 colnames(vulnerabilitySoftwareListProduct_5_2017DataFrame) <- "Vulnerability_Software_List_Product_5"
 View(vulnerabilitySoftwareListProduct_5_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_5_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_6_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product.6, data.frame)
 colnames(vulnerabilitySoftwareListProduct_6_2017DataFrame) <- "Vulnerability_Software_List_Product_6"
 View(vulnerabilitySoftwareListProduct_6_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_6_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_7_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product.7, data.frame)
 colnames(vulnerabilitySoftwareListProduct_7_2017DataFrame) <- "Vulnerability_Software_List_Product_7"
 View(vulnerabilitySoftwareListProduct_7_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_7_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_8_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product.8, data.frame)
 colnames(vulnerabilitySoftwareListProduct_8_2017DataFrame) <- "Vulnerability_Software_List_Product_8"
 View(vulnerabilitySoftwareListProduct_8_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_8_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_9_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product.9, data.frame)
 colnames(vulnerabilitySoftwareListProduct_9_2017DataFrame) <- "Vulnerability_Software_List_Product_9"
 View(vulnerabilitySoftwareListProduct_9_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_9_2017DataFrame)
 
 vulnerabilitySoftwareListProduct_10_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product.10, data.frame)
 colnames(vulnerabilitySoftwareListProduct_10_2017DataFrame) <- "Vulnerability_Software_List_Product_10"
 View(vulnerabilitySoftwareListProduct_10_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_10_2017DataFrame)
 
-vulnerabilitySoftwareListProduct_11_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product.23, data.frame)
+vulnerabilitySoftwareListProduct_11_2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product.11, data.frame)
 colnames(vulnerabilitySoftwareListProduct_11_2017DataFrame) <- "Vulnerability_Software_List_Product_11"
 View(vulnerabilitySoftwareListProduct_11_2017DataFrame)
+rm(vulnerabilitySoftwareListProduct_11_2017DataFrame)
 
 nvd2017vulnerabilitySoftwareProductList <- cbind(cveID2017UpdatedDataFrame, vulnerabilitySoftwareListProduct2017DataFrame,
 																								 vulnerabilitySoftwareListProduct_1_2017DataFrame, vulnerabilitySoftwareListProduct_2_2017DataFrame,
@@ -117,9 +168,12 @@ nvd2017vulnerabilitySoftwareProductList <- cbind(cveID2017UpdatedDataFrame, vuln
 																								 vulnerabilitySoftwareListProduct_7_2017DataFrame, vulnerabilitySoftwareListProduct_8_2017DataFrame,
 																								 vulnerabilitySoftwareListProduct_9_2017DataFrame, vulnerabilitySoftwareListProduct_10_2017DataFrame,
 																								 vulnerabilitySoftwareListProduct_11_2017DataFrame)
+rm(nvd2017vulnerabilitySoftwareProductList)
 
 nvd2017vulnerabilitySoftwareProductListDistinct <- distinct(nvd2017vulnerabilitySoftwareProductList)
 View(nvd2017vulnerabilitySoftwareProductListDistinct)
+rm(nvd2017vulnerabilitySoftwareProductListDistinct)
+#----------#
 
 #Test Modified Data Frame
 TESTnvd2017VSPL <- cbind(cveID2017UpdatedDataFrame, productType2017DataFrame, vulnerabilitySoftwareListProduct2017DataFrame)

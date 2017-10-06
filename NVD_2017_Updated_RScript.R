@@ -382,6 +382,7 @@ nvd2017UpdatedTotal <- cbind(cveID2017UpdatedDataFrame, summary2017UpdatedDataFr
 											cvssGeneratedOnDate2017UpdatedDataFrame, cvssGeneratedOnTime2017UpdatedDataFrame,
 											cwe_1_2017UpdatedDataFrame, cwe_1_Description2017UpdatedDataFrame,
 											cwe_2_2017UpdatedDataFrame, cwe_2_Description2017UpdatedDataFrame)
+View(nvd2017UpdatedTotal)
 nvd2017UpdatedTotalDistinct <- distinct(nvd2017UpdatedTotal)
 View(nvd2017UpdatedTotalDistinct)
 write.csv(nvd2017UpdatedTotalDistinct, "CVE_2017_Updated.csv", row.names = FALSE)

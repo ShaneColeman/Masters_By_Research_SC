@@ -53,9 +53,7 @@ CVEID_VSPL2017DataFrame <- distinct(CVEID_VSPL2017DataFrame)
 View(CVEID_VSPL2017DataFrame)
 #-----FIRST-----#
 
-
-
-#----------#
+#-----SECOND (CPE PART)-----#
 #[Vulnerability Software Product List]
 #https://nmap.org/book/output-formats-cpe.html
 #'a' - applications
@@ -63,23 +61,73 @@ View(CVEID_VSPL2017DataFrame)
 #'o' - operating systems 
 stopWords <- c("cpe:/a:", "cpe:/h:", "cpe:/o:")
 
-productType2017 <- dataNVD2017Updated$vulnerable.software.list.product
-productType2017 <- as.character(productType2017)
-productType2017
-productType2017 <- strsplit(productType2017, ":")
-productType2017
-productType2017 <- sapply(productType2017, "[", 2)
-productType2017
-productType2017DataFrame <- ldply(productType2017, data.frame)
-colnames(productType2017DataFrame) <- "Product_Type"
-View(productType2017DataFrame)
-#https://nvd.nist.gov/scap/docs/2008-conf-presentations/day2/SCAP-Conference-CPE-Presentation.pdf
-levels(productType2017DataFrame$Product_Type)[levels(productType2017DataFrame$Product_Type) == "/a"] <- "Application"
-levels(productType2017DataFrame$Product_Type)[levels(productType2017DataFrame$Product_Type) == "/h"] <- "Hardware Platform"
-levels(productType2017DataFrame$Product_Type)[levels(productType2017DataFrame$Product_Type) == "/o"] <- "Operating System"
-View(productType2017DataFrame)
-rm(productType2017DataFrame)
+vspl2017 <- CVEID_VSPL2017DataFrame$Vulnerability_Software_List_Product
+vspl2017
+vspl2017 <- as.character(vspl2017)
+vspl2017
+vspl2017 <- strsplit(vspl2017, ":")
+vspl2017
+cpePart2017 <- sapply(vspl2017, "[", 2)
+cpePart2017
+cpePart2017DataFrame <- ldply(cpePart2017, data.frame)
+colnames(cpePart2017DataFrame) <- "CPE_Part"
+View(cpePart2017DataFrame)
 
+#https://nvd.nist.gov/scap/docs/2008-conf-presentations/day2/SCAP-Conference-CPE-Presentation.pdf
+levels(cpePart2017DataFrame$CPE_Part)[levels(cpePart2017DataFrame$CPE_Part) == "/a"] <- "Application"
+levels(cpePart2017DataFrame$CPE_Part)[levels(cpePart2017DataFrame$CPE_Part) == "/h"] <- "Hardware Platform"
+levels(cpePart2017DataFrame$CPE_Part)[levels(cpePart2017DataFrame$CPE_Part) == "/o"] <- "Operating System"
+View(cpePart2017DataFrame)
+#-----SECOND (CPE PART)-----#
+
+#-----THIRD (CPE VENDOR)-----#
+vendor2017 <- sapply(vspl2017, "[", 3)
+vendor2017
+vendor2017DataFrame <- ldply(vendor2017, data.frame)
+colnames(vendor2017DataFrame) <- "CPE_Vendor"
+View(vendor2017DataFrame)
+
+cpeVendor2017DataFrame <- vendor2017DataFrame$CPE_Vendor
+cpeVendor2017DataFrame
+cpeVendor2017DataFrame <- as.character(cpeVendor2017DataFrame)
+cpeVendor2017DataFrame
+cpeVendor2017DataFrame <- capitalize(cpeVendor2017DataFrame)
+cpeVendor2017DataFrame
+cpeVendor2017DataFrame <- as.data.frame(cpeVendor2017DataFrame)
+colnames(cpeVendor2017DataFrame) <- "CPE_Vendor"
+View(cpeVendor2017DataFrame)
+#-----THIRD (CPE VENDOR)-----#
+
+#-----FOURTH (CPE PRODUCT)-----#
+product2017 <- sapply(vspl2017, "[", 4)
+product2017
+product2017DataFrame <- ldply(product2017, data.frame)
+colnames(product2017DataFrame) <- "CPE_Product"
+View(product2017DataFrame)
+
+cpeProduct2017DataFrame <- product2017DataFrame$CPE_Product
+cpeProduct2017DataFrame
+cpeProduct2017DataFrame <- as.character(cpeProduct2017DataFrame)
+cpeProduct2017DataFrame
+cpeProduct2017DataFrame <- capitalize(cpeProduct2017DataFrame)
+cpeProduct2017DataFrame
+cpeProduct2017DataFrame <- as.data.frame(cpeProduct2017DataFrame)
+colnames(cpeProduct2017DataFrame) <- "CPE_Product"
+View(cpeProduct2017DataFrame)
+#-----FOURTH (CPE PRODUCT)-----#
+
+#----------#
+testVSPLDataFrame <- cbind(cveID2017UpdatedDataFrame, cpePart2017DataFrame, cpeVendor2017DataFrame,
+													 cpeProduct2017DataFrame)
+View(testVSPLDataFrame)
+rm(testVSPLDataFrame)
+
+summary(cpePart2017DataFrame$CPE_Part)
+summary(cpeVendor2017DataFrame$CPE_Vendor)
+summary(cpeProduct2017DataFrame$CPE_Product)
+#----------#
+
+#----------#
 #vulnerabilitySoftwareListProduct2017 <- dataNVD2017Updated$vulnerable.software.list.product
 #vulnerabilitySoftwareListProduct2017
 vulnerabilitySoftwareListProduct2017DataFrame <- ldply(dataNVD2017Updated$vulnerable.software.list.product, data.frame)

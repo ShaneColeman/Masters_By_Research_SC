@@ -122,6 +122,8 @@ testVSPLDataFrame <- cbind(cveID2017UpdatedDataFrame, cpePart2017DataFrame, cpeV
 View(testVSPLDataFrame)
 rm(testVSPLDataFrame)
 
+testVSPLDataFrame <- distinct(testVSPLDataFrame)
+
 summary(cpePart2017DataFrame$CPE_Part)
 summary(cpeVendor2017DataFrame$CPE_Vendor)
 summary(cpeProduct2017DataFrame$CPE_Product)

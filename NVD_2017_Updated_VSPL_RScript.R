@@ -123,11 +123,20 @@ View(testVSPLDataFrame)
 rm(testVSPLDataFrame)
 
 testVSPLDataFrame <- distinct(testVSPLDataFrame)
+View(testVSPLDataFrame)
+
+testVSPLDataFrame <- testVSPLDataFrame[-nrow(testVSPLDataFrame),]
+View(testVSPLDataFrame)
+write.csv(testVSPLDataFrame, "VSPL_2017_Updated.csv", row.names = FALSE)
+
+summary(testVSPLDataFrame)
 
 summary(cpePart2017DataFrame$CPE_Part)
 summary(cpeVendor2017DataFrame$CPE_Vendor)
 summary(cpeProduct2017DataFrame$CPE_Product)
 #----------#
+
+
 
 #----------#
 #vulnerabilitySoftwareListProduct2017 <- dataNVD2017Updated$vulnerable.software.list.product

@@ -344,6 +344,7 @@ reference8_2017LastRowRemoved <- as.data.frame(cveIDReferences8_2017_AggregateDa
 reference9_2017LastRowRemoved <- as.data.frame(cveIDReferences9_2017_AggregateDataFrame$External_Reference_9)
 reference10_2017LastRowRemoved <- as.data.frame(cveIDReferences10_2017_AggregateDataFrame$External_Reference_10)
 #reference11_2017LastRowRemoved <- as.data.frame(cveIDReferences11_2017_AggregateDataFrame$External_Reference_11)
+rm(reference11_2017LastRowRemoved)
 
 referencesCombined2017DF <- cbind(cveID2017LastRowRemoved, reference1_2017LastRowRemoved,
 																	reference2_2017LastRowRemoved, reference3_2017LastRowRemoved,
